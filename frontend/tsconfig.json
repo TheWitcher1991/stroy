@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "./docker/nextjs.json",
+    "@gravity-ui/tsconfig/tsconfig"
+  ],
+  "compilerOptions": {
+    "paths": {
+      "~*": ["./src/*"],
+      "~public/*": ["./public/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    "next.config",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
