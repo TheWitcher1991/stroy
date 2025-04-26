@@ -1,0 +1,7 @@
+name: stroy-cluster
+
+services:
+
+networks:
+
+volumes:

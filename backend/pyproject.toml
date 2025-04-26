@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "stroy"
+version = "1.0.0"
+description = ""
+authors = ["Ashot Svazyan <ashot.svazyan@yandex.ru>"]
+readme = "README.md"
+repository = "https://github.com/thewitcher1991/stroy"
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.2"
+djangorestframework = "^3.16.0"
+pillow = "^11.2.1"
+psycopg2 = "^2.9.10"
+django-cleanup = "^9.0.0"
+django-cors-headers = "^4.7.0"
+gunicorn = "^23.0.0"
+pyjwt = "^2.10.1"
+django-environ = "^0.12.0"
+drf-spectacular = "^0.28.0"
+django-redis = "^5.4.0"
+mutagen = "^1.47.0"
+django-filter = "^25.1"
+uvicorn = "^0.34.2"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+flake8 = "^7.1.1"
+isort = "^6.0.0"
+
+
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+
+[tool.isort]
+profile = "black"
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+use_parentheses = true
+ensure_newline_before_comments = true
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

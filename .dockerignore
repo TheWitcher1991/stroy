@@ -1,0 +1,13 @@
+__pycache__
+.venv
+.git
+.gitignore
+.gitattributes
+.github
+.idea
+venv
+docs
+bin
+cluster
+scripts
+node_modules
