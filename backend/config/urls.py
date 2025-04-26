@@ -8,7 +8,7 @@ from packages.kernel import t
 
 app_name = "config"
 
-admin.site.index_title = t("HeyHey admin")
+admin.site.index_title = t("Stroy admin")
 
 urlpatterns = [
     path(ADMIN_URL, admin.site.urls),
@@ -20,7 +20,7 @@ urlpatterns = [
         name="swagger-docs",
     ),
     path("v1/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
-
+    path("v1/", include("tags.presentation.router", namespace="tags")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

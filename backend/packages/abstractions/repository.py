@@ -1,7 +1,9 @@
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
-T = TypeVar("T")
+from packages.abstractions import Entity
+
+T = TypeVar("T", bound=Entity)
 
 
 class AbstractRepository(ABC, Generic[T]):
@@ -24,10 +26,10 @@ class AbstractRepository(ABC, Generic[T]):
     def add(self, entity: T) -> T: ...
 
     @abstractmethod
-    def save(self, entity: T) -> None: ...
+    def save(self, entity: T) -> T: ...
 
     @abstractmethod
-    def update(self, entity: T) -> None: ...
+    def update(self, entity: T) -> T: ...
 
     @abstractmethod
     def delete(self, entity: T) -> None: ...

@@ -3,5 +3,5 @@ from dataclasses import dataclass
 
 
 @dataclass
-class DTO(ABC):
+class AbstractResponse(ABC):
     pass

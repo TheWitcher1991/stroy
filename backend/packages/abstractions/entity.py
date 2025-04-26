@@ -1,12 +1,11 @@
-from abc import ABC, abstractmethod
-from typing import Any, TypeVar
+from abc import ABC
+from dataclasses import dataclass
+from typing import Any
 
 
+@dataclass(kw_only=True)
 class Entity(ABC):
     id: int | None = None
-
-    def __init__(self, entity_id: int | None = None):
-        self.id = entity_id or int
 
     def __eq__(self, other: Any) -> bool:
         if isinstance(other, type(self)):
@@ -15,12 +14,3 @@ class Entity(ABC):
 
     def __hash__(self):
         return hash(self.id)
-
-    @abstractmethod
-    def validate(self) -> None: ...
-
-    @abstractmethod
-    def to_dict(self) -> dict: ...
-
-    @abstractmethod
-    def create(self, data: dict) -> dict: ...
