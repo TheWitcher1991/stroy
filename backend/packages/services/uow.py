@@ -1,5 +1,7 @@
 from django.db import transaction
 
+from packages.abstractions import AbstractUnitOfWork
+
 
 class UnitOfWork(AbstractUnitOfWork):
     def __init__(self):

@@ -8,6 +8,14 @@ const href = {
 	get home() {
 		return this.root
 	},
+
+	get login() {
+		return `${this.root}login`
+	},
+
+	get signup() {
+		return `${this.root}signup`
+	},
 }
 
 export default href

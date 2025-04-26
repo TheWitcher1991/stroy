@@ -1,7 +1,7 @@
 from rest_framework import generics, mixins, viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from packages.framework import AllowAnyMixin
+from packages.framework import AllowAnyMixin, APIAuthentication
 
 
 class APIController(generics.GenericAPIView):
@@ -18,12 +18,12 @@ class AnonymousController(AllowAnyMixin, APIController):
 
 class BaseController(APIController):
     permission_classes = (IsAuthenticated,)
-    permission_types = ()
+    authentication_classes = (APIAuthentication,)
 
 
 class BaseSetController(APISetController):
     permission_classes = (IsAuthenticated,)
-    permission_types = ()
+    authentication_classes = (APIAuthentication,)
 
 
 class ReadOnlyModelSetController(mixins.RetrieveModelMixin, mixins.ListModelMixin, BaseSetController):

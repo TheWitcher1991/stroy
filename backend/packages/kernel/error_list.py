@@ -13,3 +13,9 @@ class ErrorList:
 
     def list(self) -> list[Error]:
         return self.errors
+
+    def is_empty(self) -> bool:
+        return len(self.errors) == 0
+
+    def __len__(self) -> int:
+        return len(self.errors)

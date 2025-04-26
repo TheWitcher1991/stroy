@@ -8,6 +8,5 @@ class TagEntity(Entity):
     name: str
 
     @staticmethod
-    def new(name: str) -> 'TagEntity':
+    def new(name: str) -> "TagEntity":
         return TagEntity(name=name)
-

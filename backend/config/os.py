@@ -7,7 +7,10 @@ env = environ.Env(DEBUG=(bool, False))
 
 ENV_MODE = os.environ.get("ENV_MODE", default="development")
 
-env_map = {"development": ".env.dev", "production": ".env.prod", }
+env_map = {
+    "development": ".env.dev",
+    "production": ".env.prod",
+}
 
 env_file = env_map.get(ENV_MODE, ".env.dev")
 

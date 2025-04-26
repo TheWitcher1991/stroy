@@ -17,6 +17,11 @@ body,
     margin: 0;
 }
 
+.gn-composite-bar__root-menu-item {
+    margin: 0 10px 3px 10px;
+    border-radius: 8px;
+}
+
 .g-root_theme_light {
 
     --g-font-family-sans: 'Jost';

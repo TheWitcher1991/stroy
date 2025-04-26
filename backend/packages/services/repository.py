@@ -1,8 +1,8 @@
-from typing import TypeVar, Type
+from typing import Type, TypeVar
 
 from django.db.models import Model
 
-from packages.abstractions import AbstractRepository, AbstractMapper, Entity
+from packages.abstractions import AbstractMapper, AbstractRepository, Entity
 
 ModelType = TypeVar("ModelType", bound=Model)
 EntityType = TypeVar("EntityType", bound=Entity)

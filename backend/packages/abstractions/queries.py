@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Any
+
+from packages.kernel import Result
 
 
 class Query(ABC):
@@ -8,5 +9,5 @@ class Query(ABC):
 
 class QueryHandler(ABC):
     @abstractmethod
-    def handle(self, query: Query) -> Any:
+    def handle(self, query: Query) -> Result:
         pass

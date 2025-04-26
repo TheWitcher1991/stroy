@@ -1,4 +1,4 @@
-from packages.kernel import jwt_is_valid, jwt_decode, jwt_encode
+from packages.kernel import jwt_decode, jwt_encode, jwt_is_valid
 
 
 class JWTService:

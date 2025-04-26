@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import TypeVar, Generic
+from typing import Generic, TypeVar
 
-from packages.abstractions import Entity, DTO
+from packages.abstractions import DTO, Entity
 
 EntityType = TypeVar("EntityType", bound=Entity)
 DTOType = TypeVar("DTOType", bound=DTO)
@@ -9,9 +9,7 @@ DTOType = TypeVar("DTOType", bound=DTO)
 
 class AbstractDTOMapper(ABC, Generic[EntityType, DTOType]):
     @abstractmethod
-    def to_dto(self, entity: EntityType) -> DTOType:
-        ...
+    def to_dto(self, entity: EntityType) -> DTOType: ...
 
     @abstractmethod
-    def from_dto(self, dto: DTOType) -> EntityType:
-        ...
+    def from_dto(self, dto: DTOType) -> EntityType: ...

@@ -1,21 +1,13 @@
 'use client'
 
 import {
-	ArrowRightFromSquare,
 	ArrowUpFromSquare,
-	Book,
-	Bookmark,
-	CirclesConcentric,
-	CreditCard,
 	Cube,
 	FileText,
 	Hierarchy,
 	House,
-	LogoNotion,
-	Magnifier,
-	Person,
+	LogoStackOverflow,
 	Persons,
-	Plus,
 	Tag,
 } from '@gravity-ui/icons'
 import { AsideHeader } from '@gravity-ui/navigation'
@@ -30,10 +22,12 @@ export default function Aside({ children }: PropsWithChildren) {
 	return (
 		<AsideHeader
 			logo={{
-				icon: CirclesConcentric,
-				text: 'StroyWorkspace',
+				icon: LogoStackOverflow,
+				text: 'StroyOverflow',
 				iconSize: 26,
 				textSize: 18,
+				className: styles.text,
+				iconClassName: styles.aside,
 			}}
 			compact={false}
 			hideCollapseButton={true}
@@ -44,30 +38,36 @@ export default function Aside({ children }: PropsWithChildren) {
 					id: 'books',
 					title: 'Дашборд',
 					icon: House,
+					iconSize: 20,
 					current: true,
 				},
 				{
 					id: 'favorites',
 					title: 'Документы',
+					iconSize: 20,
 					icon: FileText,
 				},
 				{
 					id: 'search',
+					iconSize: 20,
 					title: 'Теги',
 					icon: Tag,
 				},
 				{
 					id: 'profile',
+					iconSize: 20,
 					title: 'Проекты',
 					icon: Cube,
 				},
 				{
 					id: 'billing',
+					iconSize: 20,
 					title: 'Пользователи',
 					icon: Persons,
 				},
 				{
 					id: 'logout',
+					iconSize: 20,
 					title: 'Журнал',
 					icon: Hierarchy,
 				},

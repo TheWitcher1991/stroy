@@ -36,5 +36,3 @@ class ResultJSONRenderer(JSONRenderer):
             "is_error": is_error,
             "time_generated": time_gen,
         }
-
-

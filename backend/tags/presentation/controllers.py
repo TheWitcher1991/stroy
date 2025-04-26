@@ -1,9 +1,10 @@
+from rest_framework import status
 from rest_framework.response import Response
 
 from packages.framework import BaseController
 from tags.applicantion.commands.create_tag.create_tag_command import CreateTagCommand
 from tags.contracts.create_tag_request import CreateTagRequest
-from tags.presentation.provider import create_tag_command
+from tags.presentation.providers import create_tag_command
 from tags.presentation.serializers import CreateTagSerializer
 
 
@@ -22,4 +23,7 @@ class TagController(BaseController):
 
         result = create_tag_command.handle(command)
 
-        return Response(result)
+        if result.is_failure:
+            return Response(result.to_response(), status=status.HTTP_400_BAD_REQUEST)
+
+        return Response(result.value, status=status.HTTP_201_CREATED)
