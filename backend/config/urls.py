@@ -21,6 +21,8 @@ urlpatterns = [
     ),
     path("v1/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path("v1/", include("tags.presentation.router", namespace="tags")),
+    path("v1/", include("users.presentation.router", namespace="users")),
+    path("v1/", include("departments.presentation.router", namespace="tags")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

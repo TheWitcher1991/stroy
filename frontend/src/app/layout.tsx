@@ -7,16 +7,16 @@ import '@gravity-ui/uikit/styles/fonts.css'
 import './ globals.scss'
 
 export const metadata: Metadata = {
-	title: '',
+	title: 'StroyOverflow - ECM system',
 	description: '',
 	robots: 'index, follow',
 	openGraph: {
-		title: '',
+		title: 'StroyOverflow - ECM system',
 		description: '',
 		type: 'website',
 	},
 	twitter: {
-		title: '',
+		title: 'StroyOverflow - ECM system',
 		description: '',
 	},
 }

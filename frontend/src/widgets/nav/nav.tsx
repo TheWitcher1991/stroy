@@ -2,7 +2,7 @@
 
 import { Magnifier, Person } from '@gravity-ui/icons'
 import { ActionBar } from '@gravity-ui/navigation'
-import { Avatar, Button, Icon, TextInput } from '@gravity-ui/uikit'
+import { Avatar, Icon, TextInput } from '@gravity-ui/uikit'
 
 import styles from './nav.module.scss'
 

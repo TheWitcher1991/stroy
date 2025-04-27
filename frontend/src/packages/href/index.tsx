@@ -16,6 +16,79 @@ const href = {
 	get signup() {
 		return `${this.root}signup`
 	},
+
+	get workspace() {
+		return `${this.root}workspace`
+	},
+
+	documents: {
+		get index() {
+			return `${href.workspace}/documents`
+		},
+		get create() {
+			return `${this.index}/create`
+		},
+		edit(id: number) {
+			return `${this.index}/${id}/edit`
+		},
+		byId(id?: number) {
+			return `${this.index}/${id}`
+		},
+	},
+
+	tags: {
+		get index() {
+			return `${href.workspace}/tags`
+		},
+		get create() {
+			return `${this.index}/create`
+		},
+		edit(id: number) {
+			return `${this.index}/${id}/edit`
+		},
+		byId(id?: number) {
+			return `${this.index}/${id}`
+		},
+	},
+
+	projects: {
+		get index() {
+			return `${href.workspace}/projects`
+		},
+		get create() {
+			return `${this.index}/create`
+		},
+		edit(id: number) {
+			return `${this.index}/${id}/edit`
+		},
+		byId(id?: number) {
+			return `${this.index}/${id}`
+		},
+	},
+
+	users: {
+		get index() {
+			return `${href.workspace}/users`
+		},
+		get create() {
+			return `${this.index}/create`
+		},
+		edit(id: number) {
+			return `${this.index}/${id}/edit`
+		},
+		byId(id?: number) {
+			return `${this.index}/${id}`
+		},
+	},
+
+	journal: {
+		get index() {
+			return `${href.workspace}/journal`
+		},
+		byId(id?: number) {
+			return `${this.index}/${id}`
+		},
+	},
 }
 
 export default href

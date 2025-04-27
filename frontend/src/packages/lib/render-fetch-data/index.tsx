@@ -1,5 +1,7 @@
 import { PropsWithChildren, ReactNode } from 'react'
 
+import { Placeholder } from '~packages/ui'
+
 interface RenderFetchDataProps extends PropsWithChildren {
 	isLoading: boolean
 	hasError?: boolean
@@ -9,9 +11,13 @@ interface RenderFetchDataProps extends PropsWithChildren {
 	emptyFallback?: ReactNode
 }
 
-const DefaultLoadingFallback = () => 'Загрузка данных...'
-const DefaultErrorFallback = () => 'Ошибка загрузки данных'
-const DefaultEmptyFallback = () => 'Нет данных'
+const DefaultLoadingFallback = () => (
+	<Placeholder title={'Загрузка...'} text={''} />
+)
+const DefaultErrorFallback = () => (
+	<Placeholder title={'Ошибка :('} text={'Не удалось загрузить данные'} />
+)
+const DefaultEmptyFallback = () => <Placeholder />
 
 export const RenderFetchData = ({
 	isLoading,

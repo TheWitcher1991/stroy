@@ -11,13 +11,16 @@ import {
 	Tag,
 } from '@gravity-ui/icons'
 import { AsideHeader } from '@gravity-ui/navigation'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { Fragment, PropsWithChildren } from 'react'
+
+import href from '~packages/href'
 
 import styles from './aside.module.scss'
 
 export default function Aside({ children }: PropsWithChildren) {
 	const router = useRouter()
+	const pathname = usePathname()
 
 	return (
 		<AsideHeader
@@ -35,44 +38,55 @@ export default function Aside({ children }: PropsWithChildren) {
 			renderContent={() => <>{children}</>}
 			menuItems={[
 				{
-					id: 'books',
+					id: 'dashboard',
 					title: 'Дашборд',
 					icon: House,
 					iconSize: 20,
-					current: true,
+					current: pathname === href.workspace,
+					onItemClick: () => router.push(href.workspace),
 				},
 				{
-					id: 'favorites',
+					id: 'documents',
 					title: 'Документы',
 					iconSize: 20,
 					icon: FileText,
+					current: pathname.startsWith(href.documents.index),
+					onItemClick: () => router.push(href.documents.index),
 				},
 				{
-					id: 'search',
+					id: 'tags',
 					iconSize: 20,
 					title: 'Теги',
 					icon: Tag,
+					current: pathname.startsWith(href.tags.index),
+					onItemClick: () => router.push(href.tags.index),
 				},
 				{
-					id: 'profile',
+					id: 'projects',
 					iconSize: 20,
 					title: 'Проекты',
 					icon: Cube,
+					current: pathname.startsWith(href.projects.index),
+					onItemClick: () => router.push(href.projects.index),
 				},
 				{
-					id: 'billing',
+					id: 'users',
 					iconSize: 20,
 					title: 'Пользователи',
 					icon: Persons,
+					current: pathname.startsWith(href.users.index),
+					onItemClick: () => router.push(href.users.index),
 				},
 				{
-					id: 'logout',
+					id: 'journal',
 					iconSize: 20,
 					title: 'Журнал',
 					icon: Hierarchy,
+					current: pathname.startsWith(href.journal.index),
+					onItemClick: () => router.push(href.journal.index),
 				},
 				{
-					id: 'create',
+					id: 'import',
 					title: 'Импорт документа',
 					icon: ArrowUpFromSquare,
 					type: 'action',
