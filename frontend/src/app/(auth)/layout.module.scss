@@ -6,3 +6,19 @@
     justify-content: center;
     overflow: hidden;
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 18px;
+    gap: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.logo__icon {
+    color: var(--g-color-base-brand);
+}
