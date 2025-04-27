@@ -1,0 +1,11 @@
+from departments.application.commands.create_department.create_department_command_validator import (
+    CreateDepartmentCommandValidator,
+)
+from departments.application.commands.create_department.create_department_handler import CreateDepartmentCommandHandler
+from departments.infrastructure.repository import DepartmentRepository
+
+department_repository = DepartmentRepository()
+
+create_department_validator = CreateDepartmentCommandValidator()
+
+create_department_command = CreateDepartmentCommandHandler(department_repository, create_department_validator)

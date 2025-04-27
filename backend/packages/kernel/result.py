@@ -17,7 +17,7 @@ class Result:
         return {"errors": self.errors} if self.errors else {"value": self.value}
 
     @staticmethod
-    def success(value: Any):
+    def success(value: Any = None):
         return Result(is_success=True, value=value)
 
     @staticmethod

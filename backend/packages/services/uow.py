@@ -7,6 +7,16 @@ class UnitOfWork(AbstractUnitOfWork):
     def __init__(self):
         self._transaction = None
 
+    def __enter__(self):
+        self.begin()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        if exc_type:
+            self.rollback()
+        else:
+            self.commit()
+
     def begin(self):
         self._transaction = transaction.atomic()
         self._transaction.__enter__()

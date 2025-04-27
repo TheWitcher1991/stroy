@@ -4,5 +4,6 @@ from packages.abstractions import Command
 
 
 @dataclass(frozen=True)
-class CreateTagCommand(Command):
+class UpdateTagCommand(Command):
+    tag_id: int
     name: str

@@ -4,7 +4,15 @@ from rest_framework.permissions import IsAuthenticated
 from packages.framework import AllowAnyMixin, APIAuthentication
 
 
-class APIController(generics.GenericAPIView):
+class Controller:
+
+    def is_valid(self, serializer_class):
+        serializer = serializer_class(data=self.request.data)
+        serializer.is_valid(raise_exception=True)
+        return serializer.validated_data
+
+
+class APIController(Controller, generics.GenericAPIView):
     pass
 
 
@@ -21,7 +29,7 @@ class BaseController(APIController):
     authentication_classes = (APIAuthentication,)
 
 
-class BaseSetController(APISetController):
+class BaseSetController(Controller, APISetController):
     permission_classes = (IsAuthenticated,)
     authentication_classes = (APIAuthentication,)
 

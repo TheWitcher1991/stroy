@@ -4,6 +4,6 @@ from tags.infrastructure.mapper import TagMapper
 from tags.infrastructure.models import Tag
 
 
-class TagRepository(Repository[TagEntity]):
-    def __init__(self, model: type[Tag] = Tag, mapper: TagMapper = TagMapper()):
-        super().__init__(model, mapper)
+class TagRepository(Repository[Tag, TagEntity, TagMapper]):
+    model = Tag
+    mapper = TagMapper()

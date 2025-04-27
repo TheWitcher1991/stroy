@@ -3,6 +3,7 @@ from datetime import datetime
 
 from django.utils import timezone
 
+from departments.domain.department import DepartmentEntity
 from packages.abstractions import Entity
 
 
@@ -11,13 +12,20 @@ class UserEntity(Entity):
     first_name: str
     last_name: str
     email: str
-    department: int
-    role: int
+    department: DepartmentEntity
+    role: int | None
     date_joined: datetime
     password: str
 
     @staticmethod
-    def new(first_name, last_name, email, department, role, password) -> "UserEntity":
+    def new(
+        first_name: str,
+        last_name: str,
+        email: str,
+        department: DepartmentEntity,
+        password: str,
+        role: int | None = None,
+    ) -> "UserEntity":
         date_joined = timezone.now()
         return UserEntity(
             first_name=first_name,

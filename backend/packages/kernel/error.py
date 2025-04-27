@@ -25,7 +25,7 @@ class Error:
     def serialize(self) -> str:
         return ERROR_SEPARATOR.join([self.code, self.message, self.type])
 
-    def to_list(self) -> list:
+    def to_list(self) -> list["Error"]:
         return [Error(code=self.code, message=self.message, type=self.type)]
 
     @staticmethod

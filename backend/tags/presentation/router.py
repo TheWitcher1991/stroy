@@ -1,9 +1,12 @@
-from django.urls import path
+from rest_framework.routers import DefaultRouter
 
 from tags.presentation.controllers import TagController
 
+router = DefaultRouter()
+router.register(r"tags", TagController, basename="tags")
+
 app_name = "tags"
 
-urlpatterns = [
-    path("tags/", TagController.as_view(), name="tags"),
-]
+urlpatterns = []
+
+urlpatterns += router.urls

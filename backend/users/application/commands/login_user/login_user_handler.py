@@ -5,7 +5,7 @@ from config.settings import AUTH_TOKEN_TYPE
 from packages.abstractions import CommandHandler
 from packages.kernel import Errors, Result
 from packages.services.jwt import JWTService
-from users.applicantion.commands.login_user.login_user_command import LoginUserCommand
+from users.application.commands.login_user.login_user_command import LoginUserCommand
 from users.contracts.login_user_response import LoginUserResponse
 from users.infrastructure.repository import UserRepository
 
