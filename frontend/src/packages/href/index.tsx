@@ -89,6 +89,15 @@ const href = {
 			return `${this.index}/${id}`
 		},
 	},
+
+	guards: {
+		get index() {
+			return `${href.workspace}/guards`
+		},
+		byId(id?: number) {
+			return `${this.index}/${id}`
+		},
+	},
 }
 
 export default href

@@ -9,4 +9,4 @@ class SignupUserRequest(AbstractRequest):
     last_name: str
     email: str
     password: str
-    department_name: int
+    department_name: str

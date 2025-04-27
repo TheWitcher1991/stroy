@@ -1,5 +1,6 @@
 from abc import ABC
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Any
 
 
@@ -14,3 +15,9 @@ class Entity(ABC):
 
     def __hash__(self):
         return hash(self.id)
+
+
+@dataclass(kw_only=True)
+class BaseEntity(Entity):
+    created_at: datetime
+    updated_at: datetime

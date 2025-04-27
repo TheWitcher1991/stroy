@@ -8,6 +8,7 @@ import {
 	House,
 	LogoStackOverflow,
 	Persons,
+	Shield,
 	Tag,
 } from '@gravity-ui/icons'
 import { AsideHeader } from '@gravity-ui/navigation'
@@ -76,6 +77,14 @@ export default function Aside({ children }: PropsWithChildren) {
 					icon: Persons,
 					current: pathname.startsWith(href.users.index),
 					onItemClick: () => router.push(href.users.index),
+				},
+				{
+					id: 'guards',
+					iconSize: 20,
+					title: 'Гуарды',
+					icon: Shield,
+					current: pathname.startsWith(href.guards.index),
+					onItemClick: () => router.push(href.guards.index),
 				},
 				{
 					id: 'journal',

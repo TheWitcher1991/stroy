@@ -11,8 +11,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "django_cleanup",
+    "departments.infrastructure.apps.DepartmentsConfig",
+    "documents.infrastructure.apps.DocumentsConfig",
+    "guards.infrastructure.apps.GuardsConfig",
+    "journal.infrastructure.apps.JournalConfig",
+    "projects.infrastructure.apps.ProjectsConfig",
     "tags.infrastructure.apps.TagsConfig",
     "users.infrastructure.apps.UsersConfig",
-    "departments.infrastructure.apps.DepartmentsConfig",
     "drf_spectacular",
 ]

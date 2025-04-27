@@ -4,6 +4,7 @@ from dto_mapper import *
 from entity import *
 from error_type import *
 from mapper import *
+from operation_type import *
 from queries import *
 from repository import *
 from uow import *

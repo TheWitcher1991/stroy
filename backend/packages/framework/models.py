@@ -14,6 +14,7 @@ class AbstractModel(models.Model):
 
 
 class AbstractUserModel(AbstractUser):
+    id = models.BigAutoField(primary_key=True)
     objects = UserManager()
 
     class Meta:
