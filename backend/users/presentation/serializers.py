@@ -7,3 +7,7 @@ from packages.framework import Serializer
 class LoginUserSerializer(Serializer):
     email = serializers.EmailField(max_length=CHAR_MAX_LENGTH)
     password = serializers.CharField(max_length=CHAR_MAX_LENGTH)
+
+
+class SignupUserSerializer(Serializer):
+    email = serializers.EmailField(max_length=CHAR_MAX_LENGTH)

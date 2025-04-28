@@ -4,7 +4,7 @@ import WithProviders from '~providers'
 
 import '@gravity-ui/uikit/styles/fonts.css'
 
-import './ globals.scss'
+import './globals.scss'
 
 export const metadata: Metadata = {
 	title: 'StroyOverflow - ECM system',
