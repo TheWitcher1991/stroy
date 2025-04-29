@@ -1,20 +1,30 @@
 import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 
+import {
+	projectsActions,
+	projectsState,
+} from '~widgets/projects/projects.store'
+
 import { PAGE_SIZE_OPTIONS } from '~packages/system'
 
 export default function ProjectsPagination() {
 	return (
 		<Flex justifyContent={'space-between'} alignItems={'center'}>
-			<Text color={'secondary'}>Всего 0</Text>
+			<Text color={'secondary'}>Всего {projectsState.count}</Text>
 			<Pagination
-				page={1}
-				pageSize={30}
-				total={0}
+				page={projectsState.filter.page}
+				pageSize={projectsState.filter.page_size}
+				total={projectsState.count}
 				compact={true}
 				showInput={true}
 				showPages={true}
 				pageSizeOptions={PAGE_SIZE_OPTIONS}
-				onUpdate={(page, pageSize) => {}}
+				onUpdate={(page, pageSize) => {
+					projectsActions.setFilter({
+						page,
+						page_size: pageSize,
+					})
+				}}
 			/>
 		</Flex>
 	)

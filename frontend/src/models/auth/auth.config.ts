@@ -1,6 +1,6 @@
 export const authServiceKeys = {
-	login: 'login',
-	signup: 'signup',
-	logout: 'logout',
-	refresh: 'refresh',
+	login: 'auth/login',
+	signup: 'auth/signup',
+	logout: 'auth/logout',
+	refresh: 'auth/refresh',
 }

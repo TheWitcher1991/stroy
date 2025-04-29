@@ -1,11 +1,13 @@
-export const journalTableColumns = [
+import { TableColumnConfig } from '@gravity-ui/uikit'
+
+export const journalTableColumns: TableColumnConfig<any>[] = [
 	{
-		id: 'name',
+		id: 'user',
 		name: 'Пользователь',
 		width: '30%',
 	},
 	{
-		id: 'tag',
+		id: 'action',
 		name: 'Действие',
 		width: '30%',
 	},

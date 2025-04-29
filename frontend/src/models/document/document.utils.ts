@@ -1,11 +1,13 @@
-export const documentTableColumns = [
+import { TableColumnConfig } from '@gravity-ui/uikit'
+
+export const documentTableColumns: TableColumnConfig<any>[] = [
 	{
 		id: 'filename',
 		name: 'Название',
 		width: '20%',
 	},
 	{
-		id: 'tag',
+		id: 'project',
 		name: 'Проект',
 		width: '20%',
 	},
@@ -15,7 +17,7 @@ export const documentTableColumns = [
 		width: '20%',
 	},
 	{
-		id: 'created',
+		id: 'user',
 		name: 'Автор',
 		width: '15%',
 	},

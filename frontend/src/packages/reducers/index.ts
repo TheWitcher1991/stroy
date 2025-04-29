@@ -1,11 +1,9 @@
 import { Store } from '@tanstack/react-store'
 
-export function createModelListStore<
-	T,
-	U extends Record<string, any>,
-	M extends Record<string, any> = Record<string, any>,
->(initialState: ModelListField<T, U, M>) {
-	const store = new Store<ModelListField<T, U, M>>(initialState)
+export function createModelListStore<T, U extends Dictionary<any>>(
+	initialState: ModelListField<T, U>,
+) {
+	const store = new Store<ModelListField<T, U>>(initialState)
 
 	const actions = {
 		setCount(count: number) {
@@ -19,13 +17,6 @@ export function createModelListStore<
 			store.setState(prev => ({
 				...prev,
 				list,
-			}))
-		},
-
-		setMeta(meta: M) {
-			store.setState(prev => ({
-				...prev,
-				meta,
 			}))
 		},
 

@@ -1,3 +1,5 @@
+import { account, AuthRepository, login, logout } from '~models/auth'
+
 import href from '~packages/href'
 import { HTTP } from '~packages/lib/http'
 import { API_URL } from '~packages/system'
@@ -18,8 +20,8 @@ const config = {
 export const http = new HTTP({
 	config: config,
 	onRequest: (config: any) => {
-		const access_token = ''
-		const token_type = 'Bearer'
+		const access_token = account?.access_token || ''
+		const token_type = account?.token_type || 'Bearer'
 		if (access_token) {
 			config.headers.Authorization = `${token_type} ${access_token}`
 		}
@@ -42,10 +44,24 @@ export const http = new HTTP({
 			try {
 				const _http = HTTP.create(config)
 
+				const response = await AuthRepository.refresh()
+
+				if (response.status !== 200) {
+					throw new Error('Не удалось обновить токен авторизации')
+				}
+
+				const newAccessToken = response.data.access_token
+
+				login({
+					access_token: newAccessToken,
+					access_expires: response.data.access_expires,
+				})
+
 				window.location.reload()
 
 				return _http(originalRequest)
 			} catch (refreshError) {
+				logout()
 				window.location.replace(href.login)
 				return Promise.reject(refreshError)
 			}

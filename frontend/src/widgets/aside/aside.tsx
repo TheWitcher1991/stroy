@@ -1,6 +1,7 @@
 'use client'
 
 import {
+	ArrowRightFromSquare,
 	ArrowUpFromSquare,
 	Cube,
 	FileText,
@@ -11,9 +12,11 @@ import {
 	Shield,
 	Tag,
 } from '@gravity-ui/icons'
-import { AsideHeader } from '@gravity-ui/navigation'
+import { AsideHeader, FooterItem } from '@gravity-ui/navigation'
 import { usePathname, useRouter } from 'next/navigation'
 import { Fragment, PropsWithChildren } from 'react'
+
+import { useLogout } from '~models/auth'
 
 import href from '~packages/href'
 
@@ -22,6 +25,8 @@ import styles from './aside.module.scss'
 export default function Aside({ children }: PropsWithChildren) {
 	const router = useRouter()
 	const pathname = usePathname()
+
+	const logout = useLogout()
 
 	return (
 		<AsideHeader
@@ -101,6 +106,17 @@ export default function Aside({ children }: PropsWithChildren) {
 					type: 'action',
 				},
 			]}
+			renderFooter={() => (
+				<FooterItem
+					compact={false}
+					item={{
+						id: 'logout',
+						title: 'Выход',
+						icon: ArrowRightFromSquare,
+						onItemClick: async () => await logout(),
+					}}
+				/>
+			)}
 		/>
 	)
 }

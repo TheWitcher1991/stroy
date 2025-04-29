@@ -9,6 +9,8 @@ declare global {
 
 	type EnumType<T> = T[keyof T]
 
+	export type Dictionary<T = unknown> = Record<string, T>
+
 	type ImageData =
 		| import('next/dist/shared/lib/get-img-props').StaticImport
 		| string
@@ -19,19 +21,28 @@ declare global {
 		total: number,
 	) => void
 
-	type ModelListField<
-		T,
-		U extends Record<string, any>,
-		M extends Record<string, any> = Record<string, any>,
-	> = {
-		count: number
-		loading: boolean
-		fetching?: boolean
-		list: T[]
-		filter: U
-		meta: M
-		checked?: number[]
+	interface ErrorType {
+		code: string
+		message: string
+		type: string
 	}
+
+	type ErrorList = ErrorType[]
+
+	interface ResultResponse<T> {
+		result: T
+		error_list: ErrorList
+		is_error: boolean
+		time_generated: string
+	}
+
+	type ListResponse<T> = ResultResponse<{
+		count: number
+		pages: number
+		next: Nullable<string>
+		previous: Nullable<string>
+		results: T[]
+	}>
 
 	interface PaginationLimitOffset {
 		limit: Nullable<string>
@@ -43,20 +54,24 @@ declare global {
 		page_size: number
 	}
 
-	type ModelListState<
-		T,
-		U extends Record<string, any>,
-		M extends Record<string, any> = Record<string, any>,
-	> = {
+	type ModelListField<T, U extends Dictionary<any>> = {
+		count: number
+		loading: boolean
+		fetching?: boolean
+		list: T[]
+		filter: U
+		checked?: number[]
+	}
+
+	type ModelListState<T, U extends Dictionary<any>> = {
 		setCount: (count: number) => void
 		setLoading: (loading: boolean) => void
 		setFetching: (fetching: boolean) => void
 		setChecked: (checked: number[]) => void
 		setList: (list: T[]) => void
-		setMeta: (meta: M) => void
 		setFilter: (filter: U) => void
 		reset: () => void
-	} & ModelListField<T, U, M>
+	} & ModelListField<T, U>
 
 	export interface UseModelOptions<ORDERING = string>
 		extends PaginationPageSize {
@@ -67,8 +82,8 @@ declare global {
 	type ValidationErrorResponse =
 		| string
 		| string[]
-		| Record<string, string>
-		| Record<string, string[]>
+		| Dictionary<string>
+		| Dictionary<string[]>
 
 	interface ReactElement<
 		P = any,
