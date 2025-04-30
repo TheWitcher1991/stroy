@@ -8,11 +8,11 @@ export const LoginSchema = z.object({
 })
 
 export const SignupSchema = z.object({
-	first_name: z.string(),
-	last_name: z.string(),
+	first_name: zShape.name,
+	last_name: zShape.name,
 	email: zShape.email,
 	password: zShape.password,
-	department_name: z.string(),
+	department_name: zShape.name,
 })
 
 export const AccountSchema = z.object({
@@ -22,4 +22,5 @@ export const AccountSchema = z.object({
 	token_type: z.string(),
 	user: z.number(),
 	department: z.number(),
+	department_name: z.string(),
 })

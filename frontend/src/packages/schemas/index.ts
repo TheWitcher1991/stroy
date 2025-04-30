@@ -21,6 +21,7 @@ export const buildFileShape = (
 
 export const zShape = {
 	id: z.number().positive().min(1),
+	indicator: z.number().positive().min(1),
 	image: buildFileShape(IMAGE_FILE_TYPES, 5),
 	document: buildFileShape(DOCUMENT_FILE_TYPES, 2000),
 	ids: z.number().positive().array(),

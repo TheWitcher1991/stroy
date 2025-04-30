@@ -1,8 +1,14 @@
 import { z } from 'zod'
 
-const BaseTagSchema = z.object({})
+import { zShape } from '~packages/schemas'
 
-export const TagSchema = BaseTagSchema.extend({})
+const BaseTagSchema = z.object({
+	title: zShape.title,
+})
+
+export const TagSchema = BaseTagSchema.extend({
+	id: zShape.id,
+})
 
 export const UpdateTagSchema = BaseTagSchema
 
