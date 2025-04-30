@@ -37,6 +37,13 @@ export function createModelListStore<T, U extends Dictionary<any>>(
 			}))
 		},
 
+		setError(error: boolean) {
+			store.setState(prev => ({
+				...prev,
+				error,
+			}))
+		},
+
 		setChecked(checked: number[]) {
 			store.setState(prev => ({
 				...prev,

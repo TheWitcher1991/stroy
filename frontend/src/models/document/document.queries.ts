@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from '@tanstack/react-query/src'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
 import { documentServiceKeys } from '~models/document/document.config'
 import { DocumentRepository } from '~models/document/document.repository'

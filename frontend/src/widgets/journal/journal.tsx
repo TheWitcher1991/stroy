@@ -14,6 +14,7 @@ export default function Journal() {
 
 	return (
 		<RenderFetchData
+			hasError={journalState.error}
 			isLoading={journalState.loading}
 			countData={journalState.count}
 			loadingFallback={<TableSkeleton />}

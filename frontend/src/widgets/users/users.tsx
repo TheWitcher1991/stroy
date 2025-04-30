@@ -14,6 +14,7 @@ export default function Users() {
 
 	return (
 		<RenderFetchData
+			hasError={usersState.error}
 			isLoading={usersState.loading}
 			countData={usersState.count}
 			loadingFallback={<TableSkeleton />}

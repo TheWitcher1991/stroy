@@ -14,6 +14,7 @@ export default function Documents() {
 
 	return (
 		<RenderFetchData
+			hasError={documentsState.error}
 			isLoading={documentsState.loading}
 			countData={documentsState.count}
 			loadingFallback={<TableSkeleton />}

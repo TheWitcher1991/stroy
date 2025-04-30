@@ -36,13 +36,13 @@ declare global {
 		time_generated: string
 	}
 
-	type ListResponse<T> = ResultResponse<{
+	type ListResponse<T> = {
 		count: number
 		pages: number
 		next: Nullable<string>
 		previous: Nullable<string>
 		results: T[]
-	}>
+	}
 
 	interface PaginationLimitOffset {
 		limit: Nullable<string>
@@ -57,6 +57,7 @@ declare global {
 	type ModelListField<T, U extends Dictionary<any>> = {
 		count: number
 		loading: boolean
+		error: boolean
 		fetching?: boolean
 		list: T[]
 		filter: U
@@ -65,6 +66,7 @@ declare global {
 
 	type ModelListState<T, U extends Dictionary<any>> = {
 		setCount: (count: number) => void
+		setError: (error: boolean) => void
 		setLoading: (loading: boolean) => void
 		setFetching: (fetching: boolean) => void
 		setChecked: (checked: number[]) => void

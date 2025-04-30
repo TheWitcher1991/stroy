@@ -14,6 +14,7 @@ export default function Projects() {
 
 	return (
 		<RenderFetchData
+			hasError={projectsState.error}
 			isLoading={projectsState.loading}
 			countData={projectsState.count}
 			loadingFallback={<TableSkeleton />}

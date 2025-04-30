@@ -14,6 +14,7 @@ export default function Tags() {
 
 	return (
 		<RenderFetchData
+			hasError={tagsState.error}
 			isLoading={tagsState.loading}
 			countData={tagsState.count}
 			loadingFallback={<TableSkeleton />}

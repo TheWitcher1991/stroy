@@ -14,6 +14,7 @@ export default function Guards() {
 
 	return (
 		<RenderFetchData
+			hasError={guardsState.error}
 			isLoading={guardsState.loading}
 			countData={guardsState.count}
 			loadingFallback={<TableSkeleton />}

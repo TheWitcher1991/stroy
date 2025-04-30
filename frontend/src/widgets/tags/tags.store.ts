@@ -5,6 +5,7 @@ import { createModelListStore } from '~packages/reducers'
 const creator = createModelListStore<ITag, Partial<UseTags>>({
 	count: 0,
 	list: [],
+	error: false,
 	loading: true,
 	filter: {
 		page_size: 30,
