@@ -1,19 +1,10 @@
 import { z } from 'zod'
 
 import { DocumentSchema } from '~models/document'
+import { JournalAction } from '~models/journal/journal.utils'
 import { UserSchema } from '~models/user'
 
 import { zShape } from '~packages/schemas'
-
-export const JournalAction = {
-	CREATE: 'CREATE',
-	UPDATE: 'UPDATE',
-	DELETE: 'DELETE',
-	RESTORE: 'RESTORE',
-	APPROVE: 'APPROVE',
-} as const
-
-export type JournalAction = EnumType<typeof JournalAction>
 
 export const JournalSchema = z.object({
 	id: zShape.id,

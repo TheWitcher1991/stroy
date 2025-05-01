@@ -1,13 +1,8 @@
 import { z } from 'zod'
 
+import { ProjectStatus } from '~models/project/project.utils'
+
 import { zShape } from '~packages/schemas'
-
-export const ProjectStatus = {
-	ACTIVE: 'ACTIVE',
-	FINISHED: 'FINISHED',
-} as const
-
-export type ProjectStatus = EnumType<typeof ProjectStatus>
 
 const BaseProjectSchema = z.object({
 	title: zShape.title,
@@ -20,6 +15,7 @@ const BaseProjectSchema = z.object({
 
 export const ProjectSchema = BaseProjectSchema.extend({
 	id: zShape.id,
+	documents: zShape.indicator,
 	created_at: zShape.datetime,
 	updated_at: zShape.datetime,
 })

@@ -1,5 +1,19 @@
 import { TableColumnConfig } from '@gravity-ui/uikit'
 
+export const DocumentStatus = {
+	DRAFT: 'DRAFT',
+	HARMONIZATION: 'HARMONIZATION',
+	APPROVED: 'APPROVED',
+} as const
+
+export type DocumentStatus = EnumType<typeof DocumentStatus>
+
+export const DocumentStatusMapper: Record<DocumentStatus, string> = {
+	DRAFT: 'Черновик',
+	HARMONIZATION: 'На утверждение',
+	APPROVED: 'Одобрен',
+}
+
 export const documentTableColumns: TableColumnConfig<any>[] = [
 	{
 		id: 'filename',
@@ -17,7 +31,7 @@ export const documentTableColumns: TableColumnConfig<any>[] = [
 		width: '20%',
 	},
 	{
-		id: 'user',
+		id: 'author',
 		name: 'Автор',
 		width: '15%',
 	},

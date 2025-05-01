@@ -7,8 +7,8 @@ export const tagTableColumns: TableColumnConfig<any>[] = [
 		width: '20%',
 	},
 	{
-		id: 'description',
-		name: 'Описание',
+		id: 'summary',
+		name: 'Сводка',
 		width: '20%',
 	},
 	{

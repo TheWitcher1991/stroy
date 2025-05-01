@@ -1,4 +1,6 @@
+import { SelectProps as GravitySelectProps } from '@gravity-ui/uikit'
 import React, { JSXElementConstructor } from 'react'
+import { UseFormRegister } from 'react-hook-form'
 
 declare module '*.css'
 declare module '*.scss'
@@ -20,6 +22,19 @@ declare global {
 		uploaded: number,
 		total: number,
 	) => void
+
+	interface ModalProps {
+		open: boolean
+		onClose: () => void
+	}
+
+	interface SelectProps<T = any> {
+		defaultValue?: GravitySelectProps['defaultValue']
+		value?: GravitySelectProps['value']
+		errorMessage?: GravitySelectProps['errorMessage']
+		onSelect: GravitySelectProps['onUpdate']
+		register?: UseFormRegister<T>
+	}
 
 	interface ErrorType {
 		code: string

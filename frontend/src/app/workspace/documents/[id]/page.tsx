@@ -1,3 +1,5 @@
+'use client'
+
 import { use } from 'react'
 
 import Document from '~widgets/document'

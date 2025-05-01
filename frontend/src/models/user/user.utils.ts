@@ -1,5 +1,11 @@
 import { TableColumnConfig } from '@gravity-ui/uikit'
 
+import { IUser } from '~models/user/user.types'
+
+export const userFullName = (user: IUser) => {
+	return `${user.first_name} ${user.last_name}`
+}
+
 export const userTableColumns: TableColumnConfig<any>[] = [
 	{
 		id: 'user',

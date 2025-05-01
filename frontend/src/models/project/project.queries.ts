@@ -1,4 +1,6 @@
+import { SelectOption } from '@gravity-ui/uikit'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 
 import { projectServiceKeys } from '~models/project/project.config'
 import { ProjectRepository } from '~models/project/project.repository'
@@ -18,4 +20,25 @@ export const useProject = (id: number) => {
 		queryFn: () => ProjectRepository.getById(id),
 		enabled: !!id,
 	})
+}
+
+export const useSelectableProjects = (params?: Partial<UseProjects>) => {
+	const [projects, setProjects] = useState<SelectOption[]>([])
+	const { isLoading, data } = useProjects(params)
+
+	useEffect(() => {
+		if (!isLoading && data?.data) {
+			setProjects(
+				data.data.results.map(tag => ({
+					value: tag.id.toString(),
+					content: tag.title,
+				})),
+			)
+		}
+	}, [isLoading, data])
+
+	return {
+		projects,
+		isLoading,
+	}
 }

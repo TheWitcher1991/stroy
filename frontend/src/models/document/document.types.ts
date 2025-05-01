@@ -12,4 +12,8 @@ export type IUpdateDocument = z.infer<typeof UpdateDocumentSchema>
 
 export type ICreateDocument = z.infer<typeof CreateDocumentSchema>
 
+export interface PropsWithDocument {
+	document: IDocument
+}
+
 export interface UseDocuments extends UseModelOptions {}

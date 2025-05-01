@@ -2,6 +2,18 @@ import { useMemo } from 'react'
 
 import { ITag } from '~models/tag'
 
+import { formatDateInRu } from '~packages/utils'
+
 export default function useTagTableData(tags: ITag[]) {
-	return useMemo(() => tags.map(tag => ({})), [tags])
+	return useMemo(
+		() =>
+			tags.map(tag => ({
+				tag: tag.title,
+				summary: tag.summary,
+				documents: tag.documents,
+				created: formatDateInRu(tag.created_at),
+				actions: <></>,
+			})),
+		[tags],
+	)
 }

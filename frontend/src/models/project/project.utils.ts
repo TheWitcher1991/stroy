@@ -1,5 +1,17 @@
 import { TableColumnConfig } from '@gravity-ui/uikit'
 
+export const ProjectStatus = {
+	ACTIVE: 'ACTIVE',
+	FINISHED: 'FINISHED',
+} as const
+
+export type ProjectStatus = EnumType<typeof ProjectStatus>
+
+export const ProjectStatusMapper: Record<ProjectStatus, string> = {
+	ACTIVE: 'Активный',
+	FINISHED: 'Завершен',
+}
+
 export const projectTableColumns: TableColumnConfig<any>[] = [
 	{
 		id: 'project',

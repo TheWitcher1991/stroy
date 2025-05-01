@@ -1,19 +1,12 @@
 import { z } from 'zod'
 
+import { DocumentStatus } from '~models/document/document.utils'
 import { GuardSchema } from '~models/guard'
 import { ProjectSchema } from '~models/project'
 import { TagSchema } from '~models/tag'
 import { UserSchema } from '~models/user'
 
 import { zShape } from '~packages/schemas'
-
-export const DocumentStatus = {
-	DRAFT: 'DRAFT',
-	HARMONIZATION: 'HARMONIZATION',
-	APPROVED: 'APPROVED',
-} as const
-
-export type DocumentStatus = EnumType<typeof DocumentStatus>
 
 const BaseDocumentSchema = z.object({
 	title: zShape.title,
@@ -32,7 +25,9 @@ export const DocumentSchema = BaseDocumentSchema.extend({
 	file_path: zShape.url,
 	doc_number: z.string(),
 	doc_type: z.string(),
-	version: DocumentVersionSchema.nullable(),
+	version_number: z.number(),
+	size_in_bytes: z.number(),
+	version: DocumentVersionSchema.array(),
 	project: ProjectSchema,
 	author: UserSchema,
 	tag: TagSchema.nullable(),

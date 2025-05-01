@@ -1,3 +1,5 @@
+'use client'
+
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useShallow } from 'zustand/react/shallow'
