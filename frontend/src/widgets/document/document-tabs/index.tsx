@@ -1,5 +1,6 @@
 import { Tab, TabList } from '@gravity-ui/uikit'
-import { useCallback, useState } from 'react'
+import { useMemoizedFn } from 'ahooks'
+import { useState } from 'react'
 
 export type DocumentTab = '1' | '2' | '3'
 
@@ -11,15 +12,10 @@ interface DocumentTabsProps {
 export default function DocumentTabs({ index, setIndex }: DocumentTabsProps) {
 	const [value, setValue] = useState<DocumentTab>(index)
 
-	const handleChange = useCallback(
-		(value: DocumentTab) => {
-			setValue(value)
-			if (setIndex) {
-				setIndex(value)
-			}
-		},
-		[setIndex],
-	)
+	const handleChange = useMemoizedFn((value: DocumentTab) => {
+		setValue(value)
+		setIndex(value)
+	})
 
 	return (
 		<TabList value={value} onUpdate={handleChange} size='l'>

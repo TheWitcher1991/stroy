@@ -66,7 +66,14 @@ export const zShape = {
 		.max(50, {
 			message: 'Должно быть не более 50 символов',
 		}),
-	password: z.string().min(8).max(255),
+	password: z
+		.string()
+		.min(8, {
+			message: 'Должно быть не менее 8 символов',
+		})
+		.max(255, {
+			message: 'Должно быть не более 255 символов',
+		}),
 	phone: z
 		.string()
 		.regex(
