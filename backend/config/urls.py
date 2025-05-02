@@ -4,7 +4,7 @@ from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 from config.settings import ADMIN_URL
-from packages.kernel import t
+from packages.utils import t
 
 app_name = "config"
 
@@ -20,13 +20,14 @@ urlpatterns = [
         name="swagger-docs",
     ),
     path("v1/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
-    path("v1/", include("departments.presentation.router", namespace="departments")),
-    path("v1/", include("documents.presentation.router", namespace="documents")),
-    path("v1/", include("guards.presentation.router", namespace="guards")),
-    path("v1/", include("journal.presentation.router", namespace="journal")),
-    path("v1/", include("projects.presentation.router", namespace="projects")),
-    path("v1/", include("tags.presentation.router", namespace="tags")),
-    path("v1/", include("users.presentation.router", namespace="users")),
+    path("v1/", include("authorization.urls", namespace="authorization")),
+    path("v1/", include("departments.urls", namespace="departments")),
+    path("v1/", include("documents.urls", namespace="documents")),
+    path("v1/", include("guards.urls", namespace="guards")),
+    path("v1/", include("journal.urls", namespace="journal")),
+    path("v1/", include("projects.urls", namespace="projects")),
+    path("v1/", include("tags.urls", namespace="tags")),
+    path("v1/", include("users.urls", namespace="users")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

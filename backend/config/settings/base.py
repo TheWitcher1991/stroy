@@ -43,7 +43,7 @@ USE_TZ = False
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = "users.infrastructure.User"
+AUTH_USER_MODEL = "users.User"
 
 LANGUAGES = [
     ("en", "English"),
@@ -68,6 +68,8 @@ ACCESS_TOKEN_NAME = "access_token"
 REFRESH_TOKEN_NAME = "refresh_token"
 
 CHAR_MAX_LENGTH = 255
+CHAR_MD_LENGTH = 64
+CHAR_SM_LENGTH = 32
 TEXT_MAX_LENGTH = 3000
 
 SESSION_TIMEOUT = 3600

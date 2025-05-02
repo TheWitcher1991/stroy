@@ -13,13 +13,13 @@ REST_FRAMEWORK = {
         "rest_framework.filters.OrderingFilter",
     ],
     "DEFAULT_THROTTLE_CLASSES": [
-        "packages.framework.BurstRateThrottle",
+        "packages.throttling.BurstRateThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {
         "burst": "20/second",
     },
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
-    "DEFAULT_PAGINATION_CLASS": "packages.framework.StandardPageNumberPagination",
+    "DEFAULT_PAGINATION_CLASS": "packages.pagination.StandardPageNumberPagination",
     "DEFAULT_METADATA_CLASS": "rest_framework.metadata.SimpleMetadata",
 }
 

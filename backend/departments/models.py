@@ -1,0 +1,11 @@
+from django.db import models
+
+from config.settings import CHAR_MAX_LENGTH
+from packages.abstract import AbstractModel
+
+
+class Department(AbstractModel):
+    name = models.CharField(max_length=CHAR_MAX_LENGTH)
+
+    def __str__(self):
+        return self.name
