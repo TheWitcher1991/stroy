@@ -6,6 +6,6 @@ from users.serializers import UserSerializer
 
 class UserViewSet(ModelSetController):
 
-    queryset = UserRepository.all()
+    queryset = UserRepository.optimize()
     serializer_class = UserSerializer
     filterset_class = UserFilter
