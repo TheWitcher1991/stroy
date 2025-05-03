@@ -6,7 +6,7 @@ from tags.serializers import TagSerializer
 
 class TagViewSet(ModelSetController):
 
-    queryset = TagRepository.all()
+    queryset = TagRepository.optimize()
     serializer_class = TagSerializer
     filterset_class = TagFilter
     pagination_class = None

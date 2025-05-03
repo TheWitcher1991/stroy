@@ -13,7 +13,7 @@ const BaseUserSchema = z.object({
 
 export const UserDocumentSchema = z.object({
 	document: DocumentSchema,
-	permissions: GuardSchema.shape.operations,
+	permissions: GuardSchema.shape.permissions,
 })
 
 export const UserSchema = BaseUserSchema.extend({

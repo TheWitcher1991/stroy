@@ -45,7 +45,7 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 					{document.doc_type}
 				</MetaListItem>
 				<MetaListItem icon={ScalesUnbalanced} title={'Размер'}>
-					{document.size_in_bytes} KB
+					{document.size} KB
 				</MetaListItem>
 				<MetaListItem icon={Calendar} title={'Создан'}>
 					{formatDateInRu(document.created_at)}

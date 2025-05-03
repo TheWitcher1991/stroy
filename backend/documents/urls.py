@@ -5,4 +5,10 @@ from . import views
 
 app_name = "documents"
 
+router = routers.SimpleRouter()
+
+router.register(r"documents", views.DocumentViewSet, basename="documents")
+
 urlpatterns = []
+
+urlpatterns += router.urls

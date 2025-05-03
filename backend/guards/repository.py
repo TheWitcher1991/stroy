@@ -8,7 +8,7 @@ class BuildGuardRepository(AbstractRepository[Guard]):
     model = Guard
 
     def optimize(self) -> QuerySet[Guard]:
-        return self.model.objects.prefetch_related("operations")
+        return self.model.objects.prefetch_related("operations").select_related("department")
 
 
 class BuildGuardOperationRepository(AbstractRepository[GuardOperation]):

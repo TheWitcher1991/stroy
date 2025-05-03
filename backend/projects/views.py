@@ -9,6 +9,6 @@ from tags.serializers import TagSerializer
 
 class ProjectViewSet(ModelSetController):
 
-    queryset = ProjectRepository.all()
+    queryset = ProjectRepository.optimize()
     serializer_class = ProjectSerializer
     filterset_class = ProjectFilter

@@ -17,7 +17,7 @@ export const DocumentVersionSchema = z.object({
 	version_number: z.number(),
 	file_path: zShape.url,
 	modified_by: UserSchema,
-	modified_at: zShape.datetime,
+	created_at: zShape.datetime,
 })
 
 export const DocumentSchema = BaseDocumentSchema.extend({
@@ -26,12 +26,12 @@ export const DocumentSchema = BaseDocumentSchema.extend({
 	doc_number: z.string(),
 	doc_type: z.string(),
 	version_number: z.number(),
-	size_in_bytes: z.number(),
-	version: DocumentVersionSchema.array(),
+	size: z.number(),
+	versions: DocumentVersionSchema.array(),
 	project: ProjectSchema,
 	author: UserSchema,
 	tag: TagSchema.nullable(),
-	permissions: GuardSchema.shape.operations,
+	permissions: GuardSchema.shape.permissions,
 	created_at: zShape.datetime,
 	updated_at: zShape.datetime,
 })

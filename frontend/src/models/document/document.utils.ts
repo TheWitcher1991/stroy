@@ -11,7 +11,7 @@ export type DocumentStatus = EnumType<typeof DocumentStatus>
 export const DocumentStatusMapper: Record<DocumentStatus, string> = {
 	DRAFT: 'Черновик',
 	HARMONIZATION: 'На утверждение',
-	APPROVED: 'Одобрен',
+	APPROVED: 'с',
 }
 
 export const documentTableColumns: TableColumnConfig<any>[] = [
