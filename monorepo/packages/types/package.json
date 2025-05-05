@@ -1,0 +1,25 @@
+{
+  "name": "@stroy/types",
+  "version": "1.0.0",
+  "sideEffects": false,
+  "main": "./index.js",
+  "types": "./index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup index.ts --dts",
+    "build:fast": "tsup index.ts --dts",
+    "dev": "pnpm build:fast --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "esnext",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
+}

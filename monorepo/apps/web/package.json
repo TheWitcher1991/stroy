@@ -1,8 +1,12 @@
 {
   "name": "web",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "private": true,
+  "sideEffects": [
+    "*.scss",
+    "*.sass"
+  ],
   "scripts": {
     "dev": "next dev --turbopack --port 3000",
     "build": "next build",
@@ -11,18 +15,25 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
+    "@gravity-ui/date-components": "^3.1.0",
+    "@gravity-ui/icons": "^2.13.0",
+    "@gravity-ui/navigation": "^3.3.4",
+    "@gravity-ui/uikit": "^7.10.0",
+    "@stroy/hooks": "workspace:*",
+    "@stroy/models": "workspace:*",
+    "@stroy/system": "workspace:*",
+    "@stroy/href": "workspace:*",
+    "@stroy/toolkit": "workspace:*",
     "next": "^15.3.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "next-nprogress-bar": "^2.4.7"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@types/node": "^22.15.3",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
-    "eslint": "^9.25.0",
-    "typescript": "5.8.2"
+    "@gravity-ui/tsconfig": "^1.0.0",
+    "@stroy/eslint-config": "workspace:*",
+    "@stroy/types": "workspace:*",
+    "@stroy/typescript-config": "workspace:*",
+    "@svgr/webpack": "^8.1.0",
+    "sass": "^1.87.0",
+    "sass-loader": "^16.0.5"
   }
 }

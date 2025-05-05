@@ -1,0 +1,34 @@
+{
+  "name": "@stroy/href",
+  "version": "1.0.0",
+  "private": true,
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@stroy/system": "workspace:*",
+    "@stroy/types": "workspace:*",
+    "@stroy/eslint-config": "workspace:*",
+    "@stroy/typescript-config": "workspace:*"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "esnext",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
+}

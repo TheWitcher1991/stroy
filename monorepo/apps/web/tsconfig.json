@@ -1,17 +1,24 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": [
+    "@stroy/typescript-config/nextjs.json",
+    "@gravity-ui/tsconfig/tsconfig"
+  ],
   "compilerOptions": {
+    "paths": {
+      "~*": ["./src/*"],
+      "~public/*": ["./public/*"]
+    },
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
-    "next.config.js",
+    "next.config",
     ".next/types/**/*.ts"
   ],
   "exclude": [
