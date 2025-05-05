@@ -1,11 +1,12 @@
 import { Flex, Skeleton } from '@gravity-ui/uikit'
+import { memo } from 'react'
 
 import { useDepartmentIndicators } from '@stroy/models'
 
 import { RenderFetchData } from '~packages/lib'
 import { ValueCard } from '~packages/ui'
 
-const WorkspaceDataSkeleton = () => <Skeleton style={{ height: 91 }} />
+const WorkspaceDataSkeleton = memo(() => <Skeleton style={{ height: 91 }} />)
 
 export default function WorkspaceData() {
 	const { isLoading, indicators, isError } = useDepartmentIndicators()
@@ -15,7 +16,6 @@ export default function WorkspaceData() {
 			<RenderFetchData
 				isLoading={isLoading}
 				hasError={isError}
-				countData={0}
 				loadingFallback={<WorkspaceDataSkeleton />}
 			>
 				<ValueCard value={indicators?.documents} title={'Документов'} />
