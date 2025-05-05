@@ -7,12 +7,15 @@ export type EnumType<T> = T[keyof T]
 
 export type Dictionary<T = unknown> = Record<string, T>
 
-export interface SelectProps<T = any> {
-	defaultValue?: string[]
-	value?: string[]
+export interface SelectProps<
+	VALUE extends string[] = string[],
+	REGISTER = any,
+> {
+	defaultValue?: VALUE[]
+	value?: VALUE[]
 	errorMessage?: ReactNode
-	onSelect?: (value: string[]) => void
-	register?: UseFormRegister<T>
+	onSelect?: (value: VALUE[]) => void
+	register?: UseFormRegister<REGISTER>
 }
 
 export interface SelectOption<ValueType extends string = string> {

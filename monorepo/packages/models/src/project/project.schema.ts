@@ -1,12 +1,13 @@
-import { zShape } from '@stroy/toolkit'
 import { z } from 'zod'
+
+import { zShape } from '@stroy/toolkit'
 
 import { ProjectStatus } from './project.utils'
 
 const BaseProjectSchema = z.object({
 	title: zShape.title,
-	code: z.string().max(64),
-	tag: z.string().max(64),
+	code: zShape.name,
+	tag: zShape.name,
 	status: z.nativeEnum(ProjectStatus),
 	start_date: zShape.datetime,
 	end_date: zShape.datetime,

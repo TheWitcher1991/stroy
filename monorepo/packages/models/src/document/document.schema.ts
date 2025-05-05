@@ -37,12 +37,14 @@ export const DocumentSchema = BaseDocumentSchema.extend({
 })
 
 export const UpdateDocumentSchema = BaseDocumentSchema.extend({
+	file: zShape.document.optional(),
 	project: zShape.id,
 	tag: zShape.id,
 	author: zShape.id,
 })
 
 export const CreateDocumentSchema = BaseDocumentSchema.extend({
+	file: zShape.document,
 	project: zShape.id,
 	tag: zShape.id,
 	author: zShape.id,

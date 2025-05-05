@@ -13,3 +13,7 @@ export const prepareRequestParams = <T extends Record<string, any>>(
 			)
 		: {}
 }
+
+export const calcPercent = (a: number, b: number) => {
+	return Math.round((a * 100) / (b || 1))
+}

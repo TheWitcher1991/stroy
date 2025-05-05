@@ -1,5 +1,7 @@
-import { prepareRequestParams } from '../fn'
+import { calcPercent, prepareRequestParams } from '../fn'
 import { AxiosInstance, AxiosResponse } from 'axios'
+
+import { OnUploadProgress } from '@stroy/types'
 
 import { BaseRepository } from './base'
 
@@ -35,10 +37,20 @@ export class CrudRepository<
 		return await this.instance.post<GET>(`${this.URL}/`, data)
 	}
 
-	async createFormData(data: FormData): Promise<AxiosResponse<GET>> {
+	async createFormData(
+		data: FormData,
+		onUploadProgress?: OnUploadProgress,
+	): Promise<AxiosResponse<GET>> {
 		return await this.instance.post<GET>(`${this.URL}/`, data, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
+			},
+			onUploadProgress: progressEvent => {
+				onUploadProgress?.(
+					calcPercent(progressEvent.loaded, progressEvent.total),
+					progressEvent.loaded / 1024 / 1024,
+					progressEvent.total / 1024 / 1024,
+				)
 			},
 		})
 	}
@@ -53,10 +65,18 @@ export class CrudRepository<
 	async updateFormData(
 		id: number,
 		data: FormData,
+		onUploadProgress?: OnUploadProgress,
 	): Promise<AxiosResponse<GET>> {
 		return await this.instance.put<GET>(`${this.URL}/${id}/`, data, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
+			},
+			onUploadProgress: progressEvent => {
+				onUploadProgress?.(
+					calcPercent(progressEvent.loaded, progressEvent.total),
+					progressEvent.loaded / 1024 / 1024,
+					progressEvent.total / 1024 / 1024,
+				)
 			},
 		})
 	}

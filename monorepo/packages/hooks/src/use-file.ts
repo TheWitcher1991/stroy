@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemoizedFn } from 'ahooks'
 import { ChangeEvent, useEffect, useState } from 'react'
 
 import { fileToBase64 } from '@stroy/toolkit'
@@ -30,7 +31,7 @@ export const useFile = () => {
 		})
 	}, [file])
 
-	const setFile = (e: ChangeEvent<HTMLInputElement>) => {
+	const setFile = useMemoizedFn((e: ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault()
 
 		if (!e.target.files) return
@@ -40,11 +41,11 @@ export const useFile = () => {
 		if (file) {
 			setCurrentFile(file)
 		}
-	}
+	})
 
-	const setFiles = (files: File[]) => {
+	const setFiles = useMemoizedFn((files: File[]) => {
 		setCurrentFile(files[0])
-	}
+	})
 
 	return {
 		file,

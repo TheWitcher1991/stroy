@@ -1,5 +1,6 @@
 'use client'
 
+import { useCallback } from 'react'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -27,10 +28,10 @@ export const useThemeStore = create<ThemeStore>()(
 export const useTheme = () => {
 	const { theme, setTheme } = useThemeStore()
 
-	const toggleTheme = () => {
+	const toggleTheme = useCallback(() => {
 		const newTheme = theme === 'dark' ? 'light' : 'dark'
 		setTheme(newTheme)
-	}
+	}, [theme, setTheme])
 
 	return {
 		theme,

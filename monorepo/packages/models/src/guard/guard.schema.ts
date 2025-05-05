@@ -1,5 +1,6 @@
-import { zShape } from '@stroy/toolkit'
 import { z } from 'zod'
+
+import { zShape } from '@stroy/toolkit'
 
 import { GuardOperation } from './guard.utils'
 
@@ -15,9 +16,13 @@ export const GuardSchema = BaseGuardSchema.extend({
 })
 
 export const UpdateGuardSchema = BaseGuardSchema.extend({
-	operations: z.nativeEnum(GuardOperation).array(),
+	operations: z.nativeEnum(GuardOperation).array().min(1, {
+		message: 'Гард должен иметь хотя бы одну операцию',
+	}),
 })
 
 export const CreateGuardSchema = BaseGuardSchema.extend({
-	operations: z.nativeEnum(GuardOperation).array(),
+	operations: z.nativeEnum(GuardOperation).array().min(1, {
+		message: 'Гард должен иметь хотя бы одну операцию',
+	}),
 })

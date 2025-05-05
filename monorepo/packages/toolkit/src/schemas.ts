@@ -28,7 +28,9 @@ export const zShape = {
 	document: buildFileShape(DOCUMENT_FILE_TYPES, 2000),
 	ids: z.number().positive().array(),
 	uuid: z.string().uuid(),
-	datetime: z.string().datetime(),
+	datetime: z.string().datetime({
+		message: 'Неверный формат даты',
+	}),
 	url: z.string().url({
 		message: 'Неверный URL',
 	}),
@@ -42,6 +44,14 @@ export const zShape = {
 			message: 'Должно быть не менее 3 символов',
 		})
 		.max(255, {
+			message: 'Должно быть не более 255 символов',
+		}),
+	name: z
+		.string()
+		.min(3, {
+			message: 'Должно быть не менее 3 символов',
+		})
+		.max(64, {
 			message: 'Должно быть не более 255 символов',
 		}),
 	description: z
@@ -60,14 +70,6 @@ export const zShape = {
 		})
 		.min(2)
 		.max(50),
-	name: z
-		.string()
-		.min(3, {
-			message: 'Должно быть не менее 3 символов',
-		})
-		.max(50, {
-			message: 'Должно быть не более 50 символов',
-		}),
 	password: z
 		.string()
 		.min(8, {

@@ -1,7 +1,7 @@
-import { DocumentSchema } from '../document'
 import { GuardSchema } from '../guard'
-import { zShape } from '@stroy/toolkit'
 import { z } from 'zod'
+
+import { zShape } from '@stroy/toolkit'
 
 const BaseUserSchema = z.object({
 	first_name: zShape.name,
@@ -10,7 +10,7 @@ const BaseUserSchema = z.object({
 })
 
 export const UserDocumentSchema = z.object({
-	document: DocumentSchema,
+	document: z.object({}),
 	permissions: GuardSchema.shape.permissions,
 })
 
