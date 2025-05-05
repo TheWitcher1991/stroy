@@ -1,0 +1,6 @@
+export * from './department.config'
+export * from './department.schema'
+export * from './department.types'
+export * from './department.repository'
+export * from './department.mutations'
+export * from './department.queries'

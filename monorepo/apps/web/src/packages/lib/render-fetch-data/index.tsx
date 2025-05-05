@@ -1,4 +1,6 @@
-import { PropsWithChildren, ReactNode } from 'react'
+import { Binoculars, Bug } from '@gravity-ui/icons'
+import { Icon } from '@gravity-ui/uikit'
+import { memo, PropsWithChildren, ReactNode } from 'react'
 
 import { Placeholder } from '~packages/ui'
 
@@ -11,13 +13,32 @@ interface RenderFetchDataProps extends PropsWithChildren {
 	emptyFallback?: ReactNode
 }
 
-const DefaultLoadingFallback = () => (
-	<Placeholder title={'Загрузка...'} text={''} />
-)
-const DefaultErrorFallback = () => (
-	<Placeholder title={'Ошибка :('} text={'Не удалось загрузить данные'} />
-)
-const DefaultEmptyFallback = () => <Placeholder />
+const DefaultLoadingFallback = memo(() => (
+	<Placeholder title={'Поиск данных...'} text={''} />
+))
+
+const DefaultErrorFallback = memo(() => (
+	<Placeholder
+		title={
+			<>
+				<Icon data={Bug} size={18} />
+				Ошибка :(
+			</>
+		}
+		text={'Не удалось загрузить данные'}
+	/>
+))
+
+const DefaultEmptyFallback = memo(() => (
+	<Placeholder
+		title={
+			<>
+				<Icon data={Binoculars} size={18} />
+				Пустовато :(
+			</>
+		}
+	/>
+))
 
 export const RenderFetchData = ({
 	isLoading,

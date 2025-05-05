@@ -3,7 +3,7 @@ import { Card, Text } from '@gravity-ui/uikit'
 import styles from './index.module.scss'
 
 interface ValueCardProps {
-	value: string | number
+	value?: string | number
 	title: string
 }
 
