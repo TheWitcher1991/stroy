@@ -13,5 +13,4 @@ const creator = createModelListStore<IJournal, Partial<UseJournal>>({
 })
 
 export const journalStore = creator.store
-export const journalState = journalStore.state
 export const journalActions = creator.actions

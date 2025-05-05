@@ -1,17 +1,19 @@
 import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 
-import { journalActions, journalState } from '~widgets/journal'
+import { journalActions, useJournalStore } from '~widgets/journal'
 
-import { PAGE_SIZE_OPTIONS } from '~packages/system'
+import { PAGE_SIZE_OPTIONS } from '@stroy/system'
 
 export default function JournalPagination() {
+	const { filter, count } = useJournalStore()
+
 	return (
 		<Flex justifyContent={'space-between'} alignItems={'center'}>
-			<Text color={'secondary'}>Всего {journalState.filter.page}</Text>
+			<Text color={'secondary'}>Всего {count}</Text>
 			<Pagination
-				page={journalState.filter.page}
-				pageSize={journalState.filter.page_size}
-				total={journalState.count}
+				page={filter.page}
+				pageSize={filter.page_size}
+				total={count}
 				compact={true}
 				showInput={true}
 				showPages={true}

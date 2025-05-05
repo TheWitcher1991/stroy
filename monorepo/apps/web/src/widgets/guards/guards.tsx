@@ -1,4 +1,4 @@
-import { guardsState } from '~widgets/guards/guards.store'
+import { useGuardsStore } from '~widgets/guards/guards.hooks'
 
 import ModelTable from '~features/model-table'
 import TableSkeleton from '~features/table-skeleton'
@@ -10,13 +10,15 @@ import { RenderFetchData } from '~packages/lib'
 import { Placeholder } from '~packages/ui'
 
 export default function Guards() {
-	const data = useGuardTableData(guardsState.list)
+	const { count, list, loading, error } = useGuardsStore()
+
+	const data = useGuardTableData(list)
 
 	return (
 		<RenderFetchData
-			hasError={guardsState.error}
-			isLoading={guardsState.loading}
-			countData={guardsState.count}
+			hasError={error}
+			isLoading={loading}
+			countData={count}
 			loadingFallback={<TableSkeleton />}
 		>
 			<ModelTable

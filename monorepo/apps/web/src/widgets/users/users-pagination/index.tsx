@@ -1,17 +1,20 @@
 import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 
-import { usersActions, usersState } from '~widgets/users'
+import { usersActions } from '~widgets/users'
+import { useUsersStore } from '~widgets/users/users.hooks'
 
-import { PAGE_SIZE_OPTIONS } from '~packages/system'
+import { PAGE_SIZE_OPTIONS } from '@stroy/system'
 
 export default function UsersPagination() {
+	const { filter, count } = useUsersStore()
+
 	return (
 		<Flex justifyContent={'space-between'} alignItems={'center'}>
-			<Text color={'secondary'}>Всего {usersState.count}</Text>
+			<Text color={'secondary'}>Всего {count}</Text>
 			<Pagination
-				page={usersState.filter.page}
-				pageSize={usersState.filter.page_size}
-				total={usersState.count}
+				page={filter.page}
+				pageSize={filter.page_size}
+				total={count}
 				compact={true}
 				showInput={true}
 				showPages={true}

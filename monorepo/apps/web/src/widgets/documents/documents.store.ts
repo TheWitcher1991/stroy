@@ -13,5 +13,4 @@ const creator = createModelListStore<IDocument, Partial<UseDocuments>>({
 })
 
 export const documentsStore = creator.store
-export const documentsState = documentsStore.state
 export const documentsActions = creator.actions

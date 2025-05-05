@@ -3,6 +3,7 @@ import JournalFetcher from './journal-fetcher'
 import JournalPagination from './journal-pagination'
 
 export * from './journal.store'
+export * from './journal.hooks'
 
 export default Journal
 

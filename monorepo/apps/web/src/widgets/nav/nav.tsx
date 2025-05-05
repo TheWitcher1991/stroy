@@ -1,10 +1,12 @@
 'use client'
 
-import { ArrowUpFromSquare, Magnifier, Person } from '@gravity-ui/icons'
+import { Magnifier, Person } from '@gravity-ui/icons'
 import { ActionBar } from '@gravity-ui/navigation'
 import { Button, Icon, TextInput } from '@gravity-ui/uikit'
 
 import ThemeButton from '~features/theme-button'
+
+import { DocumentImportButton } from '~models/document'
 
 import styles from './nav.module.scss'
 
@@ -26,10 +28,7 @@ export default function Nav() {
 			<ActionBar.Section>
 				<ActionBar.Group pull='right'>
 					<ActionBar.Item>
-						<Button view={'action'}>
-							<Icon data={ArrowUpFromSquare} size={16} />
-							Импорт документа
-						</Button>
+						<DocumentImportButton />
 					</ActionBar.Item>
 					<ActionBar.Item>
 						<ThemeButton />

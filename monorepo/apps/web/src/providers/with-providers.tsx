@@ -7,9 +7,13 @@ import WithProgressBar from '~providers/with-progress-bar'
 import WithStore from '~providers/with-store'
 import WithToaster from '~providers/with-toaster'
 
+import { useTheme } from '@stroy/hooks'
+
 export const WithProviders = ({ children }: PropsWithChildren) => {
+	const { theme } = useTheme()
+
 	return (
-		<ThemeProvider theme={'dark'}>
+		<ThemeProvider theme={theme}>
 			<WithStore>
 				<WithProgressBar>
 					<WithToaster>{children}</WithToaster>

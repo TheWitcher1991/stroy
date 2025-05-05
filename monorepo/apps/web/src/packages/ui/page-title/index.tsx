@@ -1,11 +1,13 @@
 import { Plus } from '@gravity-ui/icons'
 import { Button, Flex, Icon, Text } from '@gravity-ui/uikit'
+import { ReactNode } from 'react'
 
 interface PageTitleProps {
 	title: string
 	subtitle?: string
 	buttonOnClick?: () => void
 	buttonTitle?: string
+	action?: ReactNode
 }
 
 export const PageTitle = ({
@@ -13,6 +15,7 @@ export const PageTitle = ({
 	subtitle,
 	buttonTitle,
 	buttonOnClick,
+	action,
 }: PageTitleProps) => {
 	return (
 		<Flex justifyContent={'space-between'} alignItems={'center'}>
@@ -35,6 +38,7 @@ export const PageTitle = ({
 					{buttonTitle}
 				</Button>
 			)}
+			{action}
 		</Flex>
 	)
 }

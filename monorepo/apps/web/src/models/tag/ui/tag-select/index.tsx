@@ -1,8 +1,11 @@
 import { Plus } from '@gravity-ui/icons'
 import { Button, Icon, Select } from '@gravity-ui/uikit'
+import { useToggle } from 'ahooks'
+
+import { TagCreateModal } from '~models/tag'
+
 import { useSelectableTags } from '@stroy/models'
 import { SelectProps } from '@stroy/types'
-import { useToggle } from 'ahooks'
 
 import { InputSkeleton } from '~packages/ui'
 

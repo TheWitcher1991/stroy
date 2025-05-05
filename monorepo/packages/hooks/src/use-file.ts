@@ -2,8 +2,8 @@
 
 import { ChangeEvent, useEffect, useState } from 'react'
 
-import { fileToBase64 } from '@repo/toolkit'
-import { Nullable } from '@repo/types'
+import { fileToBase64 } from '@stroy/toolkit'
+import { Nullable } from '@stroy/types'
 
 type FileParams = {
 	name: string

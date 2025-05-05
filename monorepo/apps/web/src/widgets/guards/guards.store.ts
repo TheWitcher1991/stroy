@@ -13,5 +13,4 @@ const creator = createModelListStore<IGuard, Partial<UseGuards>>({
 })
 
 export const guardsStore = creator.store
-export const guardsState = guardsStore.state
 export const guardsActions = creator.actions

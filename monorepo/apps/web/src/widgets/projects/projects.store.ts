@@ -13,5 +13,4 @@ const creator = createModelListStore<IProject, Partial<UseProjects>>({
 })
 
 export const projectsStore = creator.store
-export const projectsState = projectsStore.state
 export const projectsActions = creator.actions

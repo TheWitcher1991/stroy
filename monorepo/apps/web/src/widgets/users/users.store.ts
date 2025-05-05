@@ -13,5 +13,4 @@ const creator = createModelListStore<IUser, Partial<UseUsers>>({
 })
 
 export const usersStore = creator.store
-export const usersState = usersStore.state
 export const usersActions = creator.actions

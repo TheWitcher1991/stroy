@@ -1,4 +1,7 @@
 import { TextInput } from '@gravity-ui/uikit'
+
+import { GuardOperationSelect } from '~models/guard'
+
 import { useCreateGuard } from '@stroy/models'
 import { ModalProps } from '@stroy/types'
 
@@ -16,12 +19,15 @@ export const GuardCreateModal = ({ open, onClose }: ModalProps) => {
 			onClickButtonApply={createHandler}
 			caption={'Создать гуард'}
 			loading={req.isPending}
+			size={'s'}
 		>
 			<FormSection label={'Название'}>
 				<TextInput size={'l'} />
 			</FormSection>
 
-			<FormSection label={'Операции'} withOutMargin={true}></FormSection>
+			<FormSection label={'Операции'} withOutMargin={true}>
+				<GuardOperationSelect />
+			</FormSection>
 		</Dialog>
 	)
 }

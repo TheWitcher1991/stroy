@@ -1,4 +1,4 @@
-import { usersState } from '~widgets/users/users.store'
+import { useUsersStore } from '~widgets/users/users.hooks'
 
 import ModelTable from '~features/model-table'
 import TableSkeleton from '~features/table-skeleton'
@@ -10,13 +10,15 @@ import { RenderFetchData } from '~packages/lib'
 import { Placeholder } from '~packages/ui'
 
 export default function Users() {
-	const data = useUserTableData(usersState.list)
+	const { list, loading, error, count } = useUsersStore()
+
+	const data = useUserTableData(list)
 
 	return (
 		<RenderFetchData
-			hasError={usersState.error}
-			isLoading={usersState.loading}
-			countData={usersState.count}
+			hasError={error}
+			isLoading={loading}
+			countData={count}
 			loadingFallback={<TableSkeleton />}
 		>
 			<ModelTable

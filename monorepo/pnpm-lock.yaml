@@ -20,6 +20,9 @@ importers:
       '@tanstack/react-store':
         specifier: ^0.7.0
         version: 0.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@tanstack/store':
+        specifier: ^0.7.0
+        version: 0.7.0
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^5.2.2
         version: 5.2.2(prettier@3.5.3)

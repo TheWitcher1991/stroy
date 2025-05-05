@@ -1,4 +1,4 @@
-import { journalState } from '~widgets/journal/journal.store'
+import { useJournalStore } from '~widgets/journal/journal.hooks'
 
 import ModelTable from '~features/model-table'
 import TableSkeleton from '~features/table-skeleton'
@@ -10,13 +10,15 @@ import { RenderFetchData } from '~packages/lib'
 import { Placeholder } from '~packages/ui'
 
 export default function Journal() {
-	const data = useJournalTableData(journalState.list)
+	const { list, error, loading, count } = useJournalStore()
+
+	const data = useJournalTableData(list)
 
 	return (
 		<RenderFetchData
-			hasError={journalState.error}
-			isLoading={journalState.loading}
-			countData={journalState.count}
+			hasError={error}
+			isLoading={loading}
+			countData={count}
 			loadingFallback={<TableSkeleton />}
 		>
 			<ModelTable

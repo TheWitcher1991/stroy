@@ -11,7 +11,7 @@ export interface SelectProps<T = any> {
 	defaultValue?: string[]
 	value?: string[]
 	errorMessage?: ReactNode
-	onSelect: (value: string[]) => void
+	onSelect?: (value: string[]) => void
 	register?: UseFormRegister<T>
 }
 

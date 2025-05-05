@@ -5,7 +5,7 @@ import { PropsWithChildren } from 'react'
 
 import Aside from '~widgets/aside'
 
-import { useSessionExpired } from '~models/auth'
+import { useSessionExpired } from '@stroy/models'
 
 import { Container } from '~packages/ui'
 

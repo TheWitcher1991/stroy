@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru' suppressHydrationWarning>
-			<body>
+			<body className={'g-root g-root_theme_dark'}>
 				<WithProviders>{children}</WithProviders>
 			</body>
 		</html>

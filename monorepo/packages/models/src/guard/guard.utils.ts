@@ -1,4 +1,4 @@
-import { EnumType } from '@stroy/types'
+import { EnumType, SelectOption } from '@stroy/types'
 
 export const GuardOperation = {
 	CREATE: 'CREATE',
@@ -15,3 +15,22 @@ export const GuardOperationMapper: Record<GuardOperation, string> = {
 	[GuardOperation.UPDATE]: 'Обновление',
 	[GuardOperation.DELETE]: 'Удаление',
 }
+
+export const GuardSelectOptions: SelectOption[] = [
+	{
+		content: GuardOperationMapper[GuardOperation.CREATE],
+		value: GuardOperation.CREATE,
+	},
+	{
+		content: GuardOperationMapper[GuardOperation.READ],
+		value: GuardOperation.READ,
+	},
+	{
+		content: GuardOperationMapper[GuardOperation.UPDATE],
+		value: GuardOperation.UPDATE,
+	},
+	{
+		content: GuardOperationMapper[GuardOperation.DELETE],
+		value: GuardOperation.DELETE,
+	},
+]

@@ -1,4 +1,4 @@
-import { documentsState } from '~widgets/documents/documents.store'
+import { useDocumentsStore } from '~widgets/documents/documents.hooks'
 
 import ModelTable from '~features/model-table'
 import TableSkeleton from '~features/table-skeleton'
@@ -10,13 +10,15 @@ import { RenderFetchData } from '~packages/lib'
 import { Placeholder } from '~packages/ui'
 
 export default function Documents() {
-	const data = useDocumentTableData(documentsState.list)
+	const { list, error, loading, count } = useDocumentsStore()
+
+	const data = useDocumentTableData(list)
 
 	return (
 		<RenderFetchData
-			hasError={documentsState.error}
-			isLoading={documentsState.loading}
-			countData={documentsState.count}
+			hasError={error}
+			isLoading={loading}
+			countData={count}
 			loadingFallback={<TableSkeleton />}
 		>
 			<ModelTable

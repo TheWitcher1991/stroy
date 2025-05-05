@@ -1,4 +1,4 @@
-import { projectsState } from '~widgets/projects/projects.store'
+import { useProjectsStore } from '~widgets/projects/projects.hooks'
 
 import ModelTable from '~features/model-table'
 import TableSkeleton from '~features/table-skeleton'
@@ -10,13 +10,15 @@ import { RenderFetchData } from '~packages/lib'
 import { Placeholder } from '~packages/ui'
 
 export default function Projects() {
-	const data = useProjectTableData(projectsState.list)
+	const { list, loading, error, count } = useProjectsStore()
+
+	const data = useProjectTableData(list)
 
 	return (
 		<RenderFetchData
-			hasError={projectsState.error}
-			isLoading={projectsState.loading}
-			countData={projectsState.count}
+			hasError={error}
+			isLoading={loading}
+			countData={count}
 			loadingFallback={<TableSkeleton />}
 		>
 			<ModelTable

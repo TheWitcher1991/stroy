@@ -10,6 +10,6 @@ export type DocumentStatus = EnumType<typeof DocumentStatus>
 
 export const DocumentStatusMapper: Record<DocumentStatus, string> = {
 	DRAFT: 'Черновик',
-	HARMONIZATION: 'На утверждение',
-	APPROVED: 'с',
+	HARMONIZATION: 'На утверждении',
+	APPROVED: 'Утвержден',
 }

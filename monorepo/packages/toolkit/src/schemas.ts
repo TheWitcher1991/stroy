@@ -1,7 +1,9 @@
-import { DOCUMENT_FILE_TYPES, IMAGE_FILE_TYPES } from '@stroy/system'
 import { z } from 'zod'
 
+import { DOCUMENT_FILE_TYPES, IMAGE_FILE_TYPES } from '@stroy/system'
+
 import { formatFileSize } from './format'
+import { regexPatterns } from './regex'
 
 export const buildFileShape = (
 	fileUploads: string[],

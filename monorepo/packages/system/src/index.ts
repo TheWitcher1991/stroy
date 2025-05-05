@@ -10,4 +10,13 @@ export const PAGE_SIZE_OPTIONS = [30, 60, 90]
 
 export const IMAGE_FILE_TYPES = ['image/jpeg', 'image/png']
 
-export const DOCUMENT_FILE_TYPES = []
+export const DOCUMENT_FILE_TYPES = [
+	'application/pdf',
+	'application/msword',
+	'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+	'application/vnd.ms-excel',
+	'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+	'text/plain',
+	'text/csv',
+	'text/tab-separated-values',
+]

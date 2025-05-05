@@ -1,17 +1,20 @@
 import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 
-import { documentsActions, documentsState } from '~widgets/documents'
+import { documentsActions } from '~widgets/documents'
+import { useDocumentsStore } from '~widgets/documents/documents.hooks'
 
-import { PAGE_SIZE_OPTIONS } from '~packages/system'
+import { PAGE_SIZE_OPTIONS } from '@stroy/system'
 
 export default function DocumentsPagination() {
+	const { count, filter } = useDocumentsStore()
+
 	return (
 		<Flex justifyContent={'space-between'} alignItems={'center'}>
-			<Text color={'secondary'}>Всего {documentsState.count}</Text>
+			<Text color={'secondary'}>Всего {count}</Text>
 			<Pagination
-				page={documentsState.filter.page}
-				pageSize={documentsState.filter.page_size}
-				total={documentsState.count}
+				page={filter.page}
+				pageSize={filter.page_size}
+				total={count}
 				compact={true}
 				showInput={true}
 				showPages={true}

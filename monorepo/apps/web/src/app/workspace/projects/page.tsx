@@ -5,17 +5,19 @@ import Projects, {
 	ProjectsPagination,
 } from '~widgets/projects'
 
+import { ProjectCreateButton } from '~models/project'
+
 import { Group, PageTitle } from '~packages/ui'
 
 export default function ProjectsPage() {
 	return (
 		<Group>
 			<PageTitle
-				buttonTitle={'Создать проект'}
 				title={'Проекты'}
 				subtitle={
 					'Проекты - это основная сущность системы, которая позволяет организовать работу команд'
 				}
+				action={<ProjectCreateButton />}
 			/>
 			<Projects />
 			<ProjectsFetcher />

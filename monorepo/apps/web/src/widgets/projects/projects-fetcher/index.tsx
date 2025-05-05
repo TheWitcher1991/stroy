@@ -2,13 +2,17 @@
 
 import { useEffect } from 'react'
 
-import { projectsActions, projectsState } from '~widgets/projects'
+import { projectsActions } from '~widgets/projects'
+import { useProjectsStore } from '~widgets/projects/projects.hooks'
 
 import { useProjects } from '@stroy/models'
 
 export default function ProjectsFetcher() {
+	const { filter } = useProjectsStore()
+
+	const { data, isLoading, isError } = useProjects(filter)
+
 	const { setList, setCount, setLoading, setError } = projectsActions
-	const { data, isLoading, isError } = useProjects(projectsState.filter)
 
 	useEffect(() => {
 		setLoading(isLoading)

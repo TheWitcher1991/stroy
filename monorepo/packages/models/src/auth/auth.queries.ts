@@ -1,8 +1,9 @@
 'use client'
 
-import { href } from '@stroy/href/src'
 import { useEffect } from 'react'
 import { useShallow } from 'zustand/react/shallow'
+
+import { href } from '@stroy/href/src'
 
 import { logout, useAccountStore } from './auth.store'
 
@@ -29,5 +30,5 @@ export const useSessionExpired = () => {
 			window.location.replace(href.login)
 			return
 		}
-	}, [window.location.pathname, session_expires, logout])
+	}, [session_expires, logout])
 }

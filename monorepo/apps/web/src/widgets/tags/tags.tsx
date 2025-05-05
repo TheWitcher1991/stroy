@@ -1,4 +1,4 @@
-import { tagsState } from '~widgets/tags/tags.store'
+import { useTagsStore } from '~widgets/tags/tags.hooks'
 
 import ModelTable from '~features/model-table'
 import TableSkeleton from '~features/table-skeleton'
@@ -10,13 +10,15 @@ import { RenderFetchData } from '~packages/lib'
 import { Placeholder } from '~packages/ui'
 
 export default function Tags() {
-	const data = useTagTableData(tagsState.list)
+	const { list, count, loading, error } = useTagsStore()
+
+	const data = useTagTableData(list)
 
 	return (
 		<RenderFetchData
-			hasError={tagsState.error}
-			isLoading={tagsState.loading}
-			countData={tagsState.count}
+			hasError={error}
+			isLoading={loading}
+			countData={count}
 			loadingFallback={<TableSkeleton />}
 		>
 			<ModelTable

@@ -2,13 +2,17 @@
 
 import { useEffect } from 'react'
 
-import { documentsActions, documentsState } from '~widgets/documents'
+import { documentsActions } from '~widgets/documents'
+import { useDocumentsStore } from '~widgets/documents/documents.hooks'
 
 import { useDocuments } from '@stroy/models'
 
 export default function DocumentsFetcher() {
+	const { filter } = useDocumentsStore()
+
+	const { data, isLoading, isError } = useDocuments(filter)
+
 	const { setList, setCount, setLoading, setError } = documentsActions
-	const { data, isLoading, isError } = useDocuments(documentsState.filter)
 
 	useEffect(() => {
 		setLoading(isLoading)

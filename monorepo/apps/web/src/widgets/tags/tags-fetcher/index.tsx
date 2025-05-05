@@ -2,13 +2,16 @@
 
 import { useEffect } from 'react'
 
-import { tagsActions, tagsState } from '~widgets/tags'
+import { tagsActions, useTagsStore } from '~widgets/tags'
 
 import { useTags } from '@stroy/models'
 
 export default function TagsFetcher() {
+	const { filter } = useTagsStore()
+
+	const { data, isLoading, isError } = useTags(filter)
+
 	const { setList, setCount, setLoading, setError } = tagsActions
-	const { data, isLoading, isError } = useTags(tagsState.filter)
 
 	useEffect(() => {
 		setLoading(isLoading)

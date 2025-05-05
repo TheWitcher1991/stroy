@@ -13,5 +13,4 @@ const creator = createModelListStore<ITag, Partial<UseTags>>({
 })
 
 export const tagsStore = creator.store
-export const tagsState = tagsStore.state
 export const tagsActions = creator.actions

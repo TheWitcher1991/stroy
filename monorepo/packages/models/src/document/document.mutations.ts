@@ -1,5 +1,6 @@
+import { useMutation } from '@tanstack/react-query'
+
 import { optimisticInvalidateQueries } from '@stroy/toolkit'
-import { useMutation } from '@tanstack/react-query/src'
 
 import { documentServiceKeys } from './document.config'
 import { DocumentRepository } from './document.repository'

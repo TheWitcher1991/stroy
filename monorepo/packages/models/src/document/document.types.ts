@@ -1,5 +1,6 @@
-import { UseModelOptions } from '@stroy/types'
 import { z } from 'zod'
+
+import { UseModelOptions } from '@stroy/types'
 
 import {
 	CreateDocumentSchema,
@@ -15,6 +16,10 @@ export type ICreateDocument = z.infer<typeof CreateDocumentSchema>
 
 export interface PropsWithDocument {
 	document: IDocument
+}
+
+export interface PropsWithDocumentId {
+	document: number
 }
 
 export interface UseDocuments extends UseModelOptions {}
