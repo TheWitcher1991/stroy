@@ -23,7 +23,9 @@ coverage.xml
 /static/debug_toolbar/
 /static/redisboard/
 /static/rest_framework/
-mediafiles
+mediafile
+/mediafiles/
+/mediafiles/*
 staticfiles
 celerybeat-schedule
 celerybeat-schedule.*

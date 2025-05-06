@@ -1,9 +1,11 @@
-import { zShape } from '@stroy/toolkit'
 import { z } from 'zod'
+
+import { zShape } from '@stroy/toolkit'
 
 const BaseTagSchema = z.object({
 	title: zShape.title,
-	summary: zShape.description,
+	summary: z.string(),
+	color: zShape.color,
 })
 
 export const TagSchema = BaseTagSchema.extend({

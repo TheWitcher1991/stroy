@@ -62,6 +62,7 @@ class LoginSerializer(serializers.Serializer):
         representation.pop("password", None)
         return representation
 
+    @transaction.atomic
     def validate(self, attrs):
         email = attrs.get("email")
         password = attrs.get("password")
@@ -86,6 +87,6 @@ class LoginSerializer(serializers.Serializer):
         attrs["token_type"] = AUTH_TOKEN_TYPE
         attrs["user"] = user.id
         attrs["department"] = user.department.id
-        attrs["department_name"] = user.department.title
+        attrs["department_name"] = user.department.name
 
         return attrs

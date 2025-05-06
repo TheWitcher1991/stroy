@@ -6,11 +6,10 @@ import { z } from 'zod'
 
 import { zShape } from '@stroy/toolkit'
 
-import { DocumentStatus } from './document.utils'
+import { DocumentStatus, DocumentType } from './document.utils'
 
 const BaseDocumentSchema = z.object({
 	title: zShape.title,
-	status: z.nativeEnum(DocumentStatus),
 })
 
 export const DocumentVersionSchema = z.object({
@@ -24,7 +23,8 @@ export const DocumentSchema = BaseDocumentSchema.extend({
 	id: zShape.id,
 	file_path: zShape.url,
 	doc_number: z.string(),
-	doc_type: z.string(),
+	doc_type: z.nativeEnum(DocumentType),
+	content_type: z.string(),
 	version_number: z.number(),
 	size: z.number(),
 	versions: DocumentVersionSchema.array(),
@@ -34,18 +34,21 @@ export const DocumentSchema = BaseDocumentSchema.extend({
 	permissions: GuardSchema.shape.permissions,
 	created_at: zShape.datetime,
 	updated_at: zShape.datetime,
+	status: z.nativeEnum(DocumentStatus),
 })
 
 export const UpdateDocumentSchema = BaseDocumentSchema.extend({
 	file: zShape.document.optional(),
 	project: zShape.id,
 	tag: zShape.id,
-	author: zShape.id,
+	author: zShape.id.optional(),
+	status: z.nativeEnum(DocumentStatus).optional(),
 })
 
 export const CreateDocumentSchema = BaseDocumentSchema.extend({
 	file: zShape.document,
 	project: zShape.id,
 	tag: zShape.id,
-	author: zShape.id,
+	author: zShape.id.optional(),
+	status: z.nativeEnum(DocumentStatus).optional(),
 })

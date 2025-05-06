@@ -2,6 +2,8 @@ from django.db import transaction
 from rest_framework import serializers
 
 from documents.models import Document, DocumentVersion
+from documents.utils import generate_doc_number
+from packages.utils import get_content_type, get_file_type, userFromContext
 
 
 class DocumentVersionSerializer(serializers.ModelSerializer):
@@ -41,11 +43,23 @@ class DocumentActionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Document
-        fields = "__all__"
+        fields = ("title", "file", "project", "tag")
 
     @transaction.atomic
     def create(self, validated_data):
-        pass
+        author = userFromContext(self.context)
+        file = validated_data.get("file")
+
+        validated_data["version_number"] = 1
+        validated_data["doc_number"] = generate_doc_number(validated_data["project"])
+        validated_data["doc_type"] = get_file_type(file)
+        validated_data["content_type"] = get_content_type(file)
+        validated_data["size"] = file.size
+        validated_data["author"] = author
+
+        document = super().create(validated_data)
+
+        return document
 
     @transaction.atomic
     def update(self, instance, validated_data):

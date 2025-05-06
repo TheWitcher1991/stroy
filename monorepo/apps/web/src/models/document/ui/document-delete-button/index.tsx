@@ -1,12 +1,16 @@
 import { TrashBin } from '@gravity-ui/icons'
-import { Button, Icon } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 
 import { href } from '@stroy/href'
 import { PropsWithDocumentId, useDeleteDocument } from '@stroy/models'
 
-export const DocumentDeleteButton = ({ document }: PropsWithDocumentId) => {
+import { Action } from '~packages/ui'
+
+export const DocumentDeleteButton = ({
+	document,
+	onlyIcon,
+}: PropsWithAction<PropsWithDocumentId>) => {
 	const router = useRouter()
 	const req = useDeleteDocument()
 
@@ -17,13 +21,14 @@ export const DocumentDeleteButton = ({ document }: PropsWithDocumentId) => {
 	}
 
 	return (
-		<Button
+		<Action
 			view={'outlined-danger'}
 			loading={req.isPending}
 			onClick={handleClick}
+			icon={TrashBin}
+			onlyIcon={onlyIcon}
 		>
-			<Icon data={TrashBin} size={16} />
 			Удалить
-		</Button>
+		</Action>
 	)
 }

@@ -7,4 +7,4 @@ class UserFilter(FilterSet):
 
     class Meta:
         model = User
-        fields = ("title",)
+        fields = ("date_joined",)

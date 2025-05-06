@@ -7,29 +7,29 @@ export const documentTableColumns: TableColumnConfig<any>[] = [
 		width: '20%',
 	},
 	{
-		id: 'project',
-		name: 'Проект',
+		id: 'author',
+		name: 'Автор',
 		width: '20%',
 	},
 	{
 		id: 'tag',
 		name: 'Тэг',
-		width: '20%',
+		width: '10%',
 	},
 	{
-		id: 'author',
-		name: 'Автор',
+		id: 'project',
+		name: 'Проект',
 		width: '15%',
 	},
 	{
 		id: 'created',
 		name: 'Создан',
-		width: '15%',
+		width: '10%',
 	},
 	{
 		id: 'actions',
 		align: 'right',
 		name: 'Действия',
-		width: '15%',
+		width: '10%',
 	},
 ]

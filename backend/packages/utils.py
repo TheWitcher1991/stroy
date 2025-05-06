@@ -1,15 +1,54 @@
+import mimetypes
 from datetime import datetime, timedelta
 
 import jwt
 from django.contrib.contenttypes.models import ContentType
+from django.core.files.uploadedfile import UploadedFile
 from django.utils.translation import gettext_lazy
 from rest_framework.exceptions import ValidationError
 
 from config.settings import HASH_ALGORITHM, SECRET_KEY, SESSION_EXPIRE_DAYS, SESSION_EXPIRE_MINUTES
-from users.repository import UserRepository
+
+
+def get_content_type(file: UploadedFile) -> str:
+    return file.content_type or mimetypes.guess_type(file.name)[0]
+
+
+def get_file_type(file: UploadedFile) -> str:
+    """
+    Определяет тип документа по MIME-типу или расширению.
+    """
+    content_type = get_content_type(file)
+
+    if content_type:
+        if content_type.startswith("image/"):
+            return "image"
+        elif content_type in ("application/pdf",):
+            return "pdf"
+        elif content_type in (
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        ):
+            return "word"
+        elif content_type in (
+            "application/vnd.ms-excel",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        ):
+            return "excel"
+        elif content_type.startswith("video/"):
+            return "video"
+        elif content_type.startswith("audio/"):
+            return "audio"
+        elif content_type.startswith("text/"):
+            return "text"
+        else:
+            return "other"
+    return "unknown"
 
 
 def validate_user_email(email):
+    from users.repository import UserRepository
+
     if email is None:
         return None
     if UserRepository.filter(email=email).exists():

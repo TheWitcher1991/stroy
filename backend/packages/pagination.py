@@ -1,6 +1,5 @@
 from rest_framework.pagination import LimitOffsetPagination, PageNumberPagination
 from rest_framework.response import Response
-from toolkit.utils import t
 
 
 class StandardLimitOffsetPagination(LimitOffsetPagination):
@@ -8,8 +7,8 @@ class StandardLimitOffsetPagination(LimitOffsetPagination):
     Базовый класс пагинации limit offset
     """
 
-    limit_query_description = t("Количество результатов, возвращаемых на страницу")
-    offset_query_description = t("Начальный индекс, по которому будут выводиться результаты")
+    limit_query_description = "Количество результатов, возвращаемых на страницу"
+    offset_query_description = "Начальный индекс, по которому будут выводиться результаты"
     max_limit = 25
     default_limit = 25
 
@@ -19,8 +18,8 @@ class StandardPageNumberPagination(PageNumberPagination):
     Базовый класс пагинации page number
     """
 
-    page_query_description = t("Номер страницы в постраничном наборе результатов.")
-    page_size_query_description = t("Количество результатов, возвращаемых на страницу")
+    page_query_description = "Номер страницы в постраничном наборе результатов."
+    page_size_query_description = "Количество результатов, возвращаемых на страницу"
     page_size = 25
     page_size_query_param = "page_size"
     max_page_size = 1000

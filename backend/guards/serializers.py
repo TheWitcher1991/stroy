@@ -7,7 +7,7 @@ from guards.types import OperationType
 from packages.utils import t
 
 
-class GuardSerializer(serializers.Serializer):
+class GuardSerializer(serializers.ModelSerializer):
     operations = serializers.ListField(
         child=serializers.ChoiceField(choices=OperationType.choices),
         write_only=True,
@@ -19,7 +19,7 @@ class GuardSerializer(serializers.Serializer):
     class Meta:
         model = Guard
         fields = "__all__"
-        read_only_fields = ("id", "created_at", "updated_at")
+        read_only_fields = ("id", "department", "created_at", "updated_at")
 
     def get_permissions(self, obj: Guard):
         return [op.operation for op in obj.operations.all()]
@@ -33,7 +33,7 @@ class GuardSerializer(serializers.Serializer):
         guard = super().create(validated_data)
 
         for operation in operations:
-            GuardOperationRepository.create(guard, operation)
+            GuardOperationRepository.create(guard=guard, operation=operation)
 
         return guard
 

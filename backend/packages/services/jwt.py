@@ -36,3 +36,16 @@ class JWTService:
     @staticmethod
     def verify(token) -> bool:
         return jwt_is_valid(token)
+
+    @staticmethod
+    def authenticate(token: str):
+        from users.repository import UserRepository
+
+        payload = jwt_decode(token)
+
+        user = UserRepository.get_by_id(int(payload.get("user_id")))
+
+        return {
+            "user": user,
+            "token": token,
+        }

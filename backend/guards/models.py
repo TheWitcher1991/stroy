@@ -7,16 +7,16 @@ from packages.utils import t
 
 
 class Guard(AbstractModel):
-    name = models.CharField(t("Название"), max_length=CHAR_MAX_LENGTH)
+    title = models.CharField(t("Название"), max_length=CHAR_MAX_LENGTH)
     department = models.ForeignKey("departments.Department", on_delete=models.CASCADE, related_name="guards")
 
     class Meta:
         verbose_name = t("Гуард")
         verbose_name_plural = t("Гуарды")
-        indexes = [models.Index(fields=["name"]), models.Index(fields=["department"])]
+        indexes = [models.Index(fields=["title"]), models.Index(fields=["department"])]
 
     def __str__(self):
-        return f"{self.name} -> {self.department}"
+        return f"{self.title} -> {self.department}"
 
 
 class GuardOperation(AbstractModel):

@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
+from authorization.backends import RefreshTokenAuthentication
 from authorization.serializers import LoginSerializer, SignupSerializer
 from config.settings import REFRESH_TOKEN_NAME, SESSION_EXPIRE_TIMEOUT
 from packages.controllers import AnonymousController
@@ -17,7 +18,7 @@ class SignupAPIView(AnonymousController, CreateAPIView):
 class LoginAPIView(AnonymousController):
     serializer_class = LoginSerializer
 
-    def create(self, request, *args, **kwargs) -> Response:
+    def post(self, request, *args, **kwargs) -> Response:
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -38,6 +39,7 @@ class LoginAPIView(AnonymousController):
 
 
 class RefreshAPIView(AnonymousController):
+    authentication_classes = (RefreshTokenAuthentication,)
 
     def post(self, request, *args, **kwargs) -> Response:
         payload = JWTService.refresh(self.request.user)

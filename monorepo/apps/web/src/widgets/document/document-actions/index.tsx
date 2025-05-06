@@ -1,5 +1,3 @@
-import { Flex } from '@gravity-ui/uikit'
-
 import { DocumentAction } from '~features/document-action'
 
 import {
@@ -10,13 +8,15 @@ import {
 
 import { PropsWithDocument } from '@stroy/models'
 
+import { Actions } from '~packages/ui'
+
 export default function DocumentActions({ document }: PropsWithDocument) {
 	return (
-		<Flex alignItems={'center'} gap={2}>
+		<Actions>
 			<DocumentDownloadButton document={document} />
 			<DocumentEditButton document={document} />
 			<DocumentAction document={document} />
 			<DocumentDeleteButton document={document.id} />
-		</Flex>
+		</Actions>
 	)
 }

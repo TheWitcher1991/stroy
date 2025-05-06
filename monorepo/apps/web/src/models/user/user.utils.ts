@@ -4,12 +4,12 @@ export const userTableColumns: TableColumnConfig<any>[] = [
 	{
 		id: 'user',
 		name: 'Пользователь',
-		width: '30%',
+		width: '40%',
 	},
 	{
 		id: 'documents',
 		name: 'Документов',
-		width: '30%',
+		width: '20%',
 	},
 	{
 		id: 'created',

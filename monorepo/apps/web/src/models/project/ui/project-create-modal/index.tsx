@@ -6,11 +6,11 @@ import toast from 'react-hot-toast'
 
 import {
 	CreateProjectSchema,
-	DocumentStatus,
 	ICreateProject,
+	ProjectStatus,
 	useCreateProject,
 } from '@stroy/models'
-import { query } from '@stroy/toolkit'
+import { formatDate, query } from '@stroy/toolkit'
 import { ModalProps } from '@stroy/types'
 
 import { DATE_FORMAT, FULL_WIDTH_STYLE } from '~packages/system'
@@ -21,6 +21,8 @@ export const ProjectCreateModal = ({ open, onClose }: ModalProps) => {
 		register,
 		handleSubmit,
 		formState: { errors },
+		setValue,
+		setError,
 	} = useForm<ICreateProject>({
 		defaultValues: {
 			title: '',
@@ -28,7 +30,7 @@ export const ProjectCreateModal = ({ open, onClose }: ModalProps) => {
 			tag: '',
 			start_date: '',
 			end_date: '',
-			status: DocumentStatus.HARMONIZATION,
+			status: ProjectStatus.ACTIVE,
 		},
 		resolver: zodResolver(CreateProjectSchema),
 	})
@@ -36,8 +38,8 @@ export const ProjectCreateModal = ({ open, onClose }: ModalProps) => {
 	const req = useCreateProject()
 
 	const createHandler = async (data: ICreateProject) => {
-		await query(() => {
-			req.mutateAsync(data)
+		await query(async () => {
+			await req.mutateAsync(data)
 			toast.success('Проект успешно создан')
 			onClose()
 		})
@@ -84,8 +86,15 @@ export const ProjectCreateModal = ({ open, onClose }: ModalProps) => {
 					size='l'
 					style={FULL_WIDTH_STYLE}
 					format={DATE_FORMAT}
-					validationState={errors.start_date ? 'invalid' : undefined}
+					validationState={
+						errors.end_date?.message ? 'invalid' : undefined
+					}
 					errorMessage={errors.start_date?.message}
+					onUpdate={data => {
+						console.log(data.toDate())
+						setValue('start_date', formatDate(data.toDate()))
+						setError('start_date', { message: '' })
+					}}
 					{...register('start_date')}
 				/>
 			</FormSection>
@@ -95,8 +104,14 @@ export const ProjectCreateModal = ({ open, onClose }: ModalProps) => {
 					size='l'
 					style={FULL_WIDTH_STYLE}
 					format={DATE_FORMAT}
-					validationState={errors.end_date ? 'invalid' : undefined}
+					validationState={
+						errors.end_date?.message ? 'invalid' : undefined
+					}
 					errorMessage={errors.end_date?.message}
+					onUpdate={data => {
+						setValue('end_date', formatDate(data.toDate()))
+						setError('end_date', { message: '' })
+					}}
 					{...register('end_date')}
 				/>
 			</FormSection>

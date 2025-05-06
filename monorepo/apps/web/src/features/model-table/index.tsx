@@ -1,5 +1,5 @@
-import { Table, withTableSelection } from '@gravity-ui/uikit'
+import { Table } from '@gravity-ui/uikit'
 
-const ModelTable = withTableSelection(Table)
+const ModelTable = Table
 
 export default ModelTable

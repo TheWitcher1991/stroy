@@ -9,10 +9,12 @@ import { TagSelect } from '~models/tag'
 import { useUploadProgress } from '@stroy/hooks'
 import {
 	CreateDocumentSchema,
+	DocumentStatus,
 	ICreateDocument,
 	useCreateDocumentFormData,
 } from '@stroy/models'
 import { DOCUMENT_FILE_TYPES } from '@stroy/system'
+import { query } from '@stroy/toolkit'
 import { ModalProps } from '@stroy/types'
 
 import { Dialog, FileButton, FormSection, QueryProgress } from '~packages/ui'
@@ -41,21 +43,24 @@ export const DocumentImportModal = ({ open, onClose }: ModalProps) => {
 		formData.append('title', data.title)
 		formData.append('project', data.project)
 		formData.append('tag', data.tag)
+		formData.append('status', DocumentStatus.HARMONIZATION)
 		formData.append('file', data.file)
 
-		await req.mutateAsync({
-			data: data as FormData,
-			onUploadProgress: (progress, uploaded, total) => {
-				setUploads({
-					progress,
-					uploaded,
-					total,
-				})
-			},
+		await query(async () => {
+			await req.mutateAsync({
+				data: data as FormData,
+				onUploadProgress: (progress, uploaded, total) => {
+					setUploads({
+						progress,
+						uploaded,
+						total,
+					})
+				},
+			})
+			clearUploads()
+			toast.success('Документ успешно создан')
+			onClose()
 		})
-		clearUploads()
-		toast.success('Создана новая музыка')
-		onClose()
 	}
 
 	return (
@@ -81,7 +86,7 @@ export const DocumentImportModal = ({ open, onClose }: ModalProps) => {
 					errorMessage={errors.project?.message}
 					register={register}
 					onSelect={value => {
-						setValue('project', value.join(','))
+						setValue('project', Number(value.join(',')))
 						setError('project', {
 							message: '',
 						})
@@ -94,7 +99,7 @@ export const DocumentImportModal = ({ open, onClose }: ModalProps) => {
 					errorMessage={errors.tag?.message}
 					register={register}
 					onSelect={value => {
-						setValue('tag', value.join(','))
+						setValue('tag', Number(value.join(',')))
 						setError('tag', {
 							message: '',
 						})

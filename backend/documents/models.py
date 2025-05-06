@@ -8,17 +8,18 @@ from packages.utils import t
 
 class Document(AbstractModel):
     title = models.CharField(t("Заголовок"), max_length=CHAR_MAX_LENGTH)
-    file_path = models.FileField(t("Файл"), upload_to="documents/")
+    file = models.FileField(t("Файл"), upload_to="documents/")
     doc_number = models.CharField(t("Номер документа"), max_length=CHAR_MAX_LENGTH)
     doc_type = models.CharField(t("Тип документа"), max_length=CHAR_MAX_LENGTH)
-    version_number = models.PositiveIntegerField(t("Версия документа"))
+    content_type = models.CharField(t("Тип контента"), null=True, max_length=CHAR_MAX_LENGTH)
+    version_number = models.PositiveIntegerField(t("Версия документа"), default=1)
     size = models.CharField(t("Размер файла"), max_length=CHAR_MAX_LENGTH)
     status = models.CharField(
         t("Cтатус"), choices=DocumentStatus, default=DocumentStatus.DRAFT, max_length=CHAR_MD_LENGTH
     )
     project = models.ForeignKey("projects.Project", on_delete=models.CASCADE, related_name="documents")
     author = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="documents")
-    tag = models.ManyToManyField("tags.Tag", on_delete=models.SET_NULL, related_name="documents")
+    tag = models.ForeignKey("tags.Tag", on_delete=models.SET_NULL, null=True, related_name="documents")
 
     class Meta:
         verbose_name = t("Документ")
@@ -38,7 +39,7 @@ class Document(AbstractModel):
 
 class DocumentVersion(AbstractModel):
     version_number = models.PositiveIntegerField(t("Версия документа"))
-    file_path = models.FileField(t("Файл"), upload_to="documents/")
+    file = models.FileField(t("Файл"), upload_to="documents/")
     modified_by = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="document_versions")
     document = models.ForeignKey("documents.Document", on_delete=models.CASCADE, related_name="versions")
 

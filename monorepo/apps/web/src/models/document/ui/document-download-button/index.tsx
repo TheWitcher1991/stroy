@@ -1,13 +1,16 @@
 import { ArrowDownToSquare } from '@gravity-ui/icons'
-import { Button, Icon } from '@gravity-ui/uikit'
 
 import { PropsWithDocument } from '@stroy/models'
 
-export const DocumentDownloadButton = ({ document }: PropsWithDocument) => {
+import { Action } from '~packages/ui'
+
+export const DocumentDownloadButton = ({
+	document,
+	onlyIcon,
+}: PropsWithAction<PropsWithDocument>) => {
 	return (
-		<Button view={'outlined'}>
-			<Icon data={ArrowDownToSquare} size={16} />
+		<Action view={'outlined'} onlyIcon={onlyIcon} icon={ArrowDownToSquare}>
 			Скачать
-		</Button>
+		</Action>
 	)
 }

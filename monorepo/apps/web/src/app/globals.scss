@@ -17,6 +17,16 @@ body,
     margin: 0;
 }
 
+.g-table__table {
+    width: 100%;
+}
+
+.g-label__content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
 .gn-composite-bar__root-menu-item {
     margin: 0 10px 3px 10px;
     border-radius: 8px;

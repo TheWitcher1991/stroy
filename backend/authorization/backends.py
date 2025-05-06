@@ -2,6 +2,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.request import Request
 
+from config.settings import REFRESH_TOKEN_NAME
 from packages.services.jwt import JWTService
 from packages.utils import t
 
@@ -38,7 +39,9 @@ class BaseAPIAuthentication(TokenAuthentication):
             return None, None
 
     def get_user(self, user_id: int):
-        raise NotImplementedError()
+        from users.repository import UserRepository
+
+        return UserRepository.get_by_id(user_id)
 
 
 class APIAuthentication(BaseAPIAuthentication):
@@ -71,3 +74,24 @@ class APIAuthentication(BaseAPIAuthentication):
         user = self.get_user(user_id)
 
         return user, decoded_payload
+
+
+class RefreshTokenAuthentication(BaseAPIAuthentication):
+
+    def authenticate(self, request):
+        refresh_token = request.COOKIES.get(REFRESH_TOKEN_NAME, None)
+
+        if not refresh_token:
+            raise AuthenticationFailed(t("Invalid refresh token"))
+
+        try:
+            data = JWTService.authenticate(refresh_token)
+            user = data.get("user", None)
+            token = data.get("token", None)
+
+            if not user or not token:
+                raise AuthenticationFailed(t("Refresh token not valid"))
+
+            return user, token
+        except Exception:
+            raise AuthenticationFailed(t("Invalid refresh token"))

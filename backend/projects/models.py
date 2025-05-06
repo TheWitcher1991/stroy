@@ -13,8 +13,8 @@ class Project(AbstractModel):
     status = models.CharField(
         t("Статус"), choices=ProjectStatus, default=ProjectStatus.ACTIVE, max_length=CHAR_MD_LENGTH
     )
-    start_date = models.DateTimeField(t("Дата начала"))
-    end_date = models.DateTimeField(t("Дата окончания"))
+    start_date = models.DateField(t("Дата начала"))
+    end_date = models.DateField(t("Дата окончания"))
     department = models.ForeignKey("departments.Department", on_delete=models.CASCADE, related_name="projects")
 
     class Meta:

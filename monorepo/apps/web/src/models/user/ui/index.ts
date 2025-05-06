@@ -1,3 +1,5 @@
 export * from './user-create-modal'
 export * from './user-cell'
 export * from './user-create-button'
+export * from './user-edit-button'
+export * from './user-delete-button'

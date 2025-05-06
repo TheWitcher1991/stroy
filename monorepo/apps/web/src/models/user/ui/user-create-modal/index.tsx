@@ -31,8 +31,8 @@ export const UserCreateModal = ({ open, onClose }: ModalProps) => {
 	const req = useCreateUser()
 
 	const createHandler = async (data: ICreateUser) => {
-		await query(() => {
-			req.mutateAsync(data)
+		await query(async () => {
+			await req.mutateAsync(data)
 			toast.success('Пользователь успешно создан')
 			onClose()
 		})

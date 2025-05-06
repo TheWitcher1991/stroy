@@ -9,8 +9,8 @@ const BaseProjectSchema = z.object({
 	code: zShape.name,
 	tag: zShape.name,
 	status: z.nativeEnum(ProjectStatus),
-	start_date: zShape.datetime,
-	end_date: zShape.datetime,
+	start_date: z.string(),
+	end_date: z.string(),
 })
 
 export const ProjectSchema = BaseProjectSchema.extend({

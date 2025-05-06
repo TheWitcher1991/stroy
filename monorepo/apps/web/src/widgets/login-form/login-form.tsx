@@ -21,8 +21,8 @@ export default function LoginForm() {
 		formState: { errors },
 	} = useForm<ILogin>({
 		defaultValues: {
-			email: '',
-			password: '',
+			email: 'alikzoy@gmail.com',
+			password: '12345678',
 		},
 		resolver: zodResolver(LoginSchema),
 	})

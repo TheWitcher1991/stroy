@@ -1,13 +1,16 @@
 import { PencilToSquare } from '@gravity-ui/icons'
-import { Button, Icon } from '@gravity-ui/uikit'
 
 import { PropsWithDocument } from '@stroy/models'
 
-export const DocumentEditButton = ({ document }: PropsWithDocument) => {
+import { Action } from '~packages/ui'
+
+export const DocumentEditButton = ({
+	document,
+	onlyIcon,
+}: PropsWithAction<PropsWithDocument>) => {
 	return (
-		<Button view={'outlined'}>
-			<Icon data={PencilToSquare} size={16} />
+		<Action icon={PencilToSquare} onlyIcon={onlyIcon}>
 			Изменить
-		</Button>
+		</Action>
 	)
 }

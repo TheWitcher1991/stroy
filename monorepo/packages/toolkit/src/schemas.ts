@@ -38,6 +38,7 @@ export const zShape = {
 		message: 'Пожалуйста, выберите',
 	}),
 	order: z.number().positive().min(1),
+	color: z.string().min(7).max(7).startsWith('#'),
 	title: z
 		.string()
 		.min(3, {

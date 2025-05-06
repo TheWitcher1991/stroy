@@ -12,7 +12,6 @@ INSTALLED_APPS = [
     "django_filters",
     "django_cleanup",
     "departments",
-    "departments",
     "documents",
     "guards",
     "journal",

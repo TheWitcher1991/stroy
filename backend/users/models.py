@@ -1,15 +1,18 @@
-from django.contrib.auth.models import AbstractUser, UserManager
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from packages.utils import t
+from users.managers import UserManager
 
 
 class User(AbstractUser):
-    guard = models.OneToOneField("guards.Guard", on_delete=models.SET_NULL, related_name="user")
+    email = models.EmailField(t("Email"), max_length=255, unique=True)
+    guard = models.ForeignKey("guards.Guard", on_delete=models.SET_NULL, null=True, related_name="user")
     department = models.OneToOneField("departments.Department", on_delete=models.CASCADE, related_name="user")
+    updated_at = models.DateTimeField(t("Дата обновления"), auto_now=True)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["email"]
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 

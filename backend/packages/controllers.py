@@ -38,7 +38,7 @@ class BaseController(APIController):
     authentication_classes = (APIAuthentication,)
 
 
-class BaseSetController(Controller, APISetController):
+class BaseSetController(APISetController):
     permission_classes = (IsAuthenticated,)
     authentication_classes = (APIAuthentication,)
 

@@ -13,14 +13,16 @@ import { Flex, Label, Text } from '@gravity-ui/uikit'
 
 import GuardOperationList from '~features/guard-operation-list'
 
+import { TagLabel } from '~models/tag'
+
 import {
 	DocumentStatusMapper,
 	PropsWithDocument,
 	userFullName,
 } from '@stroy/models'
+import { formatDateInRu } from '@stroy/toolkit'
 
 import { MetaList, MetaListItem } from '~packages/ui'
-import { formatDateInRu } from '~packages/utils'
 
 export default function DocumentInfo({ document }: PropsWithDocument) {
 	return (
@@ -32,9 +34,12 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 				<MetaListItem icon={ArrowRotateLeft} title={'Версия'}>
 					v{document.version_number}
 				</MetaListItem>
-				<MetaListItem icon={Tag} title={'Тег'}>
-					<Label>{document.tag?.title}</Label>
-				</MetaListItem>
+				{document.tag && (
+					<MetaListItem icon={Tag} title={'Тег'}>
+						<TagLabel tag={document.tag} />
+					</MetaListItem>
+				)}
+
 				<MetaListItem icon={Cube} title={'Проект'}>
 					<Label>{document.project.title}</Label>
 				</MetaListItem>
@@ -47,6 +52,9 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 				<MetaListItem icon={Layers} title={'Тип'}>
 					{document.doc_type}
 				</MetaListItem>
+				<MetaListItem icon={Layers} title={'Контент'}>
+					{document.content_type}
+				</MetaListItem>
 				<MetaListItem icon={ScalesUnbalanced} title={'Размер'}>
 					{document.size} KB
 				</MetaListItem>
@@ -57,10 +65,12 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 					{formatDateInRu(document.updated_at)}
 				</MetaListItem>
 			</MetaList>
-			<Flex gap={2} alignItems={'center'}>
-				<Text variant={'body-2'}>Права доступа:</Text>
-				<GuardOperationList operations={document.permissions} />
-			</Flex>
+			{document.permissions && (
+				<Flex gap={2} alignItems={'center'}>
+					<Text variant={'body-2'}>Права доступа:</Text>
+					<GuardOperationList operations={document.permissions} />
+				</Flex>
+			)}
 		</>
 	)
 }

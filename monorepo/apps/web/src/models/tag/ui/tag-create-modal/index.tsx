@@ -18,6 +18,7 @@ export const TagCreateModal = ({ open, onClose }: ModalProps) => {
 		defaultValues: {
 			title: '',
 			summary: '',
+			color: '#d8ff75',
 		},
 		resolver: zodResolver(CreateTagSchema),
 	})
@@ -25,8 +26,8 @@ export const TagCreateModal = ({ open, onClose }: ModalProps) => {
 	const req = useCreateTag()
 
 	const createHandler = async (data: ICreateTag) => {
-		await query(() => {
-			req.mutateAsync(data)
+		await query(async () => {
+			await req.mutateAsync(data)
 			toast.success('Тег успешно создан')
 			onClose()
 		})
@@ -47,6 +48,15 @@ export const TagCreateModal = ({ open, onClose }: ModalProps) => {
 					error={errors.title?.message}
 					errorMessage={errors.title?.message}
 					{...register('title')}
+				/>
+			</FormSection>
+
+			<FormSection label={'Цвет'}>
+				<TextInput
+					size={'l'}
+					error={errors.color?.message}
+					errorMessage={errors.color?.message}
+					{...register('color')}
 				/>
 			</FormSection>
 

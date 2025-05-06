@@ -35,8 +35,8 @@ export const GuardCreateModal = ({ open, onClose }: ModalProps) => {
 	const req = useCreateGuard()
 
 	const createHandler = async (data: ICreateGuard) => {
-		await query(() => {
-			req.mutateAsync(data)
+		await query(async () => {
+			await req.mutateAsync(data)
 			toast.success('Гуард успешно создан')
 			onClose()
 		})

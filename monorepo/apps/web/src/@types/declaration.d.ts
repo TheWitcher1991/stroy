@@ -1,3 +1,4 @@
+import { ButtonSize, ButtonView } from '@gravity-ui/uikit'
 import React, { JSXElementConstructor } from 'react'
 
 declare module '*.css'
@@ -8,6 +9,12 @@ declare global {
 	type ImageData =
 		| import('next/dist/shared/lib/get-img-props').StaticImport
 		| string
+
+	type PropsWithAction<P = unknown> = P & {
+		view?: ButtonView
+		size?: ButtonSize
+		onlyIcon?: boolean
+	}
 
 	interface ReactElement<
 		P = any,

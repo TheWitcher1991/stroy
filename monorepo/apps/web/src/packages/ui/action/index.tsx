@@ -1,0 +1,28 @@
+import { Button, Icon, IconData } from '@gravity-ui/uikit'
+import { ReactNode } from 'react'
+
+interface ActionsProps {
+	onClick?: () => void
+	iconSize?: number
+	children?: ReactNode
+	icon: IconData
+	loading?: boolean
+}
+
+export const Action = ({
+	onClick,
+	onlyIcon,
+	size,
+	view = 'outlined',
+	children,
+	icon,
+	loading,
+	iconSize = 16,
+}: PropsWithAction<ActionsProps>) => {
+	return (
+		<Button view={view} size={size} onClick={onClick} loading={loading}>
+			<Icon data={icon} size={iconSize} />
+			{!onlyIcon && children}
+		</Button>
+	)
+}

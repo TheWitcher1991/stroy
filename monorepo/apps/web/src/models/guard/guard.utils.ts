@@ -4,12 +4,12 @@ export const guardTableColumns: TableColumnConfig<any>[] = [
 	{
 		id: 'guard',
 		name: 'Гуард',
-		width: '30%',
+		width: '25%',
 	},
 	{
 		id: 'operations',
 		name: 'Операции',
-		width: '30%',
+		width: '40%',
 	},
 	{
 		id: 'created',

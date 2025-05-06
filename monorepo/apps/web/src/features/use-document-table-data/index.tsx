@@ -1,18 +1,44 @@
 import { useMemo } from 'react'
 
-import { IDocument, userFullName } from '@stroy/models'
+import {
+	DocumentCell,
+	DocumentDeleteButton,
+	DocumentDownloadButton,
+	DocumentEditButton,
+} from '~models/document'
+import { TagLabel } from '~models/tag'
+import { UserCell } from '~models/user'
+
+import { IDocument } from '@stroy/models'
 import { formatDateInRu } from '@stroy/toolkit'
+
+import { Actions } from '~packages/ui'
 
 export default function useDocumentTableData(documents: IDocument[]) {
 	return useMemo(
 		() =>
 			documents.map(document => ({
-				filename: document.title,
+				filename: <DocumentCell document={document} />,
+				author: <UserCell user={document.author} />,
+				tag: document.tag && <TagLabel tag={document.tag} />,
 				project: document.project.title,
-				tag: document.tag?.title,
-				author: userFullName(document.author),
 				created: formatDateInRu(document.created_at),
-				actions: <></>,
+				actions: (
+					<Actions>
+						<DocumentDownloadButton
+							document={document}
+							onlyIcon={true}
+						/>
+						<DocumentEditButton
+							document={document}
+							onlyIcon={true}
+						/>
+						<DocumentDeleteButton
+							document={document.id}
+							onlyIcon={true}
+						/>
+					</Actions>
+				),
 			})),
 		[documents],
 	)
