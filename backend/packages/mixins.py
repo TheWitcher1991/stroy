@@ -1,4 +1,4 @@
-from typing import Generic, Type, TypeVar, Any, Optional
+from typing import Any, Generic, Optional, Type, TypeVar
 
 from django.core.cache import cache
 from django.db.models import Model, QuerySet
@@ -95,7 +95,6 @@ class AbstractRepository(Generic[ModelType]):
         cache.delete(self.get_cache_key(key))
 
     def delete_global_cache(self):
-
         clean_cache_by_tag(f"{self.cache_prefix}")
 
     def delete_queryset_cache(self):

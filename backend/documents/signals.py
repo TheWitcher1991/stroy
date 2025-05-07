@@ -1,4 +1,4 @@
-from django.db.models.signals import pre_save, post_delete
+from django.db.models.signals import post_delete, pre_save
 from django.dispatch import receiver
 
 from documents.models import Document
@@ -20,11 +20,7 @@ def document_post_delete_signal(sender, instance: Document, **kwargs):
 def document_pre_save_signal(sender, instance: Document, **kwargs):
     try:
         document = DocumentRepository.get_by_id(instance.pk)
-        JournalRepository.create(
-            action=JournalAction.UPDATE,
-            document=document,
-            user=document.author
-        )
+        JournalRepository.create(action=JournalAction.UPDATE, document=document, user=document.author)
     except DocumentRepository.DoesNotExist:
         JournalRepository.create(
             action=JournalAction.CREATE,

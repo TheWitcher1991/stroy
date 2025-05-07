@@ -6,6 +6,7 @@ from packages.mixins import AbstractRepository
 
 class BuildGuardRepository(AbstractRepository[Guard]):
     model = Guard
+    cache_prefix = "guards"
 
     def optimize(self) -> QuerySet[Guard]:
         return self.model.objects.prefetch_related("operations").select_related("department")
@@ -13,6 +14,7 @@ class BuildGuardRepository(AbstractRepository[Guard]):
 
 class BuildGuardOperationRepository(AbstractRepository[GuardOperation]):
     model = GuardOperation
+    cache_prefix = "operations"
 
     def clear(self, guard: Guard):
         self.filter(guard=guard).delete()

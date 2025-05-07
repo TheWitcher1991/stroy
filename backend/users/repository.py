@@ -6,6 +6,7 @@ from users.models import User
 
 class BuildUserRepository(AbstractRepository[User]):
     model = User
+    cache_prefix = "users"
 
     def optimize(self) -> QuerySet[User]:
         return self.model.objects.prefetch_related("documents").select_related("guard", "department")

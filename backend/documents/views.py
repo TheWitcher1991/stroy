@@ -2,14 +2,16 @@ from config.settings import ADMIN_ACTIONS
 from documents.filters import DocumentFilter
 from documents.repository import DocumentRepository
 from documents.serializers import DocumentActionSerializer, DocumentSerializer
+from packages.caching import CachedSetMixin
 from packages.controllers import ModelSetController
 
 
-class DocumentViewSet(ModelSetController):
+class DocumentViewSet(CachedSetMixin, ModelSetController):
 
     queryset = DocumentRepository.optimize()
     serializer_class = DocumentSerializer
     filterset_class = DocumentFilter
+    tag_cache = DocumentRepository.cache_prefix
 
     def get_serializer_class(self):
         if self.action in ADMIN_ACTIONS:
