@@ -15,7 +15,9 @@ export const MetaListItem = ({ icon, title, children }: MetaListItemProps) => {
 					{title}
 				</Flex>
 			</Text>
-			<Text variant={'body-2'}>{children}</Text>
+			<Text variant={'body-2'} style={{ textAlign: 'right' }}>
+				{children}
+			</Text>
 		</Flex>
 	)
 }

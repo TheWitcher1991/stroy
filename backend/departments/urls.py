@@ -5,4 +5,6 @@ from . import views
 
 app_name = "departments"
 
-urlpatterns = []
+urlpatterns = [
+    path("departments/indicators/", views.DepartmentIndicatorController.as_view(), name="department-indicators"),
+]

@@ -28,6 +28,7 @@ export const DocumentImportModal = ({ open, onClose }: ModalProps) => {
 		formState: { errors },
 		setValue,
 		setError,
+		reset,
 	} = useForm<ICreateDocument>({
 		defaultValues: {
 			title: '',
@@ -58,6 +59,7 @@ export const DocumentImportModal = ({ open, onClose }: ModalProps) => {
 				},
 			})
 			clearUploads()
+			reset()
 			toast.success('Документ успешно создан')
 			onClose()
 		})

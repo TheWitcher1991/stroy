@@ -8,8 +8,9 @@ import {
 	Person,
 	ScalesUnbalanced,
 	Tag,
+	TextAlignLeft,
 } from '@gravity-ui/icons'
-import { Flex, Label, Text } from '@gravity-ui/uikit'
+import { Alert, Flex, Label, Text } from '@gravity-ui/uikit'
 
 import GuardOperationList from '~features/guard-operation-list'
 
@@ -20,14 +21,21 @@ import {
 	PropsWithDocument,
 	userFullName,
 } from '@stroy/models'
-import { formatDateInRu } from '@stroy/toolkit'
+import { formatBytes, formatDateInRu, spaced } from '@stroy/toolkit'
 
 import { MetaList, MetaListItem } from '~packages/ui'
 
 export default function DocumentInfo({ document }: PropsWithDocument) {
 	return (
 		<>
-			<MetaList width={400}>
+			{!document.permissions && (
+				<Alert
+					theme='info'
+					title='Внимание'
+					message='У вас полные права для работы с этим документом'
+				/>
+			)}
+			<MetaList width={420}>
 				<MetaListItem icon={FileText} title={'ID'}>
 					{document.doc_number}
 				</MetaListItem>
@@ -41,22 +49,24 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 				)}
 
 				<MetaListItem icon={Cube} title={'Проект'}>
-					<Label>{document.project.title}</Label>
+					<Label size={'s'}>{document.project.title}</Label>
 				</MetaListItem>
 				<MetaListItem icon={Person} title={'Автор'}>
-					<Label>{userFullName(document.author)}</Label>
+					<Label size={'s'}>{userFullName(document.author)}</Label>
 				</MetaListItem>
 				<MetaListItem icon={Archive} title={'Статус'}>
-					<Label>{DocumentStatusMapper[document.status]}</Label>
+					<Label size={'s'}>
+						{DocumentStatusMapper[document.status]}
+					</Label>
 				</MetaListItem>
 				<MetaListItem icon={Layers} title={'Тип'}>
 					{document.doc_type}
 				</MetaListItem>
-				<MetaListItem icon={Layers} title={'Контент'}>
+				<MetaListItem icon={TextAlignLeft} title={'Контент'}>
 					{document.content_type}
 				</MetaListItem>
 				<MetaListItem icon={ScalesUnbalanced} title={'Размер'}>
-					{document.size} KB
+					{formatBytes(document.size, 'kb')}
 				</MetaListItem>
 				<MetaListItem icon={Calendar} title={'Создан'}>
 					{formatDateInRu(document.created_at)}

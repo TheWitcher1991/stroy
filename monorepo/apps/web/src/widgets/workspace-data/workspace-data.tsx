@@ -2,6 +2,7 @@ import { Flex, Skeleton } from '@gravity-ui/uikit'
 import { memo } from 'react'
 
 import { useDepartmentIndicators } from '@stroy/models'
+import { formatBytes, spaced } from '@stroy/toolkit'
 
 import { RenderFetchData } from '~packages/lib'
 import { ValueCard } from '~packages/ui'
@@ -19,10 +20,13 @@ export default function WorkspaceData() {
 				loadingFallback={<WorkspaceDataSkeleton />}
 			>
 				<ValueCard value={indicators?.documents} title={'Документов'} />
-				<ValueCard
-					value={`${indicators?.size} KB`}
-					title={'Общий размер'}
-				/>
+				{indicators?.size && (
+					<ValueCard
+						value={`${formatBytes(indicators.size)}`}
+						title={'Общий размер'}
+					/>
+				)}
+
 				<ValueCard value={indicators?.tags} title={'Тегов'} />
 				<ValueCard value={indicators?.projects} title={'Проектов'} />
 			</RenderFetchData>

@@ -21,7 +21,7 @@ export const DocumentVersionSchema = z.object({
 
 export const DocumentSchema = BaseDocumentSchema.extend({
 	id: zShape.id,
-	file_path: zShape.url,
+	file: zShape.url,
 	doc_number: z.string(),
 	doc_type: z.nativeEnum(DocumentType),
 	content_type: z.string(),
