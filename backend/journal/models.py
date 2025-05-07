@@ -7,6 +7,7 @@ from packages.utils import t
 
 
 class Journal(AbstractModel):
+    details = models.TextField(t("Детали"), null=True, blank=True)
     action = models.CharField(t("Действие"), choices=JournalAction, max_length=CHAR_MD_LENGTH)
     document = models.ForeignKey("documents.Document", on_delete=models.CASCADE, related_name="journals")
     user = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="journals")
