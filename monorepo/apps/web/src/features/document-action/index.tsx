@@ -1,9 +1,27 @@
+import { match } from 'ts-pattern'
+
 import { DocumentApproveButton, DocumentDraftButton } from '~models/document'
 
-import { DocumentStatus, PropsWithDocument } from '@stroy/models'
+import {
+	DocumentStatus,
+	GuardOperation,
+	hasPermission,
+	PropsWithDocument,
+	useIam,
+} from '@stroy/models'
 
 export const DocumentAction = ({ document }: PropsWithDocument) => {
-	if (document.status === DocumentStatus.APPROVED)
-		return <DocumentDraftButton document={document.id} />
-	else return <DocumentApproveButton document={document.id} />
+	const iam = useIam()
+
+	if (
+		!hasPermission(document.permissions, GuardOperation.CREATE) &&
+		document.author.id !== iam.user
+	)
+		return null
+
+	return match(document.status)
+		.with(DocumentStatus.APPROVED, () => (
+			<DocumentDraftButton document={document.id} />
+		))
+		.otherwise(() => <DocumentApproveButton document={document.id} />)
 }

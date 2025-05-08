@@ -17,7 +17,7 @@ class BuildDocumentVersionRepository(AbstractRepository[DocumentVersion]):
     cache_prefix = "versions"
 
 
-class BuildDocumentPermissionRepository(AbstractRepository[DocumentVersion]):
+class BuildDocumentPermissionRepository(AbstractRepository[DocumentPermission]):
     model = DocumentPermission
     cache_prefix = "permissions"
 

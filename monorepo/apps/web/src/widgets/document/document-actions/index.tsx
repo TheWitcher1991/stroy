@@ -13,10 +13,10 @@ import { Actions } from '~packages/ui'
 export default function DocumentActions({ document }: PropsWithDocument) {
 	return (
 		<Actions>
-			<DocumentDownloadButton document={document} />
+			<DocumentDownloadButton file={document.file} />
 			<DocumentEditButton document={document} />
 			<DocumentAction document={document} />
-			<DocumentDeleteButton document={document.id} />
+			<DocumentDeleteButton document={document} />
 		</Actions>
 	)
 }

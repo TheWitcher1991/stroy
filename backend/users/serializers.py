@@ -20,7 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
     def get_documents(self, obj):
         from documents.serializers import DocumentSerializer
 
-        return DocumentSerializer(obj.documents.all(), many=True).data
+        return DocumentSerializer(obj.documents.all(), many=True, context=self.context).data
 
     def create(self, validated_data):
         validated_data["department"] = self.context["request"].user.department

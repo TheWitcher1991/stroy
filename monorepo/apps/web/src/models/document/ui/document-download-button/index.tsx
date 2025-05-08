@@ -1,17 +1,15 @@
 import { ArrowDownToSquare } from '@gravity-ui/icons'
 import { useCallback } from 'react'
 
-import { PropsWithDocument } from '@stroy/models'
-
 import { Action } from '~packages/ui'
 
 export const DocumentDownloadButton = ({
-	document,
+	file,
 	onlyIcon,
-}: PropsWithAction<PropsWithDocument>) => {
+}: PropsWithAction<{ file: string }>) => {
 	const click = useCallback(() => {
-		window.open(document.file, '_blank')
-	}, [document.file])
+		window.open(file, '_blank')
+	}, [file])
 
 	return (
 		<Action

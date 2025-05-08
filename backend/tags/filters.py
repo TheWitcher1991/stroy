@@ -1,9 +1,8 @@
-from django_filters.rest_framework import FilterSet
-
+from packages.mixins import BaseFilterSet
 from tags.models import Tag
 
 
-class TagFilter(FilterSet):
+class TagFilter(BaseFilterSet):
 
     class Meta:
         model = Tag

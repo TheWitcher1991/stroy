@@ -12,6 +12,7 @@ import {
 	PropsWithDocument,
 	UpdateDocumentSchema,
 	useUpdateDocument,
+	useUpdateDocumentFormData,
 } from '@stroy/models'
 import { DOCUMENT_FILE_TYPES } from '@stroy/system'
 import { query, splitId } from '@stroy/toolkit'
@@ -41,7 +42,7 @@ export const DocumentEditModal = ({
 		resolver: zodResolver(UpdateDocumentSchema),
 	})
 
-	const req = useUpdateDocument(document.id)
+	const req = useUpdateDocumentFormData(document.id)
 
 	const updateHandler = async (data: IUpdateDocument) => {
 		const formData = new FormData()

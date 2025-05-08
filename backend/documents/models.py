@@ -40,6 +40,10 @@ class Document(AbstractModel):
 class DocumentVersion(AbstractModel):
     version_number = models.PositiveIntegerField(t("Версия документа"))
     file = models.FileField(t("Файл"), upload_to="documents/")
+    doc_title = models.CharField(t("Заголовок документа"), null=True, max_length=CHAR_MAX_LENGTH)
+    doc_type = models.CharField(t("Тип документа"), null=True, max_length=CHAR_MAX_LENGTH)
+    content_type = models.CharField(t("Тип контента"), null=True, max_length=CHAR_MAX_LENGTH)
+    size = models.CharField(t("Размер файла"), null=True, max_length=CHAR_MAX_LENGTH)
     modified_by = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="document_versions")
     document = models.ForeignKey("documents.Document", on_delete=models.CASCADE, related_name="versions")
 

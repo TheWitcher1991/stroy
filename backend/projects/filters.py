@@ -1,9 +1,8 @@
-from django_filters.rest_framework import FilterSet
-
+from packages.mixins import BaseFilterSet
 from projects.models import Project
 
 
-class ProjectFilter(FilterSet):
+class ProjectFilter(BaseFilterSet):
 
     class Meta:
         model = Project

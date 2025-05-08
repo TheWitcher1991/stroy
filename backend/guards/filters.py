@@ -1,9 +1,8 @@
-from django_filters.rest_framework import FilterSet
-
 from guards.models import Guard
+from packages.mixins import BaseFilterSet
 
 
-class GuardFilter(FilterSet):
+class GuardFilter(BaseFilterSet):
 
     class Meta:
         model = Guard

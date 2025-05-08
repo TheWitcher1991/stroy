@@ -21,18 +21,27 @@ import {
 	PropsWithDocument,
 	userFullName,
 } from '@stroy/models'
-import { formatBytes, formatDateInRu, spaced } from '@stroy/toolkit'
+import { formatBytes, formatDateInRu } from '@stroy/toolkit'
 
 import { MetaList, MetaListItem } from '~packages/ui'
 
 export default function DocumentInfo({ document }: PropsWithDocument) {
 	return (
 		<>
-			{!document.permissions && (
+			{document.permissions.length === 0 && (
+				<Alert
+					theme='danger'
+					title='Внимание'
+					message='У вас нет доступа к документу'
+				/>
+			)}
+			{document.permissions.length > 0 && (
 				<Alert
 					theme='info'
-					title='Внимание'
-					message='У вас полные права для работы с этим документом'
+					title='Права доступа'
+					message={
+						<GuardOperationList operations={document.permissions} />
+					}
 				/>
 			)}
 			<MetaList width={420}>
@@ -75,12 +84,6 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 					{formatDateInRu(document.updated_at)}
 				</MetaListItem>
 			</MetaList>
-			{document.permissions && (
-				<Flex gap={2} alignItems={'center'}>
-					<Text variant={'body-2'}>Права доступа:</Text>
-					<GuardOperationList operations={document.permissions} />
-				</Flex>
-			)}
 		</>
 	)
 }

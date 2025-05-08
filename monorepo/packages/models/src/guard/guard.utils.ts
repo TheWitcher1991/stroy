@@ -1,5 +1,10 @@
 import { EnumType, SelectOption } from '@stroy/types'
 
+export const hasPermission = (
+	permissions: GuardOperation[],
+	permission: GuardOperation,
+): boolean => permissions.indexOf(permission) !== -1
+
 export const GuardOperation = {
 	CREATE: 'CREATE',
 	READ: 'READ',

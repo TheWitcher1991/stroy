@@ -9,6 +9,7 @@ const creator = createModelListStore<IJournal, Partial<UseJournal>>({
 	filter: {
 		page_size: 30,
 		page: 1,
+		ordering: '-created_at',
 	},
 })
 

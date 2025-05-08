@@ -9,6 +9,7 @@ const creator = createModelListStore<IUser, Partial<UseUsers>>({
 	filter: {
 		page_size: 30,
 		page: 1,
+		ordering: '-date_joined',
 	},
 })
 

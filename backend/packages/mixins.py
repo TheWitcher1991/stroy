@@ -2,12 +2,20 @@ from typing import Any, Generic, Optional, Type, TypeVar
 
 from django.core.cache import cache
 from django.db.models import Model, QuerySet
+from django_filters.rest_framework import CharFilter, FilterSet
 from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import AllowAny
 
 from packages.caching import clean_cache_by_tag
 
 ModelType = TypeVar("ModelType", bound=Model)
+
+
+class BaseFilterSet(FilterSet):
+    ordering = CharFilter(field_name="ordering", method="filter_ordering")
+
+    def filter_ordering(self, queryset: QuerySet, name, value):
+        return queryset.order_by(value)
 
 
 class AllowAnyMixin(object):

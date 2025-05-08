@@ -1,9 +1,8 @@
-from django_filters.rest_framework import FilterSet
-
 from journal.models import Journal
+from packages.mixins import BaseFilterSet
 
 
-class JournalFilter(FilterSet):
+class JournalFilter(BaseFilterSet):
 
     class Meta:
         model = Journal

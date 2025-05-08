@@ -1,9 +1,8 @@
-from django_filters.rest_framework import FilterSet
-
 from documents.models import Document
+from packages.mixins import BaseFilterSet
 
 
-class DocumentFilter(FilterSet):
+class DocumentFilter(BaseFilterSet):
 
     class Meta:
         model = Document

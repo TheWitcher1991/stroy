@@ -24,9 +24,9 @@ export default function useDocumentTableData(documents: IDocument[]) {
 				project: document.project.title,
 				created: formatDateInRu(document.created_at),
 				actions: (
-					<Actions>
+					<Actions justifyContent={'end'}>
 						<DocumentDownloadButton
-							document={document}
+							file={document.file}
 							onlyIcon={true}
 						/>
 						<DocumentEditButton
@@ -34,7 +34,7 @@ export default function useDocumentTableData(documents: IDocument[]) {
 							onlyIcon={true}
 						/>
 						<DocumentDeleteButton
-							document={document.id}
+							document={document}
 							onlyIcon={true}
 						/>
 					</Actions>

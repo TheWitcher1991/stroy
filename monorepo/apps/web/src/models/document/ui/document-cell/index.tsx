@@ -1,31 +1,13 @@
-import {
-	FileLetterP,
-	FileLetterW,
-	FileText,
-	MathOperations,
-	MusicNote,
-	Picture,
-} from '@gravity-ui/icons'
 import { IconData } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 import { memo, useCallback } from 'react'
 
+import { documentIcon } from '~models/document'
+
 import { href } from '@stroy/href'
-import { DocumentType, PropsWithDocument } from '@stroy/models'
+import { PropsWithDocument } from '@stroy/models'
 
 import { Cell } from '~packages/ui'
-
-const documentIcon = {
-	[DocumentType.image]: Picture,
-	[DocumentType.pdf]: FileLetterP,
-	[DocumentType.word]: FileLetterW,
-	[DocumentType.excel]: MathOperations,
-	[DocumentType.video]: MusicNote,
-	[DocumentType.audio]: MusicNote,
-	[DocumentType.text]: FileText,
-	[DocumentType.other]: FileText,
-	[DocumentType.unknown]: FileText,
-}
 
 export const DocumentCell = memo(({ document }: PropsWithDocument) => {
 	const router = useRouter()

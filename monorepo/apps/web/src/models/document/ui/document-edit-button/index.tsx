@@ -3,7 +3,7 @@ import { useToggle } from 'ahooks'
 
 import { DocumentEditModal } from '~models/document'
 
-import { PropsWithDocument } from '@stroy/models'
+import { GuardOperation, hasPermission, PropsWithDocument } from '@stroy/models'
 
 import { Action } from '~packages/ui'
 
@@ -12,6 +12,8 @@ export const DocumentEditButton = ({
 	onlyIcon,
 }: PropsWithAction<PropsWithDocument>) => {
 	const [val, { toggle }] = useToggle(false)
+
+	if (!hasPermission(document.permissions, GuardOperation.UPDATE)) return null
 
 	return (
 		<>

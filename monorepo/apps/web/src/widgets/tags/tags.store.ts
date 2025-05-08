@@ -9,6 +9,7 @@ const creator = createModelListStore<ITag, Partial<UseTags>>({
 	filter: {
 		page_size: 30,
 		page: 1,
+		ordering: '-created_at',
 	},
 })
 

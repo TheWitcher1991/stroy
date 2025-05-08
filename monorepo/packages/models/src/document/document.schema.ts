@@ -14,7 +14,11 @@ const BaseDocumentSchema = z.object({
 
 export const DocumentVersionSchema = z.object({
 	version_number: z.number(),
-	file_path: zShape.url,
+	file: zShape.url,
+	doc_title: zShape.title,
+	doc_type: z.nativeEnum(DocumentType),
+	content_type: z.string(),
+	size: z.number(),
 	modified_by: UserSchema,
 	created_at: zShape.datetime,
 })

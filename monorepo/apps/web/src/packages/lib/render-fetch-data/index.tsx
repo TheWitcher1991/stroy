@@ -1,6 +1,7 @@
 import { Binoculars, Bug } from '@gravity-ui/icons'
 import { Icon } from '@gravity-ui/uikit'
 import { memo, PropsWithChildren, ReactNode } from 'react'
+import { match } from 'ts-pattern'
 
 import { Placeholder } from '~packages/ui'
 
@@ -49,17 +50,9 @@ export const RenderFetchData = ({
 	errorFallback = <DefaultErrorFallback />,
 	emptyFallback = <DefaultEmptyFallback />,
 }: RenderFetchDataProps) => {
-	if (isLoading) {
-		return <>{loadingFallback}</>
-	}
-
-	if (hasError) {
-		return <>{errorFallback}</>
-	}
-
-	if (countData !== undefined && Number(countData) === 0) {
-		return <>{emptyFallback}</>
-	}
-
-	return <>{children}</>
+	return match({ isLoading, hasError, countData })
+		.with({ isLoading: true }, () => loadingFallback)
+		.with({ hasError: true }, () => errorFallback)
+		.with({ countData: 0 }, () => emptyFallback)
+		.otherwise(() => children)
 }
