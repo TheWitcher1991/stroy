@@ -9,6 +9,7 @@ from packages.services.jwt import JWTService
 from packages.utils import validate_user_email
 from users.models import User
 from users.repository import UserRepository
+from users.types import UserRole
 
 
 class SignupSerializer(serializers.ModelSerializer):
@@ -39,6 +40,7 @@ class SignupSerializer(serializers.ModelSerializer):
 
         user = UserRepository.create_superuser(
             **validated_data,
+            role=UserRole.ADMIN,
             department=department,
         )
 
@@ -52,6 +54,7 @@ class LoginSerializer(serializers.Serializer):
     refresh_token = serializers.CharField(read_only=True)
     session_expires = serializers.CharField(read_only=True)
     access_expires = serializers.CharField(read_only=True)
+    role = serializers.CharField(read_only=True)
     user = serializers.IntegerField(read_only=True)
     department = serializers.IntegerField(read_only=True)
     department_name = serializers.CharField(read_only=True)
@@ -85,6 +88,7 @@ class LoginSerializer(serializers.Serializer):
         attrs["session_expires"] = session.get("session_expires")
         attrs["access_expires"] = session.get("access_expires")
         attrs["token_type"] = AUTH_TOKEN_TYPE
+        attrs["role"] = user.role
         attrs["user"] = user.id
         attrs["department"] = user.department.id
         attrs["department_name"] = user.department.name

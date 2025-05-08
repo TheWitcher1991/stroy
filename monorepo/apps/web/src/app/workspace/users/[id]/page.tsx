@@ -4,7 +4,7 @@ import { use } from 'react'
 
 import User from '~widgets/user'
 
-import { useUser } from '@stroy/models'
+import { IUser, useUser } from '@stroy/models'
 
 import { RenderFetchData } from '~packages/lib'
 
@@ -18,7 +18,7 @@ export default function UserPage({
 
 	return (
 		<RenderFetchData isLoading={isLoading} hasError={isError}>
-			<User user={data?.data} />
+			<User user={data?.data as IUser} />
 		</RenderFetchData>
 	)
 }

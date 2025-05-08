@@ -1,5 +1,7 @@
-import { zShape } from '@stroy/toolkit'
+import { UserRole } from '../user'
 import { z } from 'zod'
+
+import { zShape } from '@stroy/toolkit'
 
 export const LoginSchema = z.object({
 	email: zShape.email,
@@ -19,6 +21,7 @@ export const AccountSchema = z.object({
 	session_expires: z.number(),
 	access_expires: z.number(),
 	token_type: z.string(),
+	role: z.nativeEnum(UserRole),
 	user: z.number(),
 	department: z.number(),
 	department_name: z.string(),

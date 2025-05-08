@@ -4,7 +4,7 @@ import { use } from 'react'
 
 import Document from '~widgets/document'
 
-import { useDocument } from '@stroy/models'
+import { IDocument, useDocument } from '@stroy/models'
 
 import { RenderFetchData } from '~packages/lib'
 
@@ -18,7 +18,7 @@ export default function DocumentPage({
 
 	return (
 		<RenderFetchData isLoading={isLoading} hasError={isError}>
-			<Document document={data?.data} />
+			<Document document={data?.data as IDocument} />
 		</RenderFetchData>
 	)
 }

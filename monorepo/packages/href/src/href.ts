@@ -21,6 +21,10 @@ export const href = {
 		return `${this.root}workspace`
 	},
 
+	get profile() {
+		return `${this.workspace}/profile`
+	},
+
 	documents: {
 		get index() {
 			return `${href.workspace}/documents`

@@ -4,8 +4,14 @@ import { useToggle } from 'ahooks'
 
 import { UserCreateModal } from '~models/user'
 
+import { useIamAdmin } from '@stroy/models'
+
 export const UserCreateButton = () => {
+	const iam = useIamAdmin()
+
 	const [val, { toggle }] = useToggle(false)
+
+	if (!iam) return null
 
 	return (
 		<>

@@ -1,14 +1,32 @@
-import { useMemo } from 'react'
+import { memo, useMemo } from 'react'
 
 import GuardOperationList from '~features/guard-operation-list'
 
+import { GuardViewButton } from '~models/guard'
 import { GuardDeleteButton } from '~models/guard/ui/guard-delete-button'
 import { GuardEditButton } from '~models/guard/ui/guard-edit-button'
 
-import { IGuard } from '@stroy/models'
+import { IGuard, useIamAdmin } from '@stroy/models'
 import { formatDateInRu } from '@stroy/toolkit'
 
 import { Actions } from '~packages/ui'
+
+const GuardRowActions = memo((guard: IGuard) => {
+	const iam = useIamAdmin()
+
+	return (
+		<Actions justifyContent={'end'}>
+			{iam ? (
+				<>
+					<GuardEditButton guard={guard} onlyIcon={true} />
+					<GuardDeleteButton guard={guard.id} onlyIcon={true} />
+				</>
+			) : (
+				<GuardViewButton guard={guard} onlyIcon={true} />
+			)}
+		</Actions>
+	)
+})
 
 export default function useGuardTableData(guards: IGuard[]) {
 	return useMemo(
@@ -19,12 +37,7 @@ export default function useGuardTableData(guards: IGuard[]) {
 					<GuardOperationList operations={guard.permissions} />
 				),
 				created: formatDateInRu(guard.created_at),
-				actions: (
-					<Actions justifyContent={'end'}>
-						<GuardEditButton guard={guard} onlyIcon={true} />
-						<GuardDeleteButton guard={guard.id} onlyIcon={true} />
-					</Actions>
-				),
+				actions: <GuardRowActions guard={guard} />,
 			})),
 		[guards],
 	)

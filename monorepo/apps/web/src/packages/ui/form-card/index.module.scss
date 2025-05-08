@@ -1,9 +1,9 @@
 .form__card {
-    display: flex;
-    flex-direction: column;
     padding: 24px;
+    height: fit-content;
 }
 
 .form__card__title {
+    display: block;
     margin-bottom: 24px;
 }

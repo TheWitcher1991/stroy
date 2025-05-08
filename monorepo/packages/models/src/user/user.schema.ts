@@ -3,10 +3,13 @@ import { z } from 'zod'
 
 import { zShape } from '@stroy/toolkit'
 
+import { UserRole } from './user.utils'
+
 const BaseUserSchema = z.object({
 	first_name: zShape.name,
 	last_name: zShape.name,
 	email: zShape.email,
+	role: z.nativeEnum(UserRole),
 })
 
 export const UserDocumentSchema = z.object({

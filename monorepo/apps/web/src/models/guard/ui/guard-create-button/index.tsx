@@ -4,8 +4,14 @@ import { useToggle } from 'ahooks'
 
 import { GuardCreateModal } from '~models/guard'
 
+import { useIamAdmin } from '@stroy/models'
+
 export const GuardCreateButton = () => {
+	const iam = useIamAdmin()
+
 	const [val, { toggle }] = useToggle(false)
+
+	if (!iam) return null
 
 	return (
 		<>

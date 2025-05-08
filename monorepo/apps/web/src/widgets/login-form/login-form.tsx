@@ -3,7 +3,6 @@
 import { ArrowRightToSquare } from '@gravity-ui/icons'
 import { Button, Icon, PasswordInput, TextInput } from '@gravity-ui/uikit'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 
 import { href } from '@stroy/href'
@@ -13,8 +12,6 @@ import { query } from '@stroy/toolkit'
 import { FormCard, FormLink, FormSection, Spacing } from '~packages/ui'
 
 export default function LoginForm() {
-	const router = useRouter()
-
 	const {
 		register,
 		handleSubmit,
@@ -33,7 +30,7 @@ export default function LoginForm() {
 		await query(async () => {
 			const res = await req.mutateAsync(data)
 			login(res.data)
-			router.replace(href.workspace)
+			window.location.replace(href.workspace)
 		})
 	}
 

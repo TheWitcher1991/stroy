@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import { GuardSelect } from '~models/guard'
+import { UserRoleSelect } from '~models/user'
 
 import {
 	IUpdateUser,
@@ -32,6 +33,7 @@ export const UserEditModal = ({
 			last_name: user.last_name,
 			first_name: user.first_name,
 			email: user.email,
+			role: user.role,
 			guard: user.guard?.id,
 		},
 		resolver: zodResolver(UpdateUserSchema),
@@ -81,6 +83,20 @@ export const UserEditModal = ({
 					error={errors.email?.message}
 					errorMessage={errors.email?.message}
 					{...register('email')}
+				/>
+			</FormSection>
+
+			<FormSection label={'Роль'}>
+				<UserRoleSelect
+					defaultValue={user.role.split(',')}
+					errorMessage={errors.role?.message}
+					register={register}
+					onSelect={value => {
+						setValue('role', value.join(','))
+						setError('role', {
+							message: '',
+						})
+					}}
 				/>
 			</FormSection>
 

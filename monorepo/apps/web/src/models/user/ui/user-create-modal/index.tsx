@@ -4,8 +4,14 @@ import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import { GuardSelect } from '~models/guard'
+import { UserRoleSelect } from '~models/user'
 
-import { CreateUserSchema, ICreateUser, useCreateUser } from '@stroy/models'
+import {
+	CreateUserSchema,
+	ICreateUser,
+	useCreateUser,
+	UserRole,
+} from '@stroy/models'
 import { query } from '@stroy/toolkit'
 import { ModalProps } from '@stroy/types'
 
@@ -24,6 +30,7 @@ export const UserCreateModal = ({ open, onClose }: ModalProps) => {
 			first_name: '',
 			email: '',
 			password: '',
+			role: UserRole.OFFICER,
 		},
 		resolver: zodResolver(CreateUserSchema),
 	})
@@ -81,6 +88,20 @@ export const UserCreateModal = ({ open, onClose }: ModalProps) => {
 					error={errors.password?.message}
 					errorMessage={errors.password?.message}
 					{...register('password')}
+				/>
+			</FormSection>
+
+			<FormSection label={'Роль'}>
+				<UserRoleSelect
+					defaultValue={UserRole.OFFICER.split(',')}
+					errorMessage={errors.role?.message}
+					register={register}
+					onSelect={value => {
+						setValue('role', value.join(','))
+						setError('role', {
+							message: '',
+						})
+					}}
 				/>
 			</FormSection>
 
