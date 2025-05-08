@@ -10,10 +10,7 @@ from journal.types import JournalAction
 @receiver(post_delete, sender=Document)
 def document_post_delete_signal(sender, instance: Document, **kwargs):
     JournalRepository.create(
-        action=JournalAction.DELETE,
-        document=instance,
-        user=instance.author,
-        details=instance.title
+        action=JournalAction.DELETE, document=instance, user=instance.author, details=instance.title
     )
 
 
@@ -42,6 +39,6 @@ def document_version_signal(sender, instance: Document, created, **kwargs):
             )
 
             instance.version_number = old_instance.version_number + 1
-            instance.save(update_fields=['version_number'])
+            instance.save(update_fields=["version_number"])
     except DocumentRepository.DoesNotExist:
         pass

@@ -15,10 +15,9 @@ const nextConfig: NextConfig = {
 		ignoreDuringBuilds: true,
 	},
 	images: {
-		remotePatterns: [
-
-		],
+		remotePatterns: [],
 	},
+	transpilePackages: ['@stroy/uikit'],
 	webpack: config => {
 		config.module.rules.push({
 			test: /\.svg$/i,

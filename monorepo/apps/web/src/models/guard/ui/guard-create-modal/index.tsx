@@ -2,16 +2,10 @@ import { TextInput } from '@gravity-ui/uikit'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import { ZodNativeEnum } from 'zod'
 
 import { GuardOperationSelect } from '~models/guard'
 
-import {
-	CreateGuardSchema,
-	GuardOperation,
-	ICreateGuard,
-	useCreateGuard,
-} from '@stroy/models'
+import { CreateGuardSchema, ICreateGuard, useCreateGuard } from '@stroy/models'
 import { query } from '@stroy/toolkit'
 import { ModalProps } from '@stroy/types'
 
@@ -61,7 +55,7 @@ export const GuardCreateModal = ({ open, onClose }: ModalProps) => {
 			</FormSection>
 
 			<FormSection label={'Операции'} withOutMargin={true}>
-				<GuardOperationSelect<ZodNativeEnum<GuardOperation>>
+				<GuardOperationSelect
 					name={'operations'}
 					errorMessage={errors.operations?.message}
 					register={register}

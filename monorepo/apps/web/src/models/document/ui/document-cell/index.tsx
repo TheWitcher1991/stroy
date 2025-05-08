@@ -6,14 +6,14 @@ import {
 	MusicNote,
 	Picture,
 } from '@gravity-ui/icons'
-import { Flex, Icon, IconData, Text } from '@gravity-ui/uikit'
+import { IconData } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 import { memo, useCallback } from 'react'
 
 import { href } from '@stroy/href'
 import { DocumentType, PropsWithDocument } from '@stroy/models'
 
-import styles from './index.module.scss'
+import { Cell } from '~packages/ui'
 
 const documentIcon = {
 	[DocumentType.image]: Picture,
@@ -36,19 +36,11 @@ export const DocumentCell = memo(({ document }: PropsWithDocument) => {
 	)
 
 	return (
-		<Flex gap={2} alignItems={'center'} onClick={onClick}>
-			<span className={styles.documentCellIcon}>
-				<Icon
-					data={documentIcon[document.doc_type] as IconData}
-					size={19}
-				/>
-			</span>
-			<Flex direction={'column'}>
-				<Text>{document.title}</Text>
-				<Text variant={'body-short'} color={'secondary'}>
-					{document.doc_number}
-				</Text>
-			</Flex>
-		</Flex>
+		<Cell
+			onClick={onClick}
+			icon={documentIcon[document.doc_type] as IconData}
+			title={document.title}
+			subtitle={document.doc_number}
+		/>
 	)
 })

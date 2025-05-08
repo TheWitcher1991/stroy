@@ -1,4 +1,4 @@
-.documentCellIcon {
+.cellIcon {
     width: 32px;
     height: 32px;
     border-radius: 50%;
@@ -7,4 +7,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+}
+
+.cell {
+    transition: all 0.1s ease;
+    cursor: pointer;
+    border-radius: 99px;
+
+    &:hover {
+        background: var(--g-color-base-neutral-light)
+    }
 }

@@ -1,4 +1,7 @@
 import { PencilToSquare } from '@gravity-ui/icons'
+import { useToggle } from 'ahooks'
+
+import { GuardEditModal } from '~models/guard'
 
 import { PropsWithGuard } from '@stroy/models'
 
@@ -8,9 +11,15 @@ export const GuardEditButton = ({
 	guard,
 	onlyIcon,
 }: PropsWithAction<PropsWithGuard>) => {
+	const [val, { toggle }] = useToggle(false)
+
 	return (
-		<Action icon={PencilToSquare} onlyIcon={onlyIcon}>
-			Изменить
-		</Action>
+		<>
+			<GuardEditModal guard={guard} open={val} onClose={toggle} />
+
+			<Action icon={PencilToSquare} onlyIcon={onlyIcon} onClick={toggle}>
+				Изменить
+			</Action>
+		</>
 	)
 }

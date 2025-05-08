@@ -1,0 +1,20 @@
+{
+  "name": "@stroy/uikit",
+  "version": "1.0.0",
+  "private": true,
+  "sideEffects": [
+    "*.scss",
+    "*.sass"
+  ],
+  "main": "src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./styles": "./styles/globals.scss"
+  },
+  "devDependencies": {
+    "@stroy/eslint-config": "workspace:*",
+    "@stroy/typescript-config": "workspace:*"
+  }
+}

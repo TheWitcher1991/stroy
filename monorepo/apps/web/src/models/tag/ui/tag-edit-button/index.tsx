@@ -1,4 +1,7 @@
 import { PencilToSquare } from '@gravity-ui/icons'
+import { useToggle } from 'ahooks'
+
+import { TagEditModal } from '~models/tag'
 
 import { PropsWithTag } from '@stroy/models'
 
@@ -8,9 +11,15 @@ export const TagEditButton = ({
 	tag,
 	onlyIcon,
 }: PropsWithAction<PropsWithTag>) => {
+	const [val, { toggle }] = useToggle(false)
+
 	return (
-		<Action icon={PencilToSquare} onlyIcon={onlyIcon}>
-			Изменить
-		</Action>
+		<>
+			<TagEditModal tag={tag} open={val} onClose={toggle} />
+
+			<Action icon={PencilToSquare} onlyIcon={onlyIcon} onClick={toggle}>
+				Изменить
+			</Action>
+		</>
 	)
 }

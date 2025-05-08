@@ -1,14 +1,15 @@
 import { Select, SelectOption } from '@gravity-ui/uikit'
+import { ZodNativeEnum } from 'zod'
 
-import { GuardSelectOptions } from '@stroy/models'
+import { GuardOperation, GuardSelectOptions } from '@stroy/models'
 import { SelectProps } from '@stroy/types'
 
-export const GuardOperationSelect = <T = any,>({
+export const GuardOperationSelect = ({
 	defaultValue,
 	value,
 	errorMessage,
 	onSelect,
-}: SelectProps<T>) => {
+}: SelectProps<ZodNativeEnum<GuardOperation>>) => {
 	return (
 		<>
 			<Select

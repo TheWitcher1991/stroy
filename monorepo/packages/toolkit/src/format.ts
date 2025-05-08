@@ -26,10 +26,10 @@ export const formatFileSize = (size: number): string => {
 }
 
 export const formatBytes = (
-	bytes: number,
+	bytes?: number,
 	system: 'b' | 'kb' | 'mb' | 'gb' = 'mb',
 ): string => {
-	if (bytes === 0) return '0 Б'
+	if (!bytes || bytes === 0) return '0 Б'
 
 	switch (system) {
 		case 'b':

@@ -19,7 +19,7 @@ export const journalTableColumns: TableColumnConfig<any>[] = [
 	{
 		id: 'created',
 		align: 'right',
-		name: 'Совершено',
+		name: 'Дата',
 		width: '20%',
 	},
 ]

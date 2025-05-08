@@ -1,4 +1,4 @@
-from django.db.models import Sum, IntegerField
+from django.db.models import IntegerField, Sum
 from django.db.models.functions import Cast
 from rest_framework.response import Response
 
@@ -23,9 +23,7 @@ class DepartmentIndicatorController(BaseController):
             "projects": ProjectRepository.filter(department=department).count(),
             "guards": GuardRepository.filter(department=department).count(),
             "users": UserRepository.filter(department=department).count(),
-            "size": round(documents.aggregate(
-                total_size=Sum(Cast("size", IntegerField()))
-            )["total_size"], 2) or 0
+            "size": round(documents.aggregate(total_size=Sum(Cast("size", IntegerField())))["total_size"], 0) or 0,
         }
 
         return Response(data)

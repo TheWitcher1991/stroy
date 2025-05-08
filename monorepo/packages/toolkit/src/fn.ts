@@ -27,3 +27,9 @@ export const spaced = (val?: number | string): string => {
 
 	return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
+
+export const splitId = (id?: number): string[] => {
+	if (!id) return []
+
+	return id.toString().split('')
+}

@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 import { ReactNode } from 'react'
 import WithProviders from '~providers'
 
+import '@stroy/uikit/styles'
+
 import './globals.scss'
 
 export const metadata: Metadata = {

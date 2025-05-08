@@ -32,7 +32,7 @@ export type OnUploadProgress = (
 	total: number,
 ) => void
 
-export interface ModalProps {
+export type ModalProps<P = unknown> = P & {
 	open: boolean
 	onClose: () => void
 }

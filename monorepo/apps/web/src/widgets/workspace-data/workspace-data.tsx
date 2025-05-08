@@ -20,13 +20,10 @@ export default function WorkspaceData() {
 				loadingFallback={<WorkspaceDataSkeleton />}
 			>
 				<ValueCard value={indicators?.documents} title={'Документов'} />
-				{indicators?.size && (
-					<ValueCard
-						value={`${formatBytes(indicators.size)}`}
-						title={'Общий размер'}
-					/>
-				)}
-
+				<ValueCard
+					value={`${formatBytes(indicators?.size)}`}
+					title={'Общий размер'}
+				/>
 				<ValueCard value={indicators?.tags} title={'Тегов'} />
 				<ValueCard value={indicators?.projects} title={'Проектов'} />
 			</RenderFetchData>

@@ -110,6 +110,9 @@ importers:
       '@stroy/toolkit':
         specifier: workspace:*
         version: link:../../packages/toolkit
+      '@stroy/uikit':
+        specifier: workspace:*
+        version: link:../../packages/uikit
       next:
         specifier: ^15.3.0
         version: 15.3.0(@babel/core@7.27.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(sass@1.87.0)
@@ -257,6 +260,15 @@ importers:
   packages/types: {}
 
   packages/typescript-config: {}
+
+  packages/uikit:
+    devDependencies:
+      '@stroy/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@stroy/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
 
 packages:
 

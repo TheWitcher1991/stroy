@@ -1,9 +1,16 @@
 from django.db import transaction
 from rest_framework import serializers
 
-from documents.models import Document, DocumentVersion
+from documents.models import Document, DocumentPermission, DocumentVersion
 from documents.utils import generate_doc_number
 from packages.utils import get_content_type, get_file_type, userFromContext
+
+
+class DocumentPermissionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = DocumentPermission
+        fields = "__all__"
 
 
 class DocumentVersionSerializer(serializers.ModelSerializer):
@@ -18,6 +25,7 @@ class DocumentSerializer(serializers.ModelSerializer):
     author = serializers.SerializerMethodField(read_only=True)
     tag = serializers.SerializerMethodField(read_only=True)
     versions = DocumentVersionSerializer(many=True, read_only=True)
+    permissions = DocumentPermissionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Document
@@ -44,11 +52,17 @@ class DocumentActionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
         fields = ("title", "file", "project", "tag")
+        extra_kwargs = {
+            "file": {"required": False},
+        }
 
     @transaction.atomic
     def create(self, validated_data):
         author = userFromContext(self.context)
-        file = validated_data.get("file")
+        file = validated_data.get("file", None)
+
+        if not file:
+            raise serializers.ValidationError("File is required.")
 
         validated_data["version_number"] = 1
         validated_data["doc_number"] = generate_doc_number(validated_data["project"])
@@ -63,4 +77,14 @@ class DocumentActionSerializer(serializers.ModelSerializer):
 
     @transaction.atomic
     def update(self, instance, validated_data):
-        pass
+        file = validated_data.pop("file", None)
+
+        if file:
+            validated_data["file"] = file
+            validated_data["doc_type"] = get_file_type(file)
+            validated_data["content_type"] = get_content_type(file)
+            validated_data["size"] = file.size
+
+        document = super().update(instance, validated_data)
+
+        return document

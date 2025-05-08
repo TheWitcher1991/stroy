@@ -1,8 +1,9 @@
+import { Label } from '@gravity-ui/uikit'
 import { useMemo } from 'react'
 
 import { ProjectDeleteButton, ProjectEditButton } from '~models/project'
 
-import { IProject } from '@stroy/models'
+import { IProject, ProjectStatusMapper } from '@stroy/models'
 import { formatDateInRu } from '@stroy/toolkit'
 
 import { Actions, Indicator } from '~packages/ui'
@@ -12,8 +13,14 @@ export default function useProjectTableData(projects: IProject[]) {
 		() =>
 			projects.map(project => ({
 				project: project.title,
+				status: (
+					<Label size={'m'}>
+						{ProjectStatusMapper[project.status]}
+					</Label>
+				),
 				documents: <Indicator count={project.documents} />,
-				created: formatDateInRu(project.created_at),
+				start_date: formatDateInRu(project.start_date),
+				end_date: formatDateInRu(project.end_date),
 				actions: (
 					<Actions justifyContent={'end'}>
 						<ProjectEditButton project={project} onlyIcon={true} />
