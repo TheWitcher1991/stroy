@@ -10,6 +10,7 @@ import {
 	Tag,
 } from '@gravity-ui/icons'
 import { MenuItem } from '@gravity-ui/navigation'
+import { Label } from '@gravity-ui/uikit'
 import { usePathname, useRouter } from 'next/navigation'
 
 import { href } from '@stroy/href'
@@ -80,6 +81,7 @@ export default function useMenuItems(): MenuItem[] {
 			iconSize: 20,
 			title: 'Биллинг',
 			icon: CircleRuble,
+			rightAdornment: <Label theme={'success'}>0 ₽</Label>,
 		},
 		{
 			id: 'import',
