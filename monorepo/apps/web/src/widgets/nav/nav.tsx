@@ -33,7 +33,7 @@ export default function Nav() {
 							options={[
 								{
 									content: iam.department_name,
-									value: iam.department.toString(),
+									value: iam.department_name,
 								},
 							]}
 							title={'Выберите рабочее пространство'}

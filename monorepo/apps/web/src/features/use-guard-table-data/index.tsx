@@ -6,12 +6,12 @@ import { GuardViewButton } from '~models/guard'
 import { GuardDeleteButton } from '~models/guard/ui/guard-delete-button'
 import { GuardEditButton } from '~models/guard/ui/guard-edit-button'
 
-import { IGuard, useIamAdmin } from '@stroy/models'
+import { IGuard, PropsWithGuard, useIamAdmin } from '@stroy/models'
 import { formatDateInRu } from '@stroy/toolkit'
 
 import { Actions } from '~packages/ui'
 
-const GuardRowActions = memo((guard: IGuard) => {
+const GuardRowActions = memo(({ guard }: PropsWithGuard) => {
 	const iam = useIamAdmin()
 
 	return (

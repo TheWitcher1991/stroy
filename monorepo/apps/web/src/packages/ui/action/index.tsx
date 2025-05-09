@@ -7,6 +7,7 @@ interface ActionsProps {
 	children?: ReactNode
 	icon: IconData
 	loading?: boolean
+	disabled?: boolean
 }
 
 export const Action = ({
@@ -17,10 +18,17 @@ export const Action = ({
 	children,
 	icon,
 	loading,
+	disabled,
 	iconSize = 16,
 }: PropsWithAction<ActionsProps>) => {
 	return (
-		<Button view={view} size={size} onClick={onClick} loading={loading}>
+		<Button
+			view={view}
+			size={size}
+			onClick={onClick}
+			loading={loading}
+			disabled={disabled}
+		>
 			<Icon data={icon} size={iconSize} />
 			{!onlyIcon && children}
 		</Button>

@@ -8,6 +8,8 @@ import DocumentInfo from '~widgets/document/document-info'
 import DocumentTabs, { DocumentTab } from '~widgets/document/document-tabs'
 import DocumentVersion from '~widgets/document/document-version'
 
+import { DocumentPermissionButton } from '~models/document'
+
 import { PropsWithDocument } from '@stroy/models'
 
 import { Group, PageTitle } from '~packages/ui'
@@ -28,7 +30,11 @@ export default function Document({ document }: PropsWithDocument) {
 
 	return (
 		<Group>
-			<PageTitle title={document.title} subtitle={document.doc_number} />
+			<PageTitle
+				title={document.title}
+				subtitle={document.doc_number}
+				action={<DocumentPermissionButton document={document.id} />}
+			/>
 			<DocumentActions document={document} />
 			<DocumentTabs index={index} setIndex={index => setIndex(index)} />
 			{tabsContent}

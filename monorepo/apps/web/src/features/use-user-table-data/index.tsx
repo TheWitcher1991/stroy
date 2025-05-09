@@ -7,12 +7,12 @@ import {
 	UserViewButton,
 } from '~models/user'
 
-import { IUser, useIamAdmin } from '@stroy/models'
+import { IUser, PropsWithUser, useIamAdmin } from '@stroy/models'
 import { formatDateInRu } from '@stroy/toolkit'
 
 import { Actions, Indicator } from '~packages/ui'
 
-const UseRowActions = memo((user: IUser) => {
+const UseRowActions = memo(({ user }: PropsWithUser) => {
 	const iam = useIamAdmin()
 
 	return (

@@ -2,7 +2,7 @@ import { Flex, Skeleton } from '@gravity-ui/uikit'
 import { memo } from 'react'
 
 import { useDepartmentIndicators } from '@stroy/models'
-import { formatBytes, spaced } from '@stroy/toolkit'
+import { formatBytes } from '@stroy/toolkit'
 
 import { RenderFetchData } from '~packages/lib'
 import { ValueCard } from '~packages/ui'

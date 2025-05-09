@@ -11,6 +11,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     documents = serializers.SerializerMethodField()
+    guard = serializers.SerializerMethodField()
 
     class Meta:
         model = User
@@ -21,6 +22,11 @@ class UserSerializer(serializers.ModelSerializer):
         from documents.serializers import DocumentSerializer
 
         return DocumentSerializer(obj.documents.all(), many=True, context=self.context).data
+
+    def get_guard(self, obj):
+        from guards.serializers import GuardSerializer
+
+        return GuardSerializer(obj.guard, context=self.context).data
 
     def create(self, validated_data):
         validated_data["department"] = self.context["request"].user.department

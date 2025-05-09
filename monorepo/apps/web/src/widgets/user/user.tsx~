@@ -7,7 +7,7 @@ import { Group, PageTitle } from '~packages/ui'
 export default function User({ user }: PropsWithUser) {
 	return (
 		<Group>
-			<PageTitle title={userFullName(user)} subtitle={user.email} />
+			<PageTitle title={userFullName(user)} />
 		</Group>
 	)
 }

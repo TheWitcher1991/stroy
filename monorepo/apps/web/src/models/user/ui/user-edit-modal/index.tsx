@@ -61,6 +61,7 @@ export const UserEditModal = ({
 			<FormSection label={'Фамилия'}>
 				<TextInput
 					size={'l'}
+					defaultValue={user.last_name}
 					error={errors.last_name?.message}
 					errorMessage={errors.last_name?.message}
 					{...register('last_name')}
@@ -70,6 +71,7 @@ export const UserEditModal = ({
 			<FormSection label={'Имя'}>
 				<TextInput
 					size={'l'}
+					defaultValue={user.first_name}
 					error={errors.first_name?.message}
 					errorMessage={errors.first_name?.message}
 					{...register('first_name')}
@@ -80,6 +82,7 @@ export const UserEditModal = ({
 				<TextInput
 					type={'email'}
 					size={'l'}
+					defaultValue={user.email}
 					error={errors.email?.message}
 					errorMessage={errors.email?.message}
 					{...register('email')}
@@ -88,7 +91,7 @@ export const UserEditModal = ({
 
 			<FormSection label={'Роль'}>
 				<UserRoleSelect
-					defaultValue={user.role.split(',')}
+					defaultValue={[user.role]}
 					errorMessage={errors.role?.message}
 					register={register}
 					onSelect={value => {

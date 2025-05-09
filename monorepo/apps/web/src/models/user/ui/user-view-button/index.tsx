@@ -1,5 +1,6 @@
 import { Eye } from '@gravity-ui/icons'
 import { useRouter } from 'next/navigation'
+import { useCallback } from 'react'
 
 import { href } from '@stroy/href'
 import { PropsWithUserId } from '@stroy/models'
@@ -12,12 +13,15 @@ export const UserViewButton = ({
 }: PropsWithAction<PropsWithUserId>) => {
 	const router = useRouter()
 
-	const handleClick = () => router.push(href.users.byId(user))
+	const onClick = useCallback(
+		() => router.replace(href.users.byId(user)),
+		[user, router],
+	)
 
 	return (
 		<Action
 			view={'outlined'}
-			onClick={handleClick}
+			onClick={onClick}
 			icon={Eye}
 			onlyIcon={onlyIcon}
 		>

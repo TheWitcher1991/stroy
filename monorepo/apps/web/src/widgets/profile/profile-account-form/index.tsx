@@ -83,6 +83,14 @@ export default function ProfileAccountForm({ user }: PropsWithUser) {
 				/>
 			</FormSection>
 
+			<FormSection label={'Гуард'}>
+				<TextInput
+					size={'l'}
+					defaultValue={user.guard?.title || 'Не назначено'}
+					disabled={true}
+				/>
+			</FormSection>
+
 			<Spacing />
 			<Button
 				view={'action'}

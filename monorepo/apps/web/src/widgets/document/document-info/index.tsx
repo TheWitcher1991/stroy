@@ -32,7 +32,7 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 				<Alert
 					theme='danger'
 					title='Внимание'
-					message='У вас нет доступа к документу'
+					message='У вас нет прав доступа к документу'
 				/>
 			)}
 			{document.permissions.length > 0 && (
