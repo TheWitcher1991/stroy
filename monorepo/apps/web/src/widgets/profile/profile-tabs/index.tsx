@@ -28,7 +28,7 @@ export default function ProfileTabs({ index, setIndex }: ProfileTabsProps) {
 				Аккаунт
 			</SegmentedRadioGroup.Option>
 			<SegmentedRadioGroup.Option value={'2'}>
-				Департамент
+				Отдел
 			</SegmentedRadioGroup.Option>
 			<SegmentedRadioGroup.Option value={'3'} disabled={true}>
 				API-ключи

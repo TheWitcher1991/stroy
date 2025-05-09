@@ -10,6 +10,8 @@ export const GuardOperation = {
 	READ: 'READ',
 	UPDATE: 'UPDATE',
 	DELETE: 'DELETE',
+	RESTORE: 'RESTORE',
+	APPROVE: 'APPROVE',
 } as const
 
 export type GuardOperation = EnumType<typeof GuardOperation>
@@ -19,6 +21,8 @@ export const GuardOperationMapper: Record<GuardOperation, string> = {
 	[GuardOperation.READ]: 'Чтение',
 	[GuardOperation.UPDATE]: 'Обновление',
 	[GuardOperation.DELETE]: 'Удаление',
+	[GuardOperation.RESTORE]: 'Восстановление',
+	[GuardOperation.APPROVE]: 'Утверждение',
 }
 
 export const GuardSelectOptions: SelectOption[] = [
@@ -37,5 +41,13 @@ export const GuardSelectOptions: SelectOption[] = [
 	{
 		content: GuardOperationMapper[GuardOperation.DELETE],
 		value: GuardOperation.DELETE,
+	},
+	{
+		content: GuardOperationMapper[GuardOperation.RESTORE],
+		value: GuardOperation.RESTORE,
+	},
+	{
+		content: GuardOperationMapper[GuardOperation.APPROVE],
+		value: GuardOperation.APPROVE,
 	},
 ]

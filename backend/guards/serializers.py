@@ -45,6 +45,7 @@ class GuardSerializer(serializers.ModelSerializer):
 
         if operations is not None:
             GuardOperationRepository.clear(guard)
-            GuardOperationRepository.bulk_create(guard, operations)
+            for operation in operations:
+                GuardOperationRepository.create(guard=guard, operation=operation)
 
         return guard

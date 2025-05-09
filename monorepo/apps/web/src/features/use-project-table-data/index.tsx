@@ -1,4 +1,4 @@
-import { Label } from '@gravity-ui/uikit'
+import { Label, Text } from '@gravity-ui/uikit'
 import { useMemo } from 'react'
 
 import { ProjectDeleteButton, ProjectEditButton } from '~models/project'
@@ -12,7 +12,7 @@ export default function useProjectTableData(projects: IProject[]) {
 	return useMemo(
 		() =>
 			projects.map(project => ({
-				project: project.title,
+				project: <Text variant={'body-2'}>{project.title}</Text>,
 				status: (
 					<Label size={'m'}>
 						{ProjectStatusMapper[project.status]}

@@ -1,6 +1,7 @@
-import { SelectOption } from '@stroy/types'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
+
+import { SelectOption } from '@stroy/types'
 
 import { projectServiceKeys } from './project.config'
 import { ProjectRepository } from './project.repository'
@@ -29,9 +30,9 @@ export const useSelectableProjects = (params?: Partial<UseProjects>) => {
 	useEffect(() => {
 		if (!isLoading && data?.data) {
 			setProjects(
-				data.data.results.map(tag => ({
-					value: tag.id.toString(),
-					content: tag.title,
+				data.data.results.map(project => ({
+					value: project.id.toString(),
+					content: project.title,
 				})),
 			)
 		}

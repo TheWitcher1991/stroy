@@ -25,6 +25,10 @@ export const href = {
 		return `${this.workspace}/profile`
 	},
 
+	get billing() {
+		return `${this.workspace}/billing`
+	},
+
 	documents: {
 		get index() {
 			return `${href.workspace}/documents`

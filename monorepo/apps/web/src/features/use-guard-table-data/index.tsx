@@ -1,3 +1,4 @@
+import { Text } from '@gravity-ui/uikit'
 import { memo, useMemo } from 'react'
 
 import GuardOperationList from '~features/guard-operation-list'
@@ -32,7 +33,7 @@ export default function useGuardTableData(guards: IGuard[]) {
 	return useMemo(
 		() =>
 			guards.map(guard => ({
-				guard: guard.title,
+				guard: <Text variant={'body-2'}>{guard.title}</Text>,
 				operations: (
 					<GuardOperationList operations={guard.permissions} />
 				),

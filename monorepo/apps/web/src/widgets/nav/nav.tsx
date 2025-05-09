@@ -1,10 +1,11 @@
 'use client'
 
-import { Magnifier, Person } from '@gravity-ui/icons'
+import { Person } from '@gravity-ui/icons'
 import { ActionBar } from '@gravity-ui/navigation'
-import { Button, Icon, Select, TextInput } from '@gravity-ui/uikit'
+import { Button, Icon, Select } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 
+import StroyPlusButton from '~features/stroy-plus-button'
 import ThemeButton from '~features/theme-button'
 
 import { DocumentImportButton } from '~models/document'
@@ -44,14 +45,7 @@ export default function Nav() {
 			<ActionBar.Section type='primary'>
 				<ActionBar.Group pull='left'>
 					<ActionBar.Item>
-						<TextInput
-							startContent={
-								<div style={{ marginInline: 6 }}>
-									<Icon data={Magnifier} size={16} />
-								</div>
-							}
-							placeholder={'Поиск...'}
-						/>
+						<StroyPlusButton />
 					</ActionBar.Item>
 				</ActionBar.Group>
 				<ActionBar.Group pull='right'>

@@ -1,5 +1,5 @@
-import { Binoculars, Bug } from '@gravity-ui/icons'
-import { Icon } from '@gravity-ui/uikit'
+import { InternalError, NotFound } from '@gravity-ui/illustrations'
+import { Icon, PlaceholderContainer } from '@gravity-ui/uikit'
 import { memo, PropsWithChildren, ReactNode } from 'react'
 import { match } from 'ts-pattern'
 
@@ -19,25 +19,22 @@ const DefaultLoadingFallback = memo(() => (
 ))
 
 const DefaultErrorFallback = memo(() => (
-	<Placeholder
-		title={
-			<>
-				<Icon data={Bug} size={18} />
-				Ошибка :(
-			</>
-		}
-		text={'Не удалось загрузить данные'}
+	<PlaceholderContainer
+		title='Ошибка'
+		description='При загрузке данных произошла ошибка'
+		size='m'
+		align='center'
+		image={<Icon data={InternalError} size={220} />}
 	/>
 ))
 
 const DefaultEmptyFallback = memo(() => (
-	<Placeholder
-		title={
-			<>
-				<Icon data={Binoculars} size={18} />
-				Пустовато :(
-			</>
-		}
+	<PlaceholderContainer
+		title='Ничего не нашлось'
+		description='Попробуйте изменить параметры поиска'
+		size='m'
+		align='center'
+		image={<Icon data={NotFound} size={220} />}
 	/>
 ))
 

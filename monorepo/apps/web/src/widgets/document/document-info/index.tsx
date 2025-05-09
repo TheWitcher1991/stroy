@@ -31,14 +31,13 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 			{document.permissions.length === 0 && (
 				<Alert
 					theme='danger'
-					title='Внимание'
 					message='У вас нет прав доступа к документу'
 				/>
 			)}
 			{document.permissions.length > 0 && (
 				<Alert
-					theme='info'
-					title='Права доступа'
+					theme='success'
+					title='Ваши права доступа'
 					message={
 						<GuardOperationList operations={document.permissions} />
 					}

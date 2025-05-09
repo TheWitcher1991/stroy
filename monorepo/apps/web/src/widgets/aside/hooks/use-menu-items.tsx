@@ -77,11 +77,13 @@ export default function useMenuItems(): MenuItem[] {
 			onItemClick: () => router.push(href.journal.index),
 		},
 		{
-			id: 'payments',
+			id: 'billing',
 			iconSize: 20,
 			title: 'Биллинг',
 			icon: CircleRuble,
 			rightAdornment: <Label theme={'success'}>0 ₽</Label>,
+			current: pathname.startsWith(href.billing),
+			onItemClick: () => router.push(href.billing),
 		},
 		{
 			id: 'import',

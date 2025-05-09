@@ -38,6 +38,10 @@ body,
     margin-right: 14px;
 }
 
+:root {
+    --plus-gradient: linear-gradient(90deg, #ff5c4d, #eb469f 25%, #8341ef 72%, #3f68f9);
+}
+
 .g-root_theme_light {
 
     --g-font-family-sans: 'Jost';

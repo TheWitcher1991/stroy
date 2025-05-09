@@ -7,16 +7,10 @@ import {
 	GuardOperation,
 	hasPermission,
 	PropsWithDocument,
-	useIam,
 } from '@stroy/models'
 
 export const DocumentAction = ({ document }: PropsWithDocument) => {
-	const iam = useIam()
-
-	if (
-		!hasPermission(document.permissions, GuardOperation.CREATE) &&
-		document.author.id !== iam.user
-	)
+	if (!hasPermission(document.permissions, GuardOperation.APPROVE))
 		return null
 
 	return match(document.status)

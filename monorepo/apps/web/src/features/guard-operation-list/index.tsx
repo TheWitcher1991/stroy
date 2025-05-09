@@ -1,8 +1,6 @@
-import { Label } from '@gravity-ui/uikit'
+import { Flex, Label } from '@gravity-ui/uikit'
 
 import { GuardOperation, GuardOperationMapper } from '@stroy/models'
-
-import { Actions } from '~packages/ui'
 
 interface GuardOperationListProps {
 	operations: GuardOperation[]
@@ -12,10 +10,10 @@ export default function GuardOperationList({
 	operations,
 }: GuardOperationListProps) {
 	return (
-		<Actions>
+		<Flex alignItems={'center'} gap={2} wrap={'wrap'}>
 			{operations.map(op => (
 				<Label size={'s'}>{GuardOperationMapper[op]}</Label>
 			))}
-		</Actions>
+		</Flex>
 	)
 }

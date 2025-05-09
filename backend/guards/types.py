@@ -6,3 +6,6 @@ class OperationType(models.TextChoices):
     READ = ("READ", "Чтение")
     UPDATE = ("UPDATE", "Обновление")
     DELETE = ("DELETE", "Удаление")
+    RESTORE = ("RESTORE", "Восстановление")
+    APPROVE = ("APPROVE", "Подтверждение")
+    ARCHIVE = ("ARCHIVE", "Архивирование")
