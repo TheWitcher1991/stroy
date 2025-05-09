@@ -1,6 +1,7 @@
-import { Nullable } from '@stroy/types'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+
+import { Nullable } from '@stroy/types'
 
 import { IAccount } from './auth.types'
 
@@ -10,7 +11,7 @@ type AccountStore = {
 	logout: () => void
 }
 
-export const useAccountStore = create<AccountStore>(
+export const useAccountStore = create<AccountStore>()(
 	persist(
 		set => ({
 			account: null,

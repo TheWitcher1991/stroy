@@ -4,9 +4,10 @@ import { UserRole, useUpdateUser, useUser } from '../user'
 import { useEffect, useMemo } from 'react'
 import { useShallow } from 'zustand/react/shallow'
 
-import { href } from '@stroy/href/src'
+import { href } from '@stroy/href'
+import { usePersistHydrated } from '@stroy/toolkit'
 
-import { logout, useAccountStore } from './auth.store'
+import { useAccountStore } from './auth.store'
 import { IAccount } from './auth.types'
 
 export const useCheckAuth = (): boolean => {
@@ -34,11 +35,24 @@ export const useIamAdmin = (): boolean => {
 }
 
 export const useSessionExpired = () => {
+	const hydrated = usePersistHydrated(useAccountStore)
+
 	const session_expires = useAccountStore(
 		state => state.account?.session_expires,
 	)
+	const user = useAccountStore(state => state.account?.user)
+
+	const logout = useAccountStore(state => state.logout)
 
 	useEffect(() => {
+		if (!hydrated) return
+
+		if (!user || !session_expires) {
+			logout()
+			window.location.replace(href.login)
+			return
+		}
+
 		const expiresAt = session_expires * 1000
 		const now = Date.now()
 		const timeLeft = expiresAt - now
@@ -46,9 +60,8 @@ export const useSessionExpired = () => {
 		if (timeLeft <= 0) {
 			logout()
 			window.location.replace(href.login)
-			return
 		}
-	}, [session_expires, logout])
+	}, [hydrated, user, session_expires, logout])
 }
 
 export const useProfile = () => {
