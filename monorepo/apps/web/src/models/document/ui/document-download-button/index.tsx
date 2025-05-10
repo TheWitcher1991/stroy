@@ -6,6 +6,7 @@ import { Action } from '~packages/ui'
 export const DocumentDownloadButton = ({
 	file,
 	onlyIcon,
+	width,
 }: PropsWithAction<{ file: string }>) => {
 	const click = useCallback(() => {
 		window.open(file, '_blank')
@@ -17,6 +18,7 @@ export const DocumentDownloadButton = ({
 			onlyIcon={onlyIcon}
 			icon={ArrowDownToSquare}
 			onClick={click}
+			width={width}
 		>
 			Скачать
 		</Action>

@@ -351,6 +351,16 @@ files = [
 django = ">=4.2"
 
 [[package]]
+name = "docopt"
+version = "0.6.2"
+description = "Pythonic argument parser, that will make you smile"
+optional = false
+python-versions = "*"
+files = [
+    {file = "docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"},
+]
+
+[[package]]
 name = "drf-spectacular"
 version = "0.28.0"
 description = "Sane and flexible OpenAPI 3 schema generation for Django REST framework"
@@ -542,6 +552,20 @@ files = [
 
 [package.extras]
 nicer-shell = ["ipython"]
+
+[[package]]
+name = "num2words"
+version = "0.5.14"
+description = "Modules to convert numbers to words. Easily extensible."
+optional = false
+python-versions = "*"
+files = [
+    {file = "num2words-0.5.14-py3-none-any.whl", hash = "sha256:1c8e5b00142fc2966fd8d685001e36c4a9911e070d1b120e1beb721fa1edb33d"},
+    {file = "num2words-0.5.14.tar.gz", hash = "sha256:b066ec18e56b6616a3b38086b5747daafbaa8868b226a36127e0451c0cf379c6"},
+]
+
+[package.dependencies]
+docopt = ">=0.6.2"
 
 [[package]]
 name = "packaging"
@@ -1166,4 +1190,4 @@ urllib3 = "*"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "cfacd20b44428daa4df8f0f7c223a0423591cfcd7ad8e42c37383441e5091cd6"
+content-hash = "8ce0810504a66d0b03058598d6667a67ebe167f6b50050c59f2fd0f36f216936"

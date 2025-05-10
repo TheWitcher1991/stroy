@@ -10,6 +10,7 @@ import { Action } from '~packages/ui'
 export const DocumentEditButton = ({
 	document,
 	onlyIcon,
+	width,
 }: PropsWithAction<PropsWithDocument>) => {
 	const [val, { toggle }] = useToggle(false)
 
@@ -23,7 +24,12 @@ export const DocumentEditButton = ({
 				onClose={toggle}
 			/>
 
-			<Action icon={PencilToSquare} onlyIcon={onlyIcon} onClick={toggle}>
+			<Action
+				icon={PencilToSquare}
+				onlyIcon={onlyIcon}
+				onClick={toggle}
+				width={width}
+			>
 				Изменить
 			</Action>
 		</>

@@ -24,6 +24,7 @@ mutagen = "^1.47.0"
 django-filter = "^25.1"
 uvicorn = "^0.34.2"
 yookassa = "^3.5.0"
+num2words = "^0.5.14"
 
 
 [tool.poetry.group.dev.dependencies]

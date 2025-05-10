@@ -8,7 +8,7 @@ import useDocumentTableData from '~features/use-document-table-data'
 import { documentTableColumns } from '~models/document'
 
 import { RenderFetchData } from '~packages/lib'
-import { Placeholder } from '~packages/ui'
+import { Grid, Placeholder } from '~packages/ui'
 
 export default function Documents() {
 	const { list, error, loading, count, filter } = useDocumentsStore()
@@ -29,7 +29,11 @@ export default function Documents() {
 					emptyMessage={<Placeholder />}
 				/>
 			)}
-			{filter.view === 'list' && <DocumentList documents={list} />}
+			{filter.view === 'list' && (
+				<Grid gap={20} gridTemplateColumns={'repeat(3, 1fr)'}>
+					<DocumentList documents={list} />
+				</Grid>
+			)}
 		</RenderFetchData>
 	)
 }

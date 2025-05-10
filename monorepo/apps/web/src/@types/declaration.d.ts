@@ -1,4 +1,9 @@
-import { ButtonSize, ButtonView } from '@gravity-ui/uikit'
+import {
+	ButtonSize,
+	ButtonView,
+	ButtonWidth,
+	DropdownMenuItem,
+} from '@gravity-ui/uikit'
 import React, { JSXElementConstructor } from 'react'
 
 declare module '*.css'
@@ -13,8 +18,11 @@ declare global {
 	type PropsWithAction<P = unknown> = P & {
 		view?: ButtonView
 		size?: ButtonSize
+		width?: ButtonWidth
 		onlyIcon?: boolean
 	}
+
+	type DropdownItem<T = any> = (DropdownMenuItem<T> | DropdownMenuItem<T>[])[]
 
 	interface ReactElement<
 		P = any,

@@ -19,6 +19,7 @@ export const Action = ({
 	icon,
 	loading,
 	disabled,
+	width,
 	iconSize = 16,
 }: PropsWithAction<ActionsProps>) => {
 	return (
@@ -28,6 +29,7 @@ export const Action = ({
 			onClick={onClick}
 			loading={loading}
 			disabled={disabled}
+			width={width}
 		>
 			<Icon data={icon} size={iconSize} />
 			{!onlyIcon && children}

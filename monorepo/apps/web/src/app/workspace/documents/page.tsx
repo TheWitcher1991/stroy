@@ -2,6 +2,7 @@
 
 import Documents, {
 	DocumentsFetcher,
+	DocumentsFilter,
 	DocumentsPagination,
 } from '~widgets/documents'
 
@@ -14,6 +15,7 @@ export default function DocumentsPage() {
 				title={'Документы'}
 				subtitle={'Все документы в этом рабочем пространстве'}
 			/>
+			<DocumentsFilter />
 			<Documents />
 			<DocumentsFetcher />
 			<DocumentsPagination />

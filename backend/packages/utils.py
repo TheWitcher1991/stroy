@@ -5,6 +5,7 @@ import jwt
 from django.contrib.contenttypes.models import ContentType
 from django.core.files.uploadedfile import UploadedFile
 from django.utils.translation import gettext_lazy
+from num2words import num2words
 from rest_framework.exceptions import ValidationError
 
 from config.settings import HASH_ALGORITHM, SECRET_KEY, SESSION_EXPIRE_DAYS, SESSION_EXPIRE_MINUTES
@@ -14,10 +15,17 @@ def get_content_type(file: UploadedFile) -> str:
     return file.content_type or mimetypes.guess_type(file.name)[0]
 
 
+def decimal_to_words(number) -> str:
+    integer_part = int(number)
+    fractional_part = int(round((number - integer_part) * 100))
+
+    integer_part_words = num2words(integer_part, lang="ru")
+    fractional_part_words = num2words(fractional_part, lang="ru")
+
+    return f"{integer_part_words} рублей {fractional_part_words} копеек"
+
+
 def get_file_type(file: UploadedFile) -> str:
-    """
-    Определяет тип документа по MIME-типу или расширению.
-    """
     content_type = get_content_type(file)
 
     if content_type:

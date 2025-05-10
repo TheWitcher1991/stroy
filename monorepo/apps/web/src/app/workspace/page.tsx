@@ -2,6 +2,7 @@
 
 import Documents, {
 	DocumentsFetcher,
+	DocumentsFilter,
 	DocumentsPagination,
 } from '~widgets/documents'
 import WorkspaceData from '~widgets/workspace-data'
@@ -16,6 +17,7 @@ export default function Workspace() {
 				title={'Последние документы'}
 				subtitle={'Все последние документы в этом рабочем пространстве'}
 			/>
+			<DocumentsFilter />
 			<Documents />
 			<DocumentsFetcher />
 			<DocumentsPagination />

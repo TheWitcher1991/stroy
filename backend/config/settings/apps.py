@@ -19,5 +19,6 @@ INSTALLED_APPS = [
     "tags",
     "users",
     "packages",
+    "business",
     "drf_spectacular",
 ]
