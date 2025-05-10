@@ -6,7 +6,7 @@ import { ModalProps } from '@stroy/types'
 
 import { Dialog, FormSection } from '~packages/ui'
 
-export const DocumentPermissionModal = ({
+export const PermissionModal = ({
 	document,
 	open,
 	onClose,

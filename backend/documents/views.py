@@ -1,7 +1,7 @@
 from config.settings import ADMIN_ACTIONS
-from documents.filters import DocumentFilter
-from documents.repository import DocumentRepository
-from documents.serializers import DocumentActionSerializer, DocumentSerializer
+from documents.filters import DocumentFilter, DocumentPermissionFilter
+from documents.repository import DocumentRepository, DocumentPermissionRepository
+from documents.serializers import DocumentActionSerializer, DocumentSerializer, DocumentPermissionSerializer
 from packages.caching import CachedSetMixin
 from packages.controllers import ModelSetController
 
@@ -17,3 +17,11 @@ class DocumentViewSet(CachedSetMixin, ModelSetController):
         if self.action in ADMIN_ACTIONS:
             return DocumentActionSerializer
         return super().get_serializer_class()
+
+
+class DocumentPermissionViewSet(CachedSetMixin, ModelSetController):
+
+    queryset = DocumentPermissionRepository.optimize()
+    serializer_class = DocumentPermissionSerializer
+    filterset_class = DocumentPermissionFilter
+    tag_cache = DocumentPermissionRepository.cache_prefix

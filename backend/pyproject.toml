@@ -23,6 +23,7 @@ django-redis = "^5.4.0"
 mutagen = "^1.47.0"
 django-filter = "^25.1"
 uvicorn = "^0.34.2"
+yookassa = "^3.5.0"
 
 
 [tool.poetry.group.dev.dependencies]

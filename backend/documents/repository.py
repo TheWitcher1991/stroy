@@ -21,6 +21,9 @@ class BuildDocumentPermissionRepository(AbstractRepository[DocumentPermission]):
     model = DocumentPermission
     cache_prefix = "permissions"
 
+    def optimize(self) -> QuerySet[DocumentPermission]:
+        return self.model.objects.select_related("document", "user", "guard")
+
 
 DocumentRepository = BuildDocumentRepository()
 DocumentVersionRepository = BuildDocumentVersionRepository()

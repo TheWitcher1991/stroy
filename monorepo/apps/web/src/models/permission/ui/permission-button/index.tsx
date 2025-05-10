@@ -1,13 +1,13 @@
 import { Shield } from '@gravity-ui/icons'
 import { useToggle } from 'ahooks'
 
-import { DocumentPermissionModal } from '~models/document'
+import { PermissionModal } from '~models/permission'
 
 import { PropsWithDocumentId, useIamAdmin } from '@stroy/models'
 
 import { Action } from '~packages/ui'
 
-export const DocumentPermissionButton = ({
+export const PermissionButton = ({
 	document,
 	onlyIcon,
 }: PropsWithAction<PropsWithDocumentId>) => {
@@ -18,11 +18,7 @@ export const DocumentPermissionButton = ({
 
 	return (
 		<>
-			<DocumentPermissionModal
-				document={document}
-				open={val}
-				onClose={toggle}
-			/>
+			<PermissionModal document={document} open={val} onClose={toggle} />
 
 			<Action
 				view={'action'}

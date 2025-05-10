@@ -9,6 +9,8 @@ router = routers.SimpleRouter()
 
 router.register(r"documents", views.DocumentViewSet, basename="documents")
 
+router.register(r"permissions", views.DocumentPermissionViewSet, basename="permissions")
+
 urlpatterns = []
 
 urlpatterns += router.urls

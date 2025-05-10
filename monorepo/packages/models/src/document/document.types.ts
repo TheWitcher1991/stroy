@@ -29,4 +29,6 @@ export interface PropsWithDocumentId {
 	document: number
 }
 
-export interface UseDocuments extends UseModelOptions {}
+export interface UseDocuments extends UseModelOptions {
+	view: 'table' | 'list'
+}

@@ -10,6 +10,7 @@ const creator = createModelListStore<IDocument, Partial<UseDocuments>>({
 		page_size: 30,
 		page: 1,
 		ordering: '-created_at',
+		view: 'table',
 	},
 })
 

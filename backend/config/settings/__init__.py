@@ -8,3 +8,4 @@ from .logging import *
 from .middleware import *
 from .rest_framework import *
 from .security import *
+from .yookassa import *
