@@ -4,11 +4,11 @@ from django.core.validators import MinValueValidator
 from django.db import models, transaction
 from rest_framework.generics import get_object_or_404
 
-from business.types import PaymentMethod, PayerType
-from config.settings import CHAR_SM_LENGTH, CHAR_MAX_LENGTH
+from business.types import InvoiceTarget, PayerType, PaymentMethod
+from config.settings import CHAR_MAX_LENGTH, CHAR_SM_LENGTH
 from packages.abstract import AbstractModel
 from packages.decorators import is_amount_positive
-from packages.utils import t, decimal_to_words
+from packages.utils import decimal_to_words, t
 
 
 class DepartmentWallet(AbstractModel):
@@ -16,6 +16,7 @@ class DepartmentWallet(AbstractModel):
         t("Остаток средств"),
         max_digits=10,
         decimal_places=2,
+        default=0,
         validators=[MinValueValidator(0, message=t("Сумма не может быть отрицательной"))],
     )
     department = models.OneToOneField(to="departments.Department", on_delete=models.CASCADE, related_name="wallet")
@@ -61,6 +62,11 @@ class Invoice(AbstractModel):
         choices=PayerType.choices,
         max_length=CHAR_SM_LENGTH,
     )
+    target = models.CharField(
+        t("Цель оплаты"),
+        choices=InvoiceTarget.choices,
+        max_length=CHAR_SM_LENGTH,
+    )
     description = models.CharField(t("Назначение платежа"), max_length=CHAR_MAX_LENGTH, null=True, blank=True)
     amount = models.DecimalField(
         verbose_name=t("Сумма оплаты"),
@@ -85,4 +91,4 @@ class Invoice(AbstractModel):
 
     @property
     def amount_in_words(self):
-        return  decimal_to_words(self.amount)
+        return decimal_to_words(self.amount)

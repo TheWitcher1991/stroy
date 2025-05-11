@@ -1,7 +1,7 @@
 import {
 	ArrowUpFromSquare,
 	Binoculars,
-	CircleRuble,
+	CreditCard,
 	Cube,
 	FileText,
 	House,
@@ -80,10 +80,10 @@ export default function useMenuItems(): MenuItem[] {
 			id: 'billing',
 			iconSize: 20,
 			title: 'Биллинг',
-			icon: CircleRuble,
+			icon: CreditCard,
 			rightAdornment: <Label theme={'success'}>0 ₽</Label>,
-			current: pathname.startsWith(href.billing),
-			onItemClick: () => router.push(href.billing),
+			current: pathname.startsWith(href.finances.index),
+			onItemClick: () => router.push(href.finances.deposit),
 		},
 		{
 			id: 'import',

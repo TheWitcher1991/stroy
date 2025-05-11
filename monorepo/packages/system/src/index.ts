@@ -10,6 +10,12 @@ export const PAGE_SIZE_OPTIONS = [30, 60, 90]
 
 export const IMAGE_FILE_TYPES = ['image/jpeg', 'image/png']
 
+export const STROY_PLUS_AMOUNT = 399
+
+export const RUBLE = '₽'
+
+export const STROY_PLUS = `${STROY_PLUS_AMOUNT} ${RUBLE}`
+
 export const DOCUMENT_FILE_TYPES = [
 	'application/pdf',
 	'application/msword',

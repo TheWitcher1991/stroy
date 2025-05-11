@@ -25,29 +25,8 @@ export const GuardOperationMapper: Record<GuardOperation, string> = {
 	[GuardOperation.APPROVE]: 'Утверждение',
 }
 
-export const GuardSelectOptions: SelectOption[] = [
-	{
-		content: GuardOperationMapper[GuardOperation.CREATE],
-		value: GuardOperation.CREATE,
-	},
-	{
-		content: GuardOperationMapper[GuardOperation.READ],
-		value: GuardOperation.READ,
-	},
-	{
-		content: GuardOperationMapper[GuardOperation.UPDATE],
-		value: GuardOperation.UPDATE,
-	},
-	{
-		content: GuardOperationMapper[GuardOperation.DELETE],
-		value: GuardOperation.DELETE,
-	},
-	{
-		content: GuardOperationMapper[GuardOperation.RESTORE],
-		value: GuardOperation.RESTORE,
-	},
-	{
-		content: GuardOperationMapper[GuardOperation.APPROVE],
-		value: GuardOperation.APPROVE,
-	},
-]
+export const GuardSelectOptions: SelectOption<GuardOperation>[] =
+	Object.entries(GuardOperationMapper).map(([value, label]) => ({
+		value: value as GuardOperation,
+		content: label,
+	}))

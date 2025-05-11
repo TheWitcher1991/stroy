@@ -8,6 +8,7 @@ import {
 	DocumentVersionSchema,
 	UpdateDocumentSchema,
 } from './document.schema'
+import { DocumentStatus } from './document.utils'
 
 export type IDocument = z.infer<typeof DocumentSchema>
 
@@ -31,4 +32,5 @@ export interface PropsWithDocumentId {
 
 export interface UseDocuments extends UseModelOptions {
 	view: 'table' | 'list'
+	status: undefined | DocumentStatus
 }

@@ -8,7 +8,7 @@ from business.models import DepartmentWallet as Wallet
 from packages.mixins import AbstractRepository
 
 
-class WalletRepository(AbstractRepository[Wallet]):
+class BuildWalletRepository(AbstractRepository[Wallet]):
     model = Wallet
 
     def optimize(self) -> QuerySet[Wallet]:
@@ -29,3 +29,6 @@ class WalletRepository(AbstractRepository[Wallet]):
             balance.balance -= amount
             balance.save()
         return balance
+
+
+WalletRepository = BuildWalletRepository()

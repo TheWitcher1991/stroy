@@ -8,7 +8,7 @@ class DocumentFilter(BaseFilterSet):
 
     class Meta:
         model = Document
-        fields = ("title",)
+        fields = ("title", "status")
 
 
 class DocumentPermissionFilter(BaseFilterSet):

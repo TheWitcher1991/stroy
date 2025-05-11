@@ -1,7 +1,7 @@
 from config.settings import ADMIN_ACTIONS
 from documents.filters import DocumentFilter, DocumentPermissionFilter
-from documents.repository import DocumentRepository, DocumentPermissionRepository
-from documents.serializers import DocumentActionSerializer, DocumentSerializer, DocumentPermissionSerializer
+from documents.repository import DocumentPermissionRepository, DocumentRepository
+from documents.serializers import DocumentActionSerializer, DocumentPermissionSerializer, DocumentSerializer
 from packages.caching import CachedSetMixin
 from packages.controllers import ModelSetController
 

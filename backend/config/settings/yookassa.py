@@ -1,8 +1,9 @@
-from config.os import env, DEBUG
+from config.os import DEBUG, env
 
 YOOKASSA_ACCOUNT_ID = env("YOOKASSA_ACCOUNT_ID", default="")
 YOOKASSA_SECRET_KEY = env("YOOKASSA_SECRET_KEY", default="")
 YOOKASSA_RETURN_URL = env("YOOKASSA_RETURN_URL", default="")
+YOOKASSA_WEBHOOK_SIGNATURE = env("YOOKASSA_WEBHOOK_SIGNATURE", default="")
 
 YOOKASSA_DEBUG = DEBUG
 

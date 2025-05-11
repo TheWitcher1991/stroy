@@ -29,6 +29,21 @@ export const href = {
 		return `${this.workspace}/billing`
 	},
 
+	finances: {
+		get index() {
+			return `${href.workspace}/finances`
+		},
+		get deposit() {
+			return `${this.index}/deposit`
+		},
+		get closure() {
+			return `${this.index}/closure`
+		},
+		get transactions() {
+			return `${this.index}/transactions`
+		},
+	},
+
 	documents: {
 		get index() {
 			return `${href.workspace}/documents`

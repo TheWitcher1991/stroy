@@ -36,7 +36,7 @@ export const regexPatterns = {
 		message: 'Некорректный telegram',
 	},
 	decimal: {
-		value: /^\d+(\.\d{1,2})/gi,
+		value: /^(0|[1-9]\d*)(\.\d{1,3})?$/,
 		message: 'Поле должно содержать только цифры',
 	},
 	cityWithRegion: {

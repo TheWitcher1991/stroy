@@ -79,6 +79,9 @@ export const zShape = {
 		.max(255, {
 			message: 'Должно быть не более 255 символов',
 		}),
+	decimal: z
+		.string()
+		.regex(regexPatterns.decimal.value, regexPatterns.decimal.message),
 	phone: z
 		.string()
 		.regex(

@@ -5,6 +5,12 @@ from django.db import models
 from packages.utils import t
 
 
+class InvoiceTarget(models.TextChoices):
+
+    WALLET = "WALLET", t("Пополнение баланса")
+    PAYMENT = "PAYMENT", t("Платеж")
+
+
 class PaymentMethod(models.TextChoices):
     CARD = "bank_card", t("Банковская карта")
     SBERPAY = "sberbank", t("SberPay")
@@ -76,4 +82,4 @@ class YookassaPaymentStatus(Enum):
     pending = ("pending",)
     waiting_for_capture = ("waiting_for_capture",)
     succeeded = ("succeeded",)
-    canceled = ("canceled", )
+    canceled = ("canceled",)

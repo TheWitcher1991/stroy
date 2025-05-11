@@ -9,7 +9,9 @@ import {
 } from '@gravity-ui/icons'
 import { Button, Card, Flex, Text } from '@gravity-ui/uikit'
 
-import TariffTag from '~widgets/billing/tariff-card/tariff-tag'
+import TariffTag from '~features/stroy-plus/tariff-card/tariff-tag'
+
+import { STROY_PLUS } from '@stroy/system'
 
 import { Spacing } from '~packages/ui'
 
@@ -17,7 +19,7 @@ import styles from './index.module.scss'
 
 export const TariffCard = () => {
 	return (
-		<Card className={styles.tariff} view={'filled'}>
+		<Card className={styles.tariff} view={'filled'} width={'fit-content'}>
 			<Text variant={'body-1'} color={'secondary'}>
 				Тариф
 			</Text>
@@ -42,7 +44,7 @@ export const TariffCard = () => {
 			</Flex>
 			<Spacing />
 			<Button view={'action'} size={'xl'} width={'max'}>
-				Подключить за 399 ₽/мес
+				Подключить за {STROY_PLUS}/мес
 			</Button>
 		</Card>
 	)

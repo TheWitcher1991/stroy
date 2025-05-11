@@ -2,16 +2,17 @@
 
 import { Person } from '@gravity-ui/icons'
 import { ActionBar } from '@gravity-ui/navigation'
-import { Button, Icon, Select } from '@gravity-ui/uikit'
+import { Button, Icon, Select, TextInput } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 
-import StroyPlusButton from '~features/stroy-plus-button'
 import ThemeButton from '~features/theme-button'
 
 import { DocumentImportButton } from '~models/document'
 
 import { href } from '@stroy/href'
 import { useIam } from '@stroy/models'
+
+import { SearchIcon } from '~packages/ui'
 
 import styles from './nav.module.scss'
 
@@ -45,7 +46,10 @@ export default function Nav() {
 			<ActionBar.Section type='primary'>
 				<ActionBar.Group pull='left'>
 					<ActionBar.Item>
-						<StroyPlusButton />
+						<TextInput
+							startContent={<SearchIcon />}
+							placeholder={'Поиск...'}
+						/>
 					</ActionBar.Item>
 				</ActionBar.Group>
 				<ActionBar.Group pull='right'>
