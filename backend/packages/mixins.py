@@ -76,6 +76,9 @@ class AbstractRepository(Generic[ModelType]):
     def update(self, pk: int, **kwargs) -> int:
         return self.get_queryset().filter(id=pk).update(**kwargs)
 
+    def update_or_create(self, **kwargs) -> ModelType:
+        return self.model.objects.update_or_create(**kwargs)
+
     def delete(self, pk: int) -> tuple[int, dict]:
         return self.get_queryset().filter(id=pk).delete()
 

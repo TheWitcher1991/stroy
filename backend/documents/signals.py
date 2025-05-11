@@ -44,5 +44,4 @@ def document_version_signal(sender, instance: Document, **kwargs):
 
             instance.version_number = old_instance.version_number + 1
     except DocumentRepository.DoesNotExist:
-        print("except")
         pass

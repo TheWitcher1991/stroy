@@ -1,10 +1,17 @@
 from django.db import transaction
 from rest_framework import serializers
 
-from business.models import DepartmentWallet, Invoice
+from business.models import DepartmentSubscription, DepartmentWallet, Invoice
 from business.repositories.invoice import InvoiceRepository
 from business.types import PayerType, PaymentMethod
 from packages.utils import t, userFromContext
+
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = DepartmentSubscription
+        fields = "_all__"
 
 
 class WalletSerializer(serializers.ModelSerializer):

@@ -11,6 +11,21 @@ from packages.decorators import is_amount_positive
 from packages.utils import decimal_to_words, t
 
 
+class DepartmentSubscription(models.Model):
+    start_date = models.DateField(t("Дата начала"))
+    end_date = models.DateField(t("Дата окончания"))
+    is_active = models.BooleanField(t("Активно"), default=True)
+    auto_pay = models.BooleanField(t("Автоплатеж"), default=False)
+    department = models.ForeignKey(to="departments.Department", on_delete=models.CASCADE, related_name="subscriptions")
+
+    class Meta:
+        verbose_name = t("Подписка")
+        verbose_name_plural = t("Подписки")
+
+    def __str__(self):
+        return f"{self.department} - {self.start_date}-{self.end_date}"
+
+
 class DepartmentWallet(AbstractModel):
     balance = models.DecimalField(
         t("Остаток средств"),
@@ -88,6 +103,13 @@ class Invoice(AbstractModel):
         null=True,
     )
     department = models.ForeignKey(to="departments.Department", on_delete=models.CASCADE, related_name="invoices")
+
+    class Meta:
+        verbose_name = t("Счет")
+        verbose_name_plural = t("Счета")
+
+    def __str__(self):
+        return f"{self.department} - {self.payment_id}"
 
     @property
     def amount_in_words(self):
