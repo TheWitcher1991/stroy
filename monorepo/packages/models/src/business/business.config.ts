@@ -1,3 +1,5 @@
 export const businessServiceKeys = {
-	deposit: 'deposit',
+	deposit: 'business/deposit',
+	wallet: 'business/wallet',
+	subscription: 'business/subscription',
 }

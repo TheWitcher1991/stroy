@@ -28,6 +28,7 @@ export const zShape = {
 	document: buildFileShape(DOCUMENT_FILE_TYPES, 2000),
 	ids: z.number().positive().array(),
 	uuid: z.string().uuid(),
+	date: z.string().date('Неверный формат даты'),
 	datetime: z.string().datetime({
 		message: 'Неверный формат даты',
 	}),
