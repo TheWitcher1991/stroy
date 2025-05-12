@@ -12,10 +12,10 @@ export const PermissionSchema = z.object({
 
 export const UpdatePermissionSchema = z.object({
 	guard: zShape.id,
-	user: zShape.id,
 })
 
 export const CreatePermissionSchema = z.object({
-	guard: GuardSchema,
-	user: UserSchema,
+	document: zShape.id,
+	guard: zShape.id,
+	user: zShape.id,
 })

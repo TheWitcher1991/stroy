@@ -3,12 +3,28 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 
+from business.filters import InvoiceFilter
 from business.repositories.invoice import InvoiceRepository
 from business.repositories.subscription import SubscriptionRepository
 from business.repositories.wallet import WalletRepository
-from business.serializers import DepositSerializer, InvoiceWebhookSerializer, SubscriptionSerializer, WalletSerializer
+from business.serializers import (
+    DepositSerializer,
+    InvoiceSerializer,
+    InvoiceWebhookSerializer,
+    SubscriptionSerializer,
+    WalletSerializer,
+)
 from business.webhooks import InvoiceWebHook
-from packages.controllers import AnonymousController, BaseController, CreateController
+from packages.caching import CachedSetMixin
+from packages.controllers import AnonymousController, BaseController, CreateController, ModelSetController
+
+
+class InvoiceViewSet(CachedSetMixin, ModelSetController):
+
+    queryset = InvoiceRepository.optimize()
+    serializer_class = InvoiceSerializer
+    filterset_class = InvoiceFilter
+    tag_cache = InvoiceRepository.cache_prefix
 
 
 class SubscriptionController(BaseController):
@@ -32,7 +48,7 @@ class WalletController(BaseController):
 
     def get(self, request, *args, **kwargs) -> Response:
         try:
-            instance = self.get_queryset()
+            instance = self.get_queryset().first()
         except WalletRepository.DoesNotExist:
             instance = WalletRepository.create(department=request.user.department)
         serializer = self.get_serializer(instance)

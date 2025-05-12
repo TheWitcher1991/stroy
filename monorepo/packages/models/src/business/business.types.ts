@@ -22,3 +22,11 @@ export type PaymentConfirmResponse = {
 }
 
 export interface UsePayments extends UseModelOptions {}
+
+export interface PropsWithPayment {
+	payment: IPayment
+}
+
+export interface PropsWithPaymentId {
+	payment: number
+}

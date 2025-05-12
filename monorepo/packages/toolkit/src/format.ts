@@ -8,6 +8,12 @@ export const formatDateInRu = (date: string): string => {
 	return format(new Date(date), 'dd.MM.yyyy')
 }
 
+export const formatDateTimeInRu = (date: string): string => {
+	if (!date) return '—'
+
+	return format(new Date(date), 'dd.MM.yyyy HH:mm')
+}
+
 export const formatDate = (date: string): string => {
 	if (!date) return '—'
 

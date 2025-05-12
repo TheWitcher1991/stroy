@@ -14,10 +14,14 @@ import { Label } from '@gravity-ui/uikit'
 import { usePathname, useRouter } from 'next/navigation'
 
 import { href } from '@stroy/href'
+import { useWallet } from '@stroy/models'
+import { RUBLE } from '@stroy/system'
 
 export default function useMenuItems(): MenuItem[] {
 	const router = useRouter()
 	const pathname = usePathname()
+
+	const { balance } = useWallet()
 
 	return [
 		{
@@ -81,7 +85,11 @@ export default function useMenuItems(): MenuItem[] {
 			iconSize: 20,
 			title: 'Биллинг',
 			icon: CreditCard,
-			rightAdornment: <Label theme={'success'}>0 ₽</Label>,
+			rightAdornment: (
+				<Label theme={'success'}>
+					{balance} {RUBLE}
+				</Label>
+			),
 			current: pathname.startsWith(href.finances.index),
 			onItemClick: () => router.push(href.finances.deposit),
 		},

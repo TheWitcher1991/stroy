@@ -14,12 +14,12 @@ export default function ProfileDepartmentForm() {
 				<TextInput
 					size={'xl'}
 					defaultValue={account.department_name}
-					disabled={!iam}
+					disabled={true}
 				/>
 			</FormSection>
 
 			<Spacing />
-			<Button view={'action'} size={'l'} type={'submit'} disabled={!iam}>
+			<Button view={'action'} size={'l'} type={'submit'} disabled={true}>
 				Сохранить
 			</Button>
 		</FormCard>

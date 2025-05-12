@@ -4,7 +4,6 @@ from rest_framework import serializers
 from documents.models import Document, DocumentPermission, DocumentVersion
 from documents.repository import DocumentPermissionRepository
 from documents.utils import generate_doc_number
-from guards.repository import GuardOperationRepository
 from packages.utils import get_content_type, get_file_type, userFromContext
 
 
@@ -13,6 +12,30 @@ class DocumentPermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = DocumentPermission
         fields = "__all__"
+
+    @transaction.atomic
+    def create(self, validated_data):
+        user = validated_data.get("user")
+        document = validated_data.get("document")
+        guard = validated_data.get("guard")
+
+        DocumentPermissionRepository.filter(document=document, user=user).delete()
+
+        permission = DocumentPermissionRepository.create(user=user, document=document, guard=guard)
+
+        return permission
+
+    @transaction.atomic
+    def update(self, instance, validated_data):
+        user = validated_data.get("user")
+        document = validated_data.get("document")
+        guard = validated_data.get("guard")
+
+        DocumentPermissionRepository.filter(document=document, user=user).delete()
+
+        permission = DocumentPermissionRepository.create(user=user, document=document, guard=guard)
+
+        return permission
 
 
 class DocumentVersionSerializer(serializers.ModelSerializer):

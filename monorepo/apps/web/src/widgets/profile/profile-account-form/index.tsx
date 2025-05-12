@@ -1,6 +1,5 @@
 import { Button, TextInput } from '@gravity-ui/uikit'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
@@ -29,11 +28,8 @@ export default function ProfileAccountForm({ user }: PropsWithUser) {
 		},
 		resolver: zodResolver(UpdateUserSchema),
 	})
-	const req = useUpdateProfile()
 
-	useEffect(() => {
-		console.log(errors)
-	}, [errors])
+	const req = useUpdateProfile()
 
 	const onSubmit = async (data: IUpdateUser) => {
 		await query(async () => {

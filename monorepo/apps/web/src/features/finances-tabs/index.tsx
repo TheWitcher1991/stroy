@@ -34,8 +34,10 @@ export default function FinancesTabs() {
 		<TabList value={index} onUpdate={handleChange} size='l'>
 			<Tab value='1'>Пополнение</Tab>
 			<Tab value='2'>Управление</Tab>
-			<Tab value='3'>Документы</Tab>
 			<Tab value='4'>Транзакции</Tab>
+			<Tab value='3' disabled={true}>
+				Документы
+			</Tab>
 		</TabList>
 	)
 }

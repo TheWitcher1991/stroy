@@ -2,7 +2,7 @@ import { Button, Icon, IconData } from '@gravity-ui/uikit'
 import { ReactNode } from 'react'
 
 interface ActionsProps {
-	onClick?: () => void
+	onClick?: (e?: any) => void
 	iconSize?: number
 	children?: ReactNode
 	icon: IconData

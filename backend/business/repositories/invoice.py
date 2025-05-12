@@ -13,6 +13,7 @@ from packages.mixins import AbstractRepository
 
 class BuildInvoiceRepository(AbstractRepository[Invoice]):
     model = Invoice
+    cache_prefix = "invoices"
 
     def optimize(self) -> QuerySet[Invoice]:
         return self.model.objects.select_related("department")

@@ -43,7 +43,7 @@ export const TariffCard = () => {
 				<TariffTag icon={ListUl}>И другие преимущества</TariffTag>
 			</Flex>
 			<Spacing />
-			<Button view={'action'} size={'xl'} width={'max'}>
+			<Button view={'action'} size={'xl'} width={'max'} disabled>
 				Подключить за {STROY_PLUS}/мес
 			</Button>
 		</Card>

@@ -11,7 +11,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DepartmentSubscription
-        fields = "_all__"
+        fields = "__all__"
 
 
 class WalletSerializer(serializers.ModelSerializer):
@@ -28,16 +28,37 @@ class InvoiceWebhookSerializer(serializers.Serializer):
     object = serializers.DictField()
 
 
+class InvoiceSerializer(serializers.ModelSerializer):
+    amount_in_words = serializers.SerializerMethodField()
+    is_expired = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Invoice
+        fields = "__all__"
+
+    def get_is_expired(self, obj: Invoice):
+        return obj.is_expired
+
+    def get_amount_in_words(self, obj: Invoice):
+        return obj.amount_in_words
+
+    def save(self, **kwargs):
+        raise serializers.ValidationError(t("Создание счета через API запрещено"))
+
+
 class DepositSerializer(serializers.ModelSerializer):
-    department = serializers.IntegerField(write_only=True)
-    amount = serializers.DecimalField(write_only=True, max_digits=10, decimal_places=2)
-    payment_method = serializers.ChoiceField(write_only=True, choices=PaymentMethod.choices)
-    payer_type = serializers.ChoiceField(write_only=True, choices=PayerType.choices)
     confirmation_url = serializers.URLField(read_only=True)
 
     class Meta:
         model = Invoice
-        fields = ("payer_type", "payment_method", "amount", "confirmation_url")
+        fields = ("payer_type", "payment_method", "amount", "confirmation_url", "department", "target")
+        extra_kwargs = {
+            "payer_type": {"write_only": True},
+            "payment_method": {"write_only": True},
+            "department": {"write_only": True},
+            "target": {"write_only": True},
+            "amount": {"write_only": True},
+        }
 
     @transaction.atomic
     def create(self, validated_data):

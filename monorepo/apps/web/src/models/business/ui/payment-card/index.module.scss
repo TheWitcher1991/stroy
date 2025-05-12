@@ -1,0 +1,36 @@
+.paymentCard {
+    padding: 16px 20px;
+}
+
+.paymentContent {
+    display: flex;
+}
+
+.paymentIcon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-size: 20px;
+    aspect-ratio: 1;
+    color: var(--g-color-private-white-950);
+}
+
+
+.paymentDescription {
+    background: var(--g-color-base-generic);
+    padding: 6px 10px;
+    display: inline-block;
+    border-radius: 0 8px 8px 8px;
+    margin: 6px 0 0 52px;
+}
+
+.paymentActions {
+    display: flex;
+    align-items: center;
+    margin: 12px 0 0 52px;
+    gap: 12px;
+}

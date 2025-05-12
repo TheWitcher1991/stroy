@@ -2,6 +2,7 @@ from decimal import Decimal
 
 from django.core.validators import MinValueValidator
 from django.db import models, transaction
+from django.utils import timezone
 from rest_framework.generics import get_object_or_404
 
 from business.types import InvoiceTarget, PayerType, PaymentMethod
@@ -114,3 +115,7 @@ class Invoice(AbstractModel):
     @property
     def amount_in_words(self):
         return decimal_to_words(self.amount)
+
+    @property
+    def is_expired(self):
+        return self.expires_at and self.expires_at < timezone.now()

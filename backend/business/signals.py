@@ -1,9 +1,10 @@
-from django.db.models.signals import pre_save
+from django.db.models.signals import post_delete, pre_save
 from django.dispatch import receiver
 
 from business.models import Invoice
 from business.repositories.invoice import InvoiceRepository
 from business.repositories.subscription import SubscriptionRepository
+from business.services.payment import PaymentService
 from business.types import InvoiceTarget
 
 
@@ -13,5 +14,13 @@ def invoice_pre_save_signal(sender, instance: Invoice, **kwargs):
         old_instance = InvoiceRepository.get_by_id(instance.pk)
         if instance.is_paid != old_instance.is_paid and instance.target == InvoiceTarget.PAYMENT:
             SubscriptionRepository.subscribe(instance.department)
+    except InvoiceRepository.DoesNotExist:
+        pass
+
+
+@receiver(post_delete, sender=Invoice)
+def invoice_post_delete_signal(sender, instance: Invoice, **kwargs):
+    try:
+        PaymentService.cancel(instance.payment_id)
     except InvoiceRepository.DoesNotExist:
         pass

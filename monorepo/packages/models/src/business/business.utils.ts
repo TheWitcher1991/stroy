@@ -1,5 +1,7 @@
 import { EnumType, SelectOption } from '@stroy/types'
 
+import { IPayment, PropsWithPayment } from './business.types'
+
 export const PaymentMethod = {
 	CARD: 'bank_card',
 	SBERPAY: 'sberbank',
@@ -37,3 +39,15 @@ export const PaymentMethodOptions: SelectOption<PaymentMethod>[] =
 		value: value as PaymentMethod,
 		content: label,
 	}))
+
+export const paymentStatusText = ({ is_paid, payer_type }: IPayment) => {
+	if (is_paid) {
+		return 'Оплачен'
+	} else if (!is_paid && payer_type === PayerType.INDIVIDUAL) {
+		return 'Не оплачен'
+	} else if (!is_paid && payer_type === PayerType.LEGAL) {
+		return 'Ждём зачисления'
+	} else {
+		return 'Не оплачен'
+	}
+}

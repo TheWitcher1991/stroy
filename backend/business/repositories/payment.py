@@ -6,7 +6,7 @@ from yookassa.domain.response import PaymentResponse
 
 from business.models import Invoice
 from business.services.payment import PaymentService
-from config.settings import PAYMENT_DAYS_TO_EXPIRE
+from config.settings import PAYMENT_MINUTES_TO_EXPIRE
 
 
 class PaymentRepository:
@@ -14,7 +14,7 @@ class PaymentRepository:
     @staticmethod
     def payment_description(invoice: Invoice) -> str:
         return (
-            f"Оплата за интернет по счёту № {invoice.pk} от {invoice.created_at.strftime('%d.%m.%Y')}, "
+            f"Оплата за интернет услуги по счёту № {invoice.pk} от {invoice.created_at.strftime('%d.%m.%Y')}, "
             f"Сумма: {invoice.amount} руб. Без НДС."
         )
 
@@ -40,7 +40,6 @@ class PaymentRepository:
                     "invoice": invoice.pk,
                     "department": invoice.department.pk,
                 },
-                "receipt": {},
                 "capture": True,
                 "description": description,
             }
@@ -49,7 +48,7 @@ class PaymentRepository:
         invoice.payment_id = payment.id
         invoice.payment_method = payment.payment_method.type
         invoice.payment_url = payment.confirmation.confirmation_url
-        invoice.expires_at = payment.expires_at or timezone.now() + timedelta(days=PAYMENT_DAYS_TO_EXPIRE)
+        invoice.expires_at = payment.expires_at or timezone.now() + timedelta(minutes=PAYMENT_MINUTES_TO_EXPIRE)
 
         invoice.save()
 

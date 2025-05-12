@@ -5,20 +5,19 @@ import { useForm } from 'react-hook-form'
 import { PaymentMethodSelect } from '~models/business'
 
 import {
+	account,
 	DepositSchema,
 	IDeposit,
+	InvoiceTarget,
 	PayerType,
 	PaymentMethod,
 	useDeposit,
-	useIam,
 } from '@stroy/models'
 import { query } from '@stroy/toolkit'
 
 import { FormCard, FormSection, Spacing } from '~packages/ui'
 
 export default function FinancesDeposit() {
-	const account = useIam()
-
 	const {
 		register,
 		handleSubmit,
@@ -27,9 +26,10 @@ export default function FinancesDeposit() {
 		setError,
 	} = useForm<IDeposit>({
 		defaultValues: {
-			amount: '0',
+			amount: '',
 			payment_method: PaymentMethod.CARD,
 			payer_type: PayerType.INDIVIDUAL,
+			target: InvoiceTarget.WALLET,
 			department: account.department,
 		},
 		resolver: zodResolver(DepositSchema),
@@ -62,6 +62,7 @@ export default function FinancesDeposit() {
 
 			<FormSection label={'Способ оплаты'}>
 				<PaymentMethodSelect
+					defaultValue={[PaymentMethod.CARD]}
 					errorMessage={errors.payment_method?.message}
 					register={register}
 					onSelect={value => {
@@ -75,9 +76,10 @@ export default function FinancesDeposit() {
 
 			<Spacing />
 			<Button
-				width={'auto'}
 				view={'action'}
 				size={'l'}
+				type={'submit'}
+				loading={req.isPending}
 				onClick={handleSubmit(onSubmit)}
 			>
 				Пополнить баланс

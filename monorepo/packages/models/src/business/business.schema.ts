@@ -5,9 +5,10 @@ import { zShape } from '@stroy/toolkit'
 import { InvoiceTarget, PayerType, PaymentMethod } from './business.utils'
 
 export const DepositSchema = z.object({
-	department: zShape.id.optional(),
+	department: zShape.id,
 	payment_method: z.nativeEnum(PaymentMethod),
-	payer_type: z.enum(PayerType),
+	payer_type: z.nativeEnum(PayerType),
+	target: z.nativeEnum(InvoiceTarget),
 	amount: zShape.decimal,
 })
 
@@ -29,11 +30,13 @@ export const PaymentSchema = z.object({
 	payment_id: z.string(),
 	payment_url: z.string(),
 	payment_method: z.nativeEnum(PaymentMethod),
-	payer_type: z.enum(PayerType),
-	target: z.enum(InvoiceTarget),
+	payer_type: z.nativeEnum(PayerType),
+	target: z.nativeEnum(InvoiceTarget),
 	description: z.string(),
+	amount_in_words: z.string(),
 	amount: zShape.decimal,
 	is_paid: z.boolean(),
+	is_expired: z.boolean(),
 	expires_at: zShape.datetime,
 	captured_at: zShape.datetime.nullable(),
 	created_at: zShape.datetime,
