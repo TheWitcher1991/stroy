@@ -25,6 +25,13 @@ export const PayerType = {
 
 export type PayerType = EnumType<typeof PayerType>
 
+export const InvoiceTarget = {
+	WALLET: 'WALLET',
+	PAYMENT: 'PAYMENT',
+} as const
+
+export type InvoiceTarget = EnumType<typeof InvoiceTarget>
+
 export const PaymentMethodOptions: SelectOption<PaymentMethod>[] =
 	Object.entries(PaymentMethodMapper).map(([value, label]) => ({
 		value: value as PaymentMethod,

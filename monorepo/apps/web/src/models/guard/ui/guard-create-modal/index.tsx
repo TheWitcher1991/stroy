@@ -56,7 +56,6 @@ export const GuardCreateModal = ({ open, onClose }: ModalProps) => {
 
 			<FormSection label={'Операции'} withOutMargin={true}>
 				<GuardOperationSelect
-					name={'operations'}
 					errorMessage={errors.operations?.message}
 					register={register}
 					onSelect={value => {

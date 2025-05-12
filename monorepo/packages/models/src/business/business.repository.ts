@@ -1,15 +1,29 @@
 import { http } from '../request'
 import { AxiosResponse } from 'axios'
 
+import { ListResponse } from '@stroy/types'
+
 import { businessServiceKeys } from './business.config'
 import {
 	IDeposit,
+	IPayment,
 	ISubscription,
 	IWallet,
 	PaymentConfirmResponse,
+	UsePayments,
 } from './business.types'
 
 export class BusinessRepository {
+	static async payments(
+		params: Partial<UsePayments>,
+	): Promise<AxiosResponse<ListResponse<IPayment>>> {
+		return await http.get(`${businessServiceKeys.payments}/`, { params })
+	}
+
+	static async payment(id: number): Promise<AxiosResponse<IPayment>> {
+		return await http.get(`${businessServiceKeys.payments}/${id}/`)
+	}
+
 	static async deposit(
 		data: IDeposit,
 	): Promise<AxiosResponse<PaymentConfirmResponse>> {
