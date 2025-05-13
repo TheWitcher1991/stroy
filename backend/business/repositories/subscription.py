@@ -20,15 +20,26 @@ class BuildSubscriptionRepository(AbstractRepository[DepartmentSubscription]):
     def unsubscribe(self, department: Department):
         self.optimize().filter(department=department, is_active=True).update(is_active=False)
 
+    def renew(self, department: Department):
+        self.optimize().filter(department=department, is_active=False).update(is_active=True)
+
     def subscribe(self, department: Department):
-        start_date = timezone.now().date()
-        end_date = start_date + timedelta(days=30)
+        today = timezone.now().date()
+        current_subscription = self.current(department)
 
-        self.unsubscribe(department)
+        if current_subscription and current_subscription.end_date >= today:
+            new_end_date = current_subscription.end_date + timedelta(days=30)
+            current_subscription.end_date = new_end_date
+            current_subscription.save()
+        else:
+            start_date = today
+            end_date = start_date + timedelta(days=30)
 
-        self.update_or_create(
-            department=department, defaults={"is_active": True, "start_date": start_date, "end_date": end_date}
-        )
+            self.unsubscribe(department)
+
+            self.update_or_create(
+                department=department, defaults={"is_active": True, "start_date": start_date, "end_date": end_date}
+            )
 
 
 SubscriptionRepository = BuildSubscriptionRepository()

@@ -1,7 +1,12 @@
 import { CreditCard } from '@gravity-ui/icons'
 import { Button, Card, Flex, Icon, Label, Text } from '@gravity-ui/uikit'
 
-import { SubscriptionHistoryButton, useBusiness } from '~models/business'
+import {
+	SubscribeButton,
+	SubscriptionHistoryButton,
+	UnsubscribeButton,
+	useBusiness,
+} from '~models/business'
 
 import { STROY_PLUS } from '@stroy/system'
 import { formatDateInRu } from '@stroy/toolkit'
@@ -28,11 +33,16 @@ export default function TariffStatus() {
 			<Text variant={'header-2'}>{STROY_PLUS}</Text>
 			<Text color={'secondary'} variant={'body-2'}>
 				{subscription?.is_active
-					? `до ${formatDateInRu(subscription?.is_active as string)}`
+					? `до ${formatDateInRu(subscription?.end_date as string)}`
 					: 'Активируйте'}
 			</Text>
 			<Spacing v={'xs'} />
 			<Actions>
+				{!subscription?.is_active ? (
+					<SubscribeButton />
+				) : (
+					<UnsubscribeButton />
+				)}
 				<Button width={'max'} view={'outlined'}>
 					<Icon data={CreditCard} size={16} />
 					Оплатить сейчас

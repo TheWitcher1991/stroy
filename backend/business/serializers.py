@@ -3,8 +3,35 @@ from rest_framework import serializers
 
 from business.models import DepartmentSubscription, DepartmentWallet, Invoice
 from business.repositories.invoice import InvoiceRepository
-from business.types import PayerType, PaymentMethod
+from business.types import InvoiceTarget, PayerType, PaymentMethod
+from config.settings import STROY_PLUS_AMOUNT, YOOKASSA_RETURN_URL
 from packages.utils import t, userFromContext
+
+
+class SubscribeSerializer(serializers.Serializer):
+    return_url = serializers.URLField(read_only=True)
+
+    class Meta:
+        fields = ("return_url",)
+
+    @transaction.atomic
+    def create(self, validated_data):
+        user = userFromContext(self.context)
+
+        invoice = InvoiceRepository.create_invoice(
+            department=user.department,
+            payer_type=PayerType.INDIVIDUAL,
+            target=InvoiceTarget.PAYMENT,
+            payment_method=PaymentMethod.BALANCE,
+            amount=STROY_PLUS_AMOUNT,
+            payment_url=YOOKASSA_RETURN_URL,
+        )
+
+        try:
+            InvoiceRepository.capture_invoice(invoice.id)
+            return {"return_url": invoice.payment_url}
+        except Exception as e:
+            raise serializers.ValidationError(t(str(e)))
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
@@ -69,6 +96,6 @@ class DepositSerializer(serializers.ModelSerializer):
         if department != user.department:
             raise serializers.ValidationError(t("Вы не можете пополнить счёт чужого подразделения"))
 
-        invoice = InvoiceRepository.create_invoice(validated_data)
+        invoice = InvoiceRepository.create_invoice(**validated_data)
 
         return {"confirmation_url": invoice.payment_url}

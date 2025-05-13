@@ -11,10 +11,12 @@ from business.serializers import (
     DepositSerializer,
     InvoiceSerializer,
     InvoiceWebhookSerializer,
+    SubscribeSerializer,
     SubscriptionSerializer,
     WalletSerializer,
 )
 from business.webhooks import InvoiceWebHook
+from config.settings import YOOKASSA_RETURN_URL
 from packages.caching import CachedSetMixin
 from packages.controllers import AnonymousController, BaseController, CreateController, ModelSetController
 
@@ -25,6 +27,25 @@ class InvoiceViewSet(CachedSetMixin, ModelSetController):
     serializer_class = InvoiceSerializer
     filterset_class = InvoiceFilter
     tag_cache = InvoiceRepository.cache_prefix
+
+
+class UnsubscribeController(BaseController):
+
+    def post(self, request, *args, **kwargs) -> Response:
+        SubscriptionRepository.unsubscribe(request.user.department)
+        return Response({"detail": "Подписка деактивирована"})
+
+
+class RenewController(BaseController):
+    def post(self, request, *args, **kwargs) -> Response:
+        SubscriptionRepository.renew(request.user.department)
+        return Response({"detail": "Подписка восстановлена"})
+
+
+class SubscribeController(CreateController):
+
+    queryset = SubscriptionRepository.optimize()
+    serializer_class = SubscribeSerializer
 
 
 class SubscriptionController(BaseController):

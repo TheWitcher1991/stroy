@@ -14,3 +14,37 @@ export const useDeposit = () => {
 		},
 	})
 }
+
+export const useSubscribe = () => {
+	return useMutation({
+		mutationFn: () => BusinessRepository.subscribe(),
+		onSettled: async () => {
+			await optimisticInvalidateQueries([
+				[businessServiceKeys.subscription],
+			])
+		},
+	})
+}
+
+export const useUnsubscribe = () => {
+	return useMutation({
+		mutationFn: () => BusinessRepository.unsubscribe(),
+		onSettled: async () => {
+			await optimisticInvalidateQueries([
+				[businessServiceKeys.subscription],
+				[businessServiceKeys.payments],
+			])
+		},
+	})
+}
+
+export const useRenew = () => {
+	return useMutation({
+		mutationFn: () => BusinessRepository.renew(),
+		onSettled: async () => {
+			await optimisticInvalidateQueries([
+				[businessServiceKeys.subscription],
+			])
+		},
+	})
+}

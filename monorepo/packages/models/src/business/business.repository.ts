@@ -10,6 +10,7 @@ import {
 	ISubscription,
 	IWallet,
 	PaymentConfirmResponse,
+	SubscribeResponse,
 	UsePayments,
 } from './business.types'
 
@@ -36,5 +37,17 @@ export class BusinessRepository {
 
 	static async subscription(): Promise<AxiosResponse<ISubscription>> {
 		return await http.get(`${businessServiceKeys.subscription}/`)
+	}
+
+	static async subscribe(): Promise<AxiosResponse<SubscribeResponse>> {
+		return await http.post(`${businessServiceKeys.subscribe}/`)
+	}
+
+	static async unsubscribe(): Promise<AxiosResponse> {
+		return await http.post(`${businessServiceKeys.unsubscribe}/`)
+	}
+
+	static async renew(): Promise<AxiosResponse> {
+		return await http.post(`${businessServiceKeys.renew}/`)
 	}
 }

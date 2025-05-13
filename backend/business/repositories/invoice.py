@@ -29,17 +29,18 @@ class BuildInvoiceRepository(AbstractRepository[Invoice]):
 
         raise ValueError("Invalid invoice target")
 
-    def create_invoice(self, invoice_data: dict) -> Invoice:
-        invoice = self.model(**invoice_data)
+    def create_invoice(self, **kwargs) -> Invoice:
+        invoice = self.model(**kwargs)
 
-        if invoice.amount < MIN_BALANCE_DEPOSIT:
+        if invoice.target == InvoiceTarget.WALLET and invoice.amount < MIN_BALANCE_DEPOSIT:
             raise ValidationError(f"Минимальная сумма пополнения лицевого счета {MIN_BALANCE_DEPOSIT}")
 
         invoice.description = self._build_description(invoice)
 
         invoice.save()
 
-        PaymentRepository.create_payment(invoice)
+        if invoice.target == InvoiceTarget.WALLET:
+            PaymentRepository.create_payment(invoice)
 
         return invoice
 

@@ -21,6 +21,10 @@ export type PaymentConfirmResponse = {
 	confirmation_url: string
 }
 
+export type SubscribeResponse = {
+	return_url: string
+}
+
 export interface UsePayments extends UseModelOptions {}
 
 export interface PropsWithPayment {
