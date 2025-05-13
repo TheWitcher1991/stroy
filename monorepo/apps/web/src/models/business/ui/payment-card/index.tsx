@@ -1,4 +1,4 @@
-import { Bell, CircleCheck, Hashtag } from '@gravity-ui/icons'
+import { Bell, Check, CircleCheck, Clock, Hashtag } from '@gravity-ui/icons'
 import { Card, Flex, Icon, IconData, Label, Text } from '@gravity-ui/uikit'
 import { useToggle } from 'ahooks'
 
@@ -19,13 +19,18 @@ import { formatDateTimeInRu } from '@stroy/toolkit'
 import styles from './index.module.scss'
 
 const iconColor: Record<boolean, string> = {
-	true: '#009973',
-	false: '#f6743e',
+	true: 'var(--g-color-base-positive-light)',
+	false: 'var(--g-color-base-warning-light)',
+}
+
+const labelColor: Record<boolean, string> = {
+	true: 'var(--g-color-text-positive)',
+	false: 'var(--g-color-text-warning)',
 }
 
 const iconData: Record<boolean, IconData> = {
-	true: CircleCheck,
-	false: Bell,
+	true: Check,
+	false: Clock,
 }
 
 export function PaymentCard({ payment }: PropsWithPayment) {
@@ -35,14 +40,22 @@ export function PaymentCard({ payment }: PropsWithPayment) {
 		<>
 			<PaymentModal payment={payment} open={val} onClose={toggle} />
 
-			<Card className={styles.paymentCard} onClick={toggle}>
+			<Card
+				className={styles.paymentCard}
+				onClick={toggle}
+				type={'action'}
+				view={'outlined'}
+			>
 				<Flex justifyContent={'space-between'}>
 					<div className={styles.paymentContent}>
 						<span
-							style={{ background: iconColor[payment.is_paid] }}
+							style={{
+								background: iconColor[payment.is_paid],
+								color: labelColor[payment.is_paid],
+							}}
 							className={styles.paymentIcon}
 						>
-							<Icon data={iconData[payment.is_paid]} size={20} />
+							<Icon data={iconData[payment.is_paid]} size={18} />
 						</span>
 						<Flex direction={'column'} gap={1}>
 							<Flex alignItems={'center'} gap={1}>

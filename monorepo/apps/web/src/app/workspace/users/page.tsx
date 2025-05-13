@@ -1,6 +1,10 @@
 'use client'
 
-import Users, { UsersFetcher, UsersPagination } from '~widgets/users'
+import Users, {
+	UsersFetcher,
+	UsersFilter,
+	UsersPagination,
+} from '~widgets/users'
 
 import { UserCreateButton } from '~models/user'
 
@@ -14,6 +18,7 @@ export default function UsersPage() {
 				subtitle={'Все пользователи в этом рабочем пространстве'}
 				action={<UserCreateButton />}
 			/>
+			<UsersFilter />
 			<Users />
 			<UsersFetcher />
 			<UsersPagination />

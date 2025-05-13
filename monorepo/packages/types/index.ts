@@ -13,6 +13,7 @@ export interface SelectProps<
 > {
 	defaultValue?: VALUE[]
 	value?: VALUE[]
+	size?: 's' | 'm' | 'l' | 'xl'
 	errorMessage?: ReactNode
 	onSelect?: (value: VALUE[]) => void
 	register?: UseFormRegister<REGISTER>

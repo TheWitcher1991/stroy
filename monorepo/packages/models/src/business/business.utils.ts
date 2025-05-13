@@ -44,7 +44,7 @@ export const paymentStatusText = ({ is_paid, payer_type }: IPayment) => {
 	if (is_paid) {
 		return 'Оплачен'
 	} else if (!is_paid && payer_type === PayerType.INDIVIDUAL) {
-		return 'Не оплачен'
+		return 'Ждем оплаты'
 	} else if (!is_paid && payer_type === PayerType.LEGAL) {
 		return 'Ждём зачисления'
 	} else {

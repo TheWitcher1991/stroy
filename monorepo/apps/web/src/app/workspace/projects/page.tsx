@@ -2,6 +2,7 @@
 
 import Projects, {
 	ProjectsFetcher,
+	ProjectsFilter,
 	ProjectsPagination,
 } from '~widgets/projects'
 
@@ -19,6 +20,7 @@ export default function ProjectsPage() {
 				}
 				action={<ProjectCreateButton />}
 			/>
+			<ProjectsFilter />
 			<Projects />
 			<ProjectsFetcher />
 			<ProjectsPagination />

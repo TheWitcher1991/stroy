@@ -1,6 +1,6 @@
 'use client'
 
-import Guards, { GuardsFetcher } from '~widgets/guards'
+import Guards, { GuardsFetcher, GuardsFilter } from '~widgets/guards'
 
 import { GuardCreateButton } from '~models/guard'
 
@@ -14,6 +14,7 @@ export default function GuardsPage() {
 				subtitle={'Гуарды используются для контроля доступа к ресурсам'}
 				action={<GuardCreateButton />}
 			/>
+			<GuardsFilter />
 			<Guards />
 			<GuardsFetcher />
 		</Group>

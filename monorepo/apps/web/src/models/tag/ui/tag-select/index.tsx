@@ -14,6 +14,7 @@ export const TagSelect = <T = any,>({
 	value,
 	errorMessage,
 	onSelect,
+	size = 'l',
 }: SelectProps<T>) => {
 	const { isLoading, tags } = useSelectableTags()
 
@@ -34,7 +35,7 @@ export const TagSelect = <T = any,>({
 				name={'tags'}
 				errorMessage={errorMessage}
 				width={'max'}
-				size={'l'}
+				size={size}
 				filterable={true}
 				placeholder={'Выберите тег'}
 				options={tags}

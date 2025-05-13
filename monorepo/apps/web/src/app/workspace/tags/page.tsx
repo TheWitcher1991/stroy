@@ -1,6 +1,6 @@
 'use client'
 
-import Tags, { TagsFetcher } from '~widgets/tags'
+import Tags, { TagsFetcher, TagsFilter } from '~widgets/tags'
 
 import { TagCreateButton } from '~models/tag'
 
@@ -16,6 +16,7 @@ export default function TagsPage() {
 				}
 				action={<TagCreateButton />}
 			/>
+			<TagsFilter />
 			<Tags />
 			<TagsFetcher />
 		</Group>
