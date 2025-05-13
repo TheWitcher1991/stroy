@@ -15,6 +15,13 @@ body,
     margin: 0;
 }
 
+.g-text__expand {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-box-orient: vertical;
+}
+
 .g-table__table {
     width: 100%;
 }
@@ -36,6 +43,19 @@ body,
 
 .gn-action-bar-section_type_secondary {
     margin-right: 14px;
+}
+
+.gn-aside-header__pane-container {
+    overflow: auto;
+}
+
+.gn-aside-header__content {
+    overflow: auto;
+    height: 100%;
+}
+
+.gn-aside-header {
+    scrollbar-color: transparent;
 }
 
 :root {

@@ -1,5 +1,5 @@
 import { CreditCard } from '@gravity-ui/icons'
-import { Button, Icon } from '@gravity-ui/uikit/build/esm'
+import { Button, Icon } from '@gravity-ui/uikit'
 
 export const SubscribeButton = () => {
 	return (

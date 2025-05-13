@@ -11,8 +11,10 @@ export default function GuardOperationList({
 }: GuardOperationListProps) {
 	return (
 		<Flex alignItems={'center'} gap={2} wrap={'wrap'}>
-			{operations.map(op => (
-				<Label size={'s'}>{GuardOperationMapper[op]}</Label>
+			{operations.map((op, index) => (
+				<Label key={index} size={'s'}>
+					{GuardOperationMapper[op]}
+				</Label>
 			))}
 		</Flex>
 	)

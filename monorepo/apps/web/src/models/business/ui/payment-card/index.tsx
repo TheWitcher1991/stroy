@@ -35,7 +35,7 @@ export function PaymentCard({ payment }: PropsWithPayment) {
 		<>
 			<PaymentModal payment={payment} open={val} onClose={toggle} />
 
-			<Card className={styles.paymentCard}>
+			<Card className={styles.paymentCard} onClick={toggle}>
 				<Flex justifyContent={'space-between'}>
 					<div className={styles.paymentContent}>
 						<span

@@ -25,4 +25,6 @@ export const DOCUMENT_FILE_TYPES = [
 	'text/plain',
 	'text/csv',
 	'text/tab-separated-values',
+	'image/jpeg',
+	'image/png',
 ]

@@ -28,8 +28,8 @@ export const Cell = ({
 				{icon && <Icon data={icon} size={19} />}
 				{iconText && <Text variant={'subheader-1'}>{iconText}</Text>}
 			</span>
-			<Flex direction={'column'}>
-				<Text>{title}</Text>
+			<Flex direction={'column'} overflow={'hidden'}>
+				<Text className={'g-text__expand'}>{title}</Text>
 				<Text variant={'body-short'} color={'secondary'}>
 					{subtitle}
 				</Text>

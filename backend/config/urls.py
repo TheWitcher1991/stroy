@@ -1,9 +1,10 @@
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from config.settings import ADMIN_URL
+from config.settings import ADMIN_URL, MEDIA_URL, MEDIA_ROOT
 from packages.utils import t
 
 app_name = "config"
@@ -31,4 +32,5 @@ urlpatterns = [
     path("v1/", include("business.urls", namespace="business")),
 ]
 
+urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()

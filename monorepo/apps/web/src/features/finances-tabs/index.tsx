@@ -1,4 +1,5 @@
-import { Tab, TabList } from '@gravity-ui/uikit'
+import { CreditCard, FileText, Globe, Receipt } from '@gravity-ui/icons'
+import { Icon, Tab, TabList } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
@@ -32,10 +33,20 @@ export default function FinancesTabs() {
 
 	return (
 		<TabList value={index} onUpdate={handleChange} size='l'>
-			<Tab value='1'>Пополнение</Tab>
-			<Tab value='2'>Управление</Tab>
-			<Tab value='4'>Транзакции</Tab>
-			<Tab value='3' disabled={true}>
+			<Tab value='1' icon={<Icon data={CreditCard} size={16} />}>
+				Пополнение
+			</Tab>
+			<Tab value='2' icon={<Icon data={Globe} size={16} />}>
+				Управление
+			</Tab>
+			<Tab value='4' icon={<Icon data={Receipt} size={16} />}>
+				Транзакции
+			</Tab>
+			<Tab
+				value='3'
+				disabled={true}
+				icon={<Icon data={FileText} size={16} />}
+			>
 				Документы
 			</Tab>
 		</TabList>

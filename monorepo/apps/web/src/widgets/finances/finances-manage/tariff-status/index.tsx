@@ -1,5 +1,4 @@
-import { CreditCard } from '@gravity-ui/icons'
-import { Button, Card, Flex, Icon, Label, Text } from '@gravity-ui/uikit'
+import { Card, Flex, Label, Text } from '@gravity-ui/uikit'
 
 import {
 	SubscribeButton,
@@ -43,10 +42,6 @@ export default function TariffStatus() {
 				) : (
 					<UnsubscribeButton />
 				)}
-				<Button width={'max'} view={'outlined'}>
-					<Icon data={CreditCard} size={16} />
-					Оплатить сейчас
-				</Button>
 				<SubscriptionHistoryButton />
 			</Actions>
 		</Card>
