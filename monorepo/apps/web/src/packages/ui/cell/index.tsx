@@ -1,9 +1,11 @@
 import { Flex, Icon, IconData, Text } from '@gravity-ui/uikit'
+import { ReactNode } from 'react'
 
 import styles from './index.module.scss'
 
 interface CellProps {
 	icon?: IconData
+	iconComponent?: ReactNode
 	iconText?: string
 	title?: string
 	subtitle?: string
@@ -15,6 +17,7 @@ export const Cell = ({
 	iconText,
 	title,
 	subtitle,
+	iconComponent,
 	onClick,
 }: CellProps) => {
 	return (
@@ -26,6 +29,7 @@ export const Cell = ({
 		>
 			<span className={styles.cellIcon}>
 				{icon && <Icon data={icon} size={19} />}
+				{iconComponent}
 				{iconText && <Text variant={'subheader-1'}>{iconText}</Text>}
 			</span>
 			<Flex direction={'column'} overflow={'hidden'}>

@@ -1,8 +1,7 @@
-import { IconData } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 import { memo, useCallback } from 'react'
 
-import { documentIcon } from '~models/document'
+import { documentIconComponent } from '~models/document'
 
 import { href } from '@stroy/href'
 import { PropsWithDocument } from '@stroy/models'
@@ -20,7 +19,7 @@ export const DocumentCell = memo(({ document }: PropsWithDocument) => {
 	return (
 		<Cell
 			onClick={onClick}
-			icon={documentIcon[document.doc_type] as IconData}
+			iconComponent={documentIconComponent[document.doc_type]}
 			title={document.title}
 			subtitle={document.doc_number}
 		/>

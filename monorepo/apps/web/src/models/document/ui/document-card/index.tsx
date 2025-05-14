@@ -1,4 +1,4 @@
-import { Card, Icon, Text } from '@gravity-ui/uikit'
+import { Card, Text } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
@@ -6,7 +6,7 @@ import {
 	DocumentDeleteButton,
 	DocumentDownloadButton,
 	DocumentEditButton,
-	documentIcon,
+	DocumentIcon,
 } from '~models/document'
 import { UserCell } from '~models/user'
 
@@ -33,9 +33,7 @@ export function DocumentCard({ document }: PropsWithDocument) {
 				className={styles.documentCardIcon}
 				onClick={onClick}
 			>
-				<Text color={'brand'}>
-					<Icon data={documentIcon[document.doc_type]} size={28} />
-				</Text>
+				<DocumentIcon type={document.doc_type} size={28} />
 				<Text variant={'body-1'}>{document.title}</Text>
 			</Card>
 			<div className={styles.documentCardContent}>

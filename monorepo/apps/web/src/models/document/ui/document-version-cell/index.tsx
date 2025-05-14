@@ -1,7 +1,6 @@
-import { IconData } from '@gravity-ui/uikit'
 import { memo } from 'react'
 
-import { documentIcon } from '~models/document'
+import { documentIconComponent } from '~models/document'
 
 import { PropsWithDocumentVersion } from '@stroy/models'
 import { formatBytes } from '@stroy/toolkit'
@@ -12,7 +11,7 @@ export const DocumentVersionCell = memo(
 	({ version }: PropsWithDocumentVersion) => {
 		return (
 			<Cell
-				icon={documentIcon[version.doc_type] as IconData}
+				iconComponent={documentIconComponent[version.doc_type]}
 				title={version.doc_title}
 				subtitle={`${version.doc_type} — ${formatBytes(version.size, 'kb')}`}
 			/>
