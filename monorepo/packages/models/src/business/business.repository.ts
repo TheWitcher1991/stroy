@@ -25,6 +25,10 @@ export class BusinessRepository {
 		return await http.get(`${businessServiceKeys.payments}/${id}/`)
 	}
 
+	static async cancelPayment(id: number): Promise<AxiosResponse> {
+		return await http.delete(`${businessServiceKeys.payments}/${id}/`)
+	}
+
 	static async deposit(
 		data: IDeposit,
 	): Promise<AxiosResponse<PaymentConfirmResponse>> {

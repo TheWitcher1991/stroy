@@ -20,7 +20,7 @@ const GuardRowActions = memo(({ guard }: PropsWithGuard) => {
 			{iam ? (
 				<>
 					<GuardEditButton guard={guard} onlyIcon={true} />
-					<GuardDeleteButton guard={guard.id} onlyIcon={true} />
+					<GuardDeleteButton guard={guard} onlyIcon={true} />
 				</>
 			) : (
 				<GuardViewButton guard={guard} onlyIcon={true} />

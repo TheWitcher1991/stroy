@@ -18,7 +18,7 @@ export default function useTagTableData(tags: ITag[]) {
 				actions: (
 					<Actions justifyContent={'end'}>
 						<TagEditButton tag={tag} onlyIcon={true} />
-						<TagDeleteButton tag={tag.id} onlyIcon={true} />
+						<TagDeleteButton tag={tag} onlyIcon={true} />
 					</Actions>
 				),
 			})),

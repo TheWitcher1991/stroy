@@ -15,6 +15,15 @@ export const useDeposit = () => {
 	})
 }
 
+export const useCancelPayment = () => {
+	return useMutation({
+		mutationFn: (id: number) => BusinessRepository.cancelPayment(id),
+		onSettled: async () => {
+			await optimisticInvalidateQueries([[businessServiceKeys.payments]])
+		},
+	})
+}
+
 export const useSubscribe = () => {
 	return useMutation({
 		mutationFn: () => BusinessRepository.subscribe(),

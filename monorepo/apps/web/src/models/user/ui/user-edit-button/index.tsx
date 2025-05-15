@@ -1,6 +1,5 @@
 import { PencilToSquare } from '@gravity-ui/icons'
 import { useToggle } from 'ahooks'
-import { useEffect } from 'react'
 
 import { UserEditModal } from '~models/user'
 

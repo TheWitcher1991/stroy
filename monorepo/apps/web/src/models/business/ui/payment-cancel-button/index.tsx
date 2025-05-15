@@ -9,8 +9,10 @@ export const PaymentCancelButton = ({
 	onlyIcon,
 }: PropsWithAction<PropsWithPaymentId>) => {
 	return (
-		<Action view={'outlined-danger'} icon={Xmark} onlyIcon={onlyIcon}>
-			Отменить
-		</Action>
+		<>
+			<Action view={'outlined-danger'} icon={Xmark} onlyIcon={onlyIcon}>
+				Отменить
+			</Action>
+		</>
 	)
 }

@@ -6,14 +6,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
 import { href } from '@stroy/href'
-import { ILogin, LoginSchema, useAccountStore, useLogin } from '@stroy/models'
+import { ILogin, login, LoginSchema, useLogin } from '@stroy/models'
 import { query } from '@stroy/toolkit'
 
 import { FormCard, FormLink, FormSection, Spacing } from '~packages/ui'
 
 export default function LoginForm() {
-	const login = useAccountStore(state => state.login)
-
 	const {
 		register,
 		handleSubmit,
@@ -32,6 +30,7 @@ export default function LoginForm() {
 		await query(async () => {
 			const res = await req.mutateAsync(data)
 			login(res.data)
+			window.location.replace(href.relaxed.index)
 		})
 	}
 

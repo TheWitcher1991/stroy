@@ -20,7 +20,7 @@ const UseRowActions = memo(({ user }: PropsWithUser) => {
 			{iam ? (
 				<>
 					<UserEditButton user={user} onlyIcon={true} />
-					<UserDeleteButton user={user.id} onlyIcon={true} />
+					<UserDeleteButton user={user} onlyIcon={true} />
 				</>
 			) : (
 				<UserViewButton user={user.id} onlyIcon={true} />

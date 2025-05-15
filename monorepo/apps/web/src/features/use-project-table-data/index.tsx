@@ -25,7 +25,7 @@ export default function useProjectTableData(projects: IProject[]) {
 					<Actions justifyContent={'end'}>
 						<ProjectEditButton project={project} onlyIcon={true} />
 						<ProjectDeleteButton
-							project={project.id}
+							project={project}
 							onlyIcon={true}
 						/>
 					</Actions>
