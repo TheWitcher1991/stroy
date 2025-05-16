@@ -1,7 +1,16 @@
 import { IPayment, UsePayments } from '@stroy/models'
-import { createModelListStore } from '@stroy/toolkit'
+import { createModelListApi } from '@stroy/toolkit'
 
-const creator = createModelListStore<IPayment, Partial<UsePayments>>({
+export const {
+	setCount,
+	setList,
+	setFilter,
+	setLoading,
+	setError,
+	reset,
+	changeQueryFromInput,
+	$store,
+} = createModelListApi<IPayment, UsePayments>({
 	count: 0,
 	list: [],
 	error: false,
@@ -12,6 +21,3 @@ const creator = createModelListStore<IPayment, Partial<UsePayments>>({
 		ordering: '-created_at',
 	},
 })
-
-export const paymentsStore = creator.store
-export const paymentsActions = creator.actions

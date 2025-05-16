@@ -1,4 +1,4 @@
-import { Bell, Check, CircleCheck, Clock, Hashtag } from '@gravity-ui/icons'
+import { Check, Clock, Hashtag } from '@gravity-ui/icons'
 import { Card, Flex, Icon, IconData, Label, Text } from '@gravity-ui/uikit'
 import { useToggle } from 'ahooks'
 

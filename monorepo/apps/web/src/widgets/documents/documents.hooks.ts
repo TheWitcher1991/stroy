@@ -1,7 +1,5 @@
-import { useStore } from '@tanstack/react-store'
+import { useUnit } from 'effector-react'
 
-import { documentsStore } from '~widgets/documents/documents.store'
+import { $store } from '~widgets/documents/documents.store'
 
-export const useDocumentsStore = () => {
-	return useStore(documentsStore)
-}
+export const useDocumentsStore = () => useUnit($store)

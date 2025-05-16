@@ -1,7 +1,16 @@
 import { IJournal, UseJournal } from '@stroy/models'
-import { createModelListStore } from '@stroy/toolkit'
+import { createModelListApi } from '@stroy/toolkit'
 
-const creator = createModelListStore<IJournal, Partial<UseJournal>>({
+export const {
+	setCount,
+	setList,
+	setFilter,
+	setLoading,
+	setError,
+	reset,
+	changeQueryFromInput,
+	$store,
+} = createModelListApi<IJournal, UseJournal>({
 	count: 0,
 	list: [],
 	error: false,
@@ -12,6 +21,3 @@ const creator = createModelListStore<IJournal, Partial<UseJournal>>({
 		ordering: '-created_at',
 	},
 })
-
-export const documentHistoryStore = creator.store
-export const documentHistoryActions = creator.actions

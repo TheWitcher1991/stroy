@@ -1,7 +1,5 @@
-import { useStore } from '@tanstack/react-store'
+import { useUnit } from 'effector-react'
 
-import { paymentsStore } from '~widgets/finances/finances-transactions/finances-transactions.store'
+import { $store } from '~widgets/finances/finances-transactions/finances-transactions.store'
 
-export const usePaymentsStore = () => {
-	return useStore(paymentsStore)
-}
+export const usePaymentsStore = () => useUnit($store)

@@ -3,7 +3,12 @@
 import { useEffect } from 'react'
 
 import { useDocumentHistoryStore } from '~widgets/document/document-history/index.hooks'
-import { documentHistoryActions } from '~widgets/document/document-history/index.store'
+import {
+	setCount,
+	setError,
+	setList,
+	setLoading,
+} from '~widgets/document/document-history/index.store'
 
 import { PropsWithDocument, useJournal } from '@stroy/models'
 
@@ -16,8 +21,6 @@ export default function DocumentHistoryFetcher({
 		...filter,
 		document_id: document.id,
 	})
-
-	const { setList, setCount, setLoading, setError } = documentHistoryActions
 
 	useEffect(() => {
 		setLoading(isLoading)

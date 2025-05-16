@@ -1,7 +1,16 @@
 import { ITag, UseTags } from '@stroy/models'
-import { createModelListStore } from '@stroy/toolkit'
+import { createModelListApi } from '@stroy/toolkit'
 
-const creator = createModelListStore<ITag, Partial<UseTags>>({
+export const {
+	setCount,
+	setList,
+	setFilter,
+	setLoading,
+	setError,
+	reset,
+	changeQueryFromInput,
+	$store,
+} = createModelListApi<ITag, UseTags>({
 	count: 0,
 	list: [],
 	error: false,
@@ -12,6 +21,3 @@ const creator = createModelListStore<ITag, Partial<UseTags>>({
 		ordering: '-created_at',
 	},
 })
-
-export const tagsStore = creator.store
-export const tagsActions = creator.actions

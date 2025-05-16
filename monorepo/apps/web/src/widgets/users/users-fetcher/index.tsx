@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-import { usersActions } from '~widgets/users'
+import { setCount, setError, setList, setLoading } from '~widgets/users'
 import { useUsersStore } from '~widgets/users/users.hooks'
 
 import { useUsers } from '@stroy/models'
@@ -11,8 +11,6 @@ export default function UsersFetcher() {
 	const { filter } = useUsersStore()
 
 	const { data, isLoading, isError } = useUsers(filter)
-
-	const { setList, setCount, setLoading, setError } = usersActions
 
 	useEffect(() => {
 		setLoading(isLoading)

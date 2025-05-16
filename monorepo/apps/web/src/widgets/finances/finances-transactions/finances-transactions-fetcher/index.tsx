@@ -3,7 +3,12 @@
 import { useEffect } from 'react'
 
 import { usePaymentsStore } from '~widgets/finances/finances-transactions/finances-transactions.hooks'
-import { paymentsActions } from '~widgets/finances/finances-transactions/finances-transactions.store'
+import {
+	setCount,
+	setError,
+	setList,
+	setLoading,
+} from '~widgets/finances/finances-transactions/finances-transactions.store'
 
 import { usePayments } from '@stroy/models'
 
@@ -11,8 +16,6 @@ export default function FinancesTransactionsFetcher() {
 	const { filter } = usePaymentsStore()
 
 	const { data, isLoading, isError } = usePayments(filter)
-
-	const { setList, setCount, setLoading, setError } = paymentsActions
 
 	useEffect(() => {
 		setLoading(isLoading)

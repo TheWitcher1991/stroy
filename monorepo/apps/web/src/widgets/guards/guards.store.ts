@@ -1,7 +1,16 @@
 import { IGuard, UseGuards } from '@stroy/models'
-import { createModelListStore } from '@stroy/toolkit'
+import { createModelListApi } from '@stroy/toolkit'
 
-const creator = createModelListStore<IGuard, Partial<UseGuards>>({
+export const {
+	setCount,
+	setList,
+	setFilter,
+	setLoading,
+	setError,
+	reset,
+	changeQueryFromInput,
+	$store,
+} = createModelListApi<IGuard, UseGuards>({
 	count: 0,
 	list: [],
 	error: false,
@@ -12,6 +21,3 @@ const creator = createModelListStore<IGuard, Partial<UseGuards>>({
 		ordering: '-created_at',
 	},
 })
-
-export const guardsStore = creator.store
-export const guardsActions = creator.actions

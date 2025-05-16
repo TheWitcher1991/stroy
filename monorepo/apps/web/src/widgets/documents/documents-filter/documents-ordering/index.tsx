@@ -6,7 +6,7 @@ import {
 import { Button, DropdownMenu, Icon } from '@gravity-ui/uikit'
 import { useMemo } from 'react'
 
-import { documentsActions, useDocumentsStore } from '~widgets/documents'
+import { setFilter, useDocumentsStore } from '~widgets/documents'
 
 export default function DocumentsOrdering() {
 	const { loading, filter } = useDocumentsStore()
@@ -16,7 +16,7 @@ export default function DocumentsOrdering() {
 			{
 				iconStart: <Icon size={16} data={Calendar} />,
 				action: () =>
-					documentsActions.setFilter({
+					setFilter({
 						ordering: '-created_at',
 					}),
 				text: 'По дате создания',
@@ -25,7 +25,7 @@ export default function DocumentsOrdering() {
 			{
 				iconStart: <Icon size={16} data={ArrowRotateRight} />,
 				action: () =>
-					documentsActions.setFilter({
+					setFilter({
 						ordering: '-updated_at',
 					}),
 				text: 'По дате обновления',

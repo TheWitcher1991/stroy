@@ -1,7 +1,5 @@
-import { useStore } from '@tanstack/react-store'
+import { useUnit } from 'effector-react'
 
-import { projectsStore } from '~widgets/projects/projects.store'
+import { $store } from '~widgets/projects/projects.store'
 
-export const useProjectsStore = () => {
-	return useStore(projectsStore)
-}
+export const useProjectsStore = () => useUnit($store)

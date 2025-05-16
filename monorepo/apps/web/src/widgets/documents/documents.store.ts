@@ -1,7 +1,16 @@
 import { IDocument, UseDocuments } from '@stroy/models'
-import { createModelListStore } from '@stroy/toolkit'
+import { createModelListApi } from '@stroy/toolkit'
 
-const creator = createModelListStore<IDocument, Partial<UseDocuments>>({
+export const {
+	setCount,
+	setList,
+	setFilter,
+	setLoading,
+	setError,
+	reset,
+	changeQueryFromInput,
+	$store,
+} = createModelListApi<IDocument, UseDocuments>({
 	count: 0,
 	list: [],
 	error: false,
@@ -13,6 +22,3 @@ const creator = createModelListStore<IDocument, Partial<UseDocuments>>({
 		view: 'table',
 	},
 })
-
-export const documentsStore = creator.store
-export const documentsActions = creator.actions

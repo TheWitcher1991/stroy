@@ -1,7 +1,7 @@
 import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 
+import { setFilter } from '~widgets/finances/finances-transactions'
 import { usePaymentsStore } from '~widgets/finances/finances-transactions/finances-transactions.hooks'
-import { paymentsActions } from '~widgets/finances/finances-transactions/finances-transactions.store'
 
 import { PAGE_SIZE_OPTIONS } from '@stroy/system'
 
@@ -20,7 +20,7 @@ export default function FinancesTransactionsPagination() {
 				showPages={true}
 				pageSizeOptions={PAGE_SIZE_OPTIONS}
 				onUpdate={(page, pageSize) => {
-					paymentsActions.setFilter({
+					setFilter({
 						page,
 						page_size: pageSize,
 					})

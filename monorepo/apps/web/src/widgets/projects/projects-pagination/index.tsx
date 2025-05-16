@@ -1,7 +1,6 @@
 import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 
-import { useProjectsStore } from '~widgets/projects'
-import { projectsActions } from '~widgets/projects/projects.store'
+import { setFilter, useProjectsStore } from '~widgets/projects'
 
 import { PAGE_SIZE_OPTIONS } from '@stroy/system'
 
@@ -20,7 +19,7 @@ export default function ProjectsPagination() {
 				showPages={true}
 				pageSizeOptions={PAGE_SIZE_OPTIONS}
 				onUpdate={(page, pageSize) => {
-					projectsActions.setFilter({
+					setFilter({
 						page,
 						page_size: pageSize,
 					})

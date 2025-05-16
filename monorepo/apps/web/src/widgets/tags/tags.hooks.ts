@@ -1,7 +1,5 @@
-import { useStore } from '@tanstack/react-store'
+import { useUnit } from 'effector-react'
 
-import { tagsStore } from '~widgets/tags/tags.store'
+import { $store } from '~widgets/tags/tags.store'
 
-export const useTagsStore = () => {
-	return useStore(tagsStore)
-}
+export const useTagsStore = () => useUnit($store)

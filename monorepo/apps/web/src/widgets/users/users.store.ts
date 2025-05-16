@@ -1,7 +1,16 @@
 import { IUser, UseUsers } from '@stroy/models'
-import { createModelListStore } from '@stroy/toolkit'
+import { createModelListApi } from '@stroy/toolkit'
 
-const creator = createModelListStore<IUser, Partial<UseUsers>>({
+export const {
+	setCount,
+	setList,
+	setFilter,
+	setLoading,
+	setError,
+	reset,
+	changeQueryFromInput,
+	$store,
+} = createModelListApi<IUser, UseUsers>({
 	count: 0,
 	list: [],
 	error: false,
@@ -9,9 +18,6 @@ const creator = createModelListStore<IUser, Partial<UseUsers>>({
 	filter: {
 		page_size: 30,
 		page: 1,
-		ordering: '-date_joined',
+		ordering: '-created_at',
 	},
 })
-
-export const usersStore = creator.store
-export const usersActions = creator.actions

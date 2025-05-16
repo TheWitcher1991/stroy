@@ -1,7 +1,16 @@
 import { IProject, UseProjects } from '@stroy/models'
-import { createModelListStore } from '@stroy/toolkit'
+import { createModelListApi } from '@stroy/toolkit'
 
-const creator = createModelListStore<IProject, Partial<UseProjects>>({
+export const {
+	setCount,
+	setList,
+	setFilter,
+	setLoading,
+	setError,
+	reset,
+	changeQueryFromInput,
+	$store,
+} = createModelListApi<IProject, UseProjects>({
 	count: 0,
 	list: [],
 	error: false,
@@ -12,6 +21,3 @@ const creator = createModelListStore<IProject, Partial<UseProjects>>({
 		ordering: '-created_at',
 	},
 })
-
-export const projectsStore = creator.store
-export const projectsActions = creator.actions

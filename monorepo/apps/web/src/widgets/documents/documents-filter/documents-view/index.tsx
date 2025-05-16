@@ -2,13 +2,13 @@ import { GripHorizontal, LayoutCellsLarge } from '@gravity-ui/icons'
 import { Icon, SegmentedRadioGroup } from '@gravity-ui/uikit'
 import { useMemoizedFn } from 'ahooks'
 
-import { documentsActions, useDocumentsStore } from '~widgets/documents'
+import { setFilter, useDocumentsStore } from '~widgets/documents'
 
 export default function DocumentsView() {
 	const { filter, loading } = useDocumentsStore()
 
 	const onUpdate = useMemoizedFn(value => {
-		documentsActions.setFilter({
+		setFilter({
 			view: value,
 		})
 	})

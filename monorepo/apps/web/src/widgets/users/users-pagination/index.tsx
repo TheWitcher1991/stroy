@@ -1,6 +1,6 @@
 import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 
-import { usersActions } from '~widgets/users'
+import { setFilter } from '~widgets/users'
 import { useUsersStore } from '~widgets/users/users.hooks'
 
 import { PAGE_SIZE_OPTIONS } from '@stroy/system'
@@ -20,7 +20,7 @@ export default function UsersPagination() {
 				showPages={true}
 				pageSizeOptions={PAGE_SIZE_OPTIONS}
 				onUpdate={(page, pageSize) => {
-					usersActions.setFilter({
+					setFilter({
 						page,
 						page_size: pageSize,
 					})

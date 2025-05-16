@@ -2,7 +2,7 @@ import { Clock, CopyCheck, FileText, Sliders, Tray } from '@gravity-ui/icons'
 import { Button, DropdownMenu, Icon } from '@gravity-ui/uikit'
 import { useMemo } from 'react'
 
-import { documentsActions, useDocumentsStore } from '~widgets/documents'
+import { setFilter, useDocumentsStore } from '~widgets/documents'
 
 import { DocumentStatus, DocumentStatusMapper } from '@stroy/models'
 
@@ -14,7 +14,7 @@ export function DocumentsCogs() {
 			{
 				iconStart: <Icon size={16} data={FileText} />,
 				action: () => {
-					documentsActions.setFilter({
+					setFilter({
 						status: undefined,
 					})
 				},
@@ -24,7 +24,7 @@ export function DocumentsCogs() {
 			{
 				iconStart: <Icon size={16} data={CopyCheck} />,
 				action: () => {
-					documentsActions.setFilter({
+					setFilter({
 						status: DocumentStatus.APPROVED,
 					})
 				},
@@ -34,7 +34,7 @@ export function DocumentsCogs() {
 			{
 				iconStart: <Icon size={16} data={Clock} />,
 				action: () => {
-					documentsActions.setFilter({
+					setFilter({
 						status: DocumentStatus.HARMONIZATION,
 					})
 				},
@@ -44,7 +44,7 @@ export function DocumentsCogs() {
 			{
 				iconStart: <Icon size={16} data={Tray} />,
 				action: () => {
-					documentsActions.setFilter({
+					setFilter({
 						status: DocumentStatus.DRAFT,
 					})
 				},
