@@ -3,22 +3,25 @@ const CLIENTS_DB_NAME = 'STROY_CLIENTS'
 const CLEAN_INTERVAL = 1000
 
 const routes = new Map([
-	'/',
-	'/login',
-	'/signup',
-	'/workspace',
-	'/workspace/profile',
-	'/workspace/billing',
-	'/workspace/finances',
-	'/workspace/finances/deposit',
-	'/workspace/finances/closure',
-	'/workspace/finances/transactions',
-	'/workspace/documents',
-	'/workspace/tags',
-	'/workspace/projects',
-	'/workspace/users',
-	'/workspace/journal',
-	'/workspace/guards',
+	['/', /^\/$/],
+	['/login', /^\/login\/?$/],
+	['/signup', /^\/signup\/?$/],
+	['/workspace', /^\/workspace\/?$/],
+	['/workspace/profile', /^\/workspace\/profile\/?$/],
+	['/workspace/billing', /^\/workspace\/billing\/?$/],
+	['/workspace/finances', /^\/workspace\/finances\/?$/],
+	['/workspace/finances/deposit', /^\/workspace\/finances\/deposit\/?$/],
+	['/workspace/finances/closure', /^\/workspace\/finances\/closure\/?$/],
+	[
+		'/workspace/finances/transactions',
+		/^\/workspace\/finances\/transactions\/?$/,
+	],
+	['/workspace/documents', /^\/workspace\/documents\/?$/],
+	['/workspace/tags', /^\/workspace\/tags\/?$/],
+	['/workspace/projects', /^\/workspace\/projects\/?$/],
+	['/workspace/users', /^\/workspace\/users\/?$/],
+	['/workspace/journal', /^\/workspace\/journal\/?$/],
+	['/workspace/guards', /^\/workspace\/guards\/?$/],
 ])
 
 self.addEventListener('install', () => self.skipWaiting())

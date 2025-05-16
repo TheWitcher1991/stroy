@@ -3,6 +3,7 @@ import { useToggle } from 'ahooks'
 import toast from 'react-hot-toast'
 
 import { PropsWithPaymentId, useCancelPayment } from '@stroy/models'
+import { query } from '@stroy/toolkit'
 
 import { Action, Dialog } from '~packages/ui'
 
@@ -14,8 +15,10 @@ export const PaymentCancelButton = ({
 	const [val, { toggle }] = useToggle(false)
 
 	const handleClick = async () => {
-		await req.mutateAsync(payment)
-		toast.success('Платеж отменен')
+		await query(async () => {
+			await req.mutateAsync(payment)
+			toast.success('Платеж отменен')
+		})
 	}
 
 	return (

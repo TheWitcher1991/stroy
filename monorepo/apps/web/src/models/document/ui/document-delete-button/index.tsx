@@ -38,6 +38,7 @@ export const DocumentDeleteButton = ({
 				caption={'Удалить документ'}
 				textButtonApply={'Удалить'}
 				onClickButtonApply={handleClick}
+				size={'s'}
 			>
 				Вы действительно хотите удалить документ {document.title}?
 			</Dialog>

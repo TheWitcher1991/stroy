@@ -18,6 +18,6 @@ export const {
 	filter: {
 		page_size: 30,
 		page: 1,
-		ordering: '-created_at',
+		ordering: '-date_joined',
 	},
 })

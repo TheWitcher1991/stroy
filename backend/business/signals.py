@@ -22,5 +22,5 @@ def invoice_pre_save_signal(sender, instance: Invoice, **kwargs):
 def invoice_post_delete_signal(sender, instance: Invoice, **kwargs):
     try:
         PaymentService.cancel(instance.payment_id)
-    except InvoiceRepository.DoesNotExist:
+    except Exception as e:
         pass

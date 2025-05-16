@@ -37,10 +37,4 @@ export function BusinessProvider({ children }: PropsWithChildren) {
 	return <BusinessContext value={business}>{children}</BusinessContext>
 }
 
-export const useBusiness = () => {
-	const context = useContext(BusinessContext)
-	if (!context) {
-		throw new Error('useBusiness must be used within a BusinessProvider')
-	}
-	return context
-}
+export const useBusiness = () => useContext(BusinessContext)

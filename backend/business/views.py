@@ -56,7 +56,7 @@ class SubscriptionController(BaseController):
         return SubscriptionRepository.current(self.request.user.department)
 
     def get(self, request, *args, **kwargs) -> Response:
-        instance = self.get_queryset()
+        instance = self.get_object()
         serializer = self.get_serializer(instance)
         return Response(serializer.data)
 

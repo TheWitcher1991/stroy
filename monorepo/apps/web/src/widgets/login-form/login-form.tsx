@@ -30,7 +30,7 @@ export default function LoginForm() {
 		await query(async () => {
 			const res = await req.mutateAsync(data)
 			login(res.data)
-			window.location.replace(href.relaxed.index)
+			window.location.replace(href.workspace)
 		})
 	}
 
