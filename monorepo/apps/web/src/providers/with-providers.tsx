@@ -4,6 +4,7 @@ import { ThemeProvider } from '@gravity-ui/uikit'
 import { PropsWithChildren } from 'react'
 
 import WithProgressBar from '~providers/with-progress-bar'
+import WithServiceWorker from '~providers/with-service-worker'
 import WithStore from '~providers/with-store'
 import WithToaster from '~providers/with-toaster'
 
@@ -19,7 +20,9 @@ export const WithProviders = ({ children }: PropsWithChildren) => {
 			<WithStore>
 				<WithProgressBar>
 					<WithToaster>
-						<BusinessProvider>{children}</BusinessProvider>
+						<BusinessProvider>
+							<WithServiceWorker>{children}</WithServiceWorker>
+						</BusinessProvider>
 					</WithToaster>
 				</WithProgressBar>
 			</WithStore>

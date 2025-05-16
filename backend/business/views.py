@@ -16,7 +16,6 @@ from business.serializers import (
     WalletSerializer,
 )
 from business.webhooks import InvoiceWebHook
-from config.settings import YOOKASSA_RETURN_URL
 from packages.caching import CachedSetMixin
 from packages.controllers import AnonymousController, BaseController, CreateController, ModelSetController
 

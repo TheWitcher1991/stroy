@@ -1,9 +1,16 @@
+import {
+	Toaster as ToasterClass,
+	ToasterComponent,
+	ToasterProvider,
+} from '@gravity-ui/uikit'
 import { PropsWithChildren } from 'react'
 import { Toaster } from 'react-hot-toast'
 
+const toaster = new ToasterClass()
+
 export default function WithToaster({ children }: PropsWithChildren) {
 	return (
-		<>
+		<ToasterProvider toaster={toaster}>
 			{children}
 			<Toaster
 				position={'bottom-right'}
@@ -18,6 +25,7 @@ export default function WithToaster({ children }: PropsWithChildren) {
 					},
 				}}
 			/>
-		</>
+			<ToasterComponent />
+		</ToasterProvider>
 	)
 }
