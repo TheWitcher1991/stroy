@@ -2,7 +2,13 @@
 
 import { useEffect } from 'react'
 
-import { journalActions, useJournalStore } from '~widgets/journal'
+import {
+	setCount,
+	setError,
+	setList,
+	setLoading,
+	useJournalStore,
+} from '~widgets/journal'
 
 import { useJournal } from '@stroy/models'
 
@@ -10,8 +16,6 @@ export default function JournalFetcher() {
 	const { filter } = useJournalStore()
 
 	const { data, isLoading, isError } = useJournal(filter)
-
-	const { setList, setCount, setLoading, setError } = journalActions
 
 	useEffect(() => {
 		setLoading(isLoading)

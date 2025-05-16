@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@effector/next':
+        specifier: ^0.7.1
+        version: 0.7.1(effector-react@23.3.0(effector@23.3.0)(react@19.1.0))(effector@23.3.0)(react@19.1.0)
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.0.1(react-hook-form@7.56.2(react@19.1.0))
@@ -50,6 +53,12 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
+      effector:
+        specifier: ^23.3.0
+        version: 23.3.0
+      effector-react:
+        specifier: ^23.3.0
+        version: 23.3.0(effector@23.3.0)(react@19.1.0)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -829,6 +838,13 @@ packages:
 
   '@bem-react/classname@1.6.0':
     resolution: {integrity: sha512-SFBwUHMcb7TFFK5ld88+JhecoEun3/kHZ6KvLDjj3w5hv/tfRV8mtGHA8N42uMctXLF4bPEcr96xwXXcRFuweg==}
+
+  '@effector/next@0.7.1':
+    resolution: {integrity: sha512-luzfib1kWYnh9rggRJXby67xzQRVPbZbtwPYmpu3AN8CsJ21dtFn+k17ewW75b1xUUzt7qRRJ/E0JLeJxyBpzg==}
+    peerDependencies:
+      effector: ^22.8.6 || ^23.0.0
+      effector-react: ^22.5.4 || ^23.0.0
+      react: ^18.2.0 || ^19.0.0
 
   '@emnapi/runtime@1.4.1':
     resolution: {integrity: sha512-LMshMVP0ZhACNjQNYXiU1iZJ6QCcv0lUdPDPugqGvCGXt5xtRVBPdtA0qU12pEXZzpWAhWlZYptfdAFq10DOVQ==}
@@ -2081,6 +2097,17 @@ packages:
 
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
+
+  effector-react@23.3.0:
+    resolution: {integrity: sha512-QR0+x1EnbiWhO80Yc0GVF+I9xCYoxBm3t+QLB5Wg+1uY1Q1BrSWDmKvJaJJZ/+9BU4RAr25yS5J2EkdWnicu8g==}
+    engines: {node: '>=11.0.0'}
+    peerDependencies:
+      effector: ^23.0.0
+      react: '>=16.8.0 <20.0.0'
+
+  effector@23.3.0:
+    resolution: {integrity: sha512-ZnQ3POaNARlxT9+kxrK58PO/xmStBdxfPq0rceglENg8Ryxx/yx+1RsV/ziznrFPhLkZYc7NdDA1OKxnMW98/g==}
+    engines: {node: '>=11.0.0'}
 
   electron-to-chromium@1.5.149:
     resolution: {integrity: sha512-UyiO82eb9dVOx8YO3ajDf9jz2kKyt98DEITRdeLPstOEuTlLzDA4Gyq5K9he71TQziU5jUVu2OAu5N48HmQiyQ==}
@@ -4158,6 +4185,12 @@ snapshots:
 
   '@bem-react/classname@1.6.0': {}
 
+  '@effector/next@0.7.1(effector-react@23.3.0(effector@23.3.0)(react@19.1.0))(effector@23.3.0)(react@19.1.0)':
+    dependencies:
+      effector: 23.3.0
+      effector-react: 23.3.0(effector@23.3.0)(react@19.1.0)
+      react: 19.1.0
+
   '@emnapi/runtime@1.4.1':
     dependencies:
       tslib: 2.8.1
@@ -5319,6 +5352,14 @@ snapshots:
       gopd: 1.2.0
 
   eastasianwidth@0.2.0: {}
+
+  effector-react@23.3.0(effector@23.3.0)(react@19.1.0):
+    dependencies:
+      effector: 23.3.0
+      react: 19.1.0
+      use-sync-external-store: 1.5.0(react@19.1.0)
+
+  effector@23.3.0: {}
 
   electron-to-chromium@1.5.149: {}
 

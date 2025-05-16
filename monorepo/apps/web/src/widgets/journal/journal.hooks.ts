@@ -1,7 +1,5 @@
-import { useStore } from '@tanstack/react-store'
+import { useUnit } from 'effector-react'
 
-import { journalStore } from '~widgets/journal/journal.store'
+import { $store } from '~widgets/journal/journal.store'
 
-export const useJournalStore = () => {
-	return useStore(journalStore)
-}
+export const useJournalStore = () => useUnit($store)

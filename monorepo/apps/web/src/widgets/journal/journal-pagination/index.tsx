@@ -1,6 +1,6 @@
 import { Flex, Pagination, Text } from '@gravity-ui/uikit'
 
-import { journalActions, useJournalStore } from '~widgets/journal'
+import { setFilter, useJournalStore } from '~widgets/journal'
 
 import { PAGE_SIZE_OPTIONS } from '@stroy/system'
 
@@ -19,7 +19,7 @@ export default function JournalPagination() {
 				showPages={true}
 				pageSizeOptions={PAGE_SIZE_OPTIONS}
 				onUpdate={(page, pageSize) => {
-					journalActions.setFilter({
+					setFilter({
 						page,
 						page_size: pageSize,
 					})
