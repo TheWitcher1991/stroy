@@ -95,6 +95,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@gravity-ui/components':
+        specifier: ^4.2.2
+        version: 4.2.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@gravity-ui/date-components':
         specifier: ^3.1.0
         version: 3.1.0(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -106,7 +109,7 @@ importers:
         version: 2.1.0(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@gravity-ui/navigation':
         specifier: ^3.3.4
-        version: 3.3.4(@bem-react/classname@1.6.0)(@gravity-ui/components@4.1.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@gravity-ui/icons@2.13.0(react@19.1.0))(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 3.3.4(@bem-react/classname@1.6.0)(@gravity-ui/components@4.2.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@gravity-ui/icons@2.13.0(react@19.1.0))(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@gravity-ui/uikit':
         specifier: ^7.10.0
         version: 7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1063,8 +1066,8 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
-  '@gravity-ui/components@4.1.2':
-    resolution: {integrity: sha512-rpMOSb+W7Ws24bwu9z707G+uR0a4eHWzC5aKUukPRGeSCtzus0V0lt+WxVdK6GtFJp8jrUpIXo+4lze2E8LioQ==}
+  '@gravity-ui/components@4.2.2':
+    resolution: {integrity: sha512-/0KhND7dqMmNEVuI7G3b21HKW3v2fRKt+g3HuKaoH5cjahZLYrfmAUU3o9k2IMFF0bRcMXF/qjYYutO2tYAWbg==}
     peerDependencies:
       '@gravity-ui/uikit': ^7.0.0
       react: ^16.14.0 || ^17.0.0 || ^18.0.0
@@ -4346,7 +4349,7 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@gravity-ui/components@4.1.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@gravity-ui/components@4.2.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@bem-react/classname': 1.6.0
       '@gravity-ui/date-utils': 2.5.6
@@ -4385,10 +4388,10 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  '@gravity-ui/navigation@3.3.4(@bem-react/classname@1.6.0)(@gravity-ui/components@4.1.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@gravity-ui/icons@2.13.0(react@19.1.0))(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@gravity-ui/navigation@3.3.4(@bem-react/classname@1.6.0)(@gravity-ui/components@4.2.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@gravity-ui/icons@2.13.0(react@19.1.0))(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@bem-react/classname': 1.6.0
-      '@gravity-ui/components': 4.1.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@gravity-ui/components': 4.2.2(@gravity-ui/uikit@7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@gravity-ui/icons': 2.13.0(react@19.1.0)
       '@gravity-ui/uikit': 7.10.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react: 19.1.0

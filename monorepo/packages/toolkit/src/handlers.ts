@@ -1,6 +1,8 @@
 import axios, { AxiosError } from 'axios'
 import toast from 'react-hot-toast'
 
+import { ValidationErrorResponse } from '@stroy/types'
+
 export const axiosErrorHandler = (e: AxiosError): string => {
 	if (!e.response) return 'Возникла ошибка'
 
@@ -39,13 +41,14 @@ export type Query = {
 	processError?: boolean
 }
 
-export async function query(fn: () => void, options: Query = {}) {
+export async function query(fn: () => Promise<any>, options: Query = {}) {
 	const { onError, onFinally, errorText, processError = true } = options
 
 	try {
-		await fn()
+		return await fn()
 	} catch (e) {
 		errorText && alert(errorText)
+
 		onError && !processError && onError?.(e)
 
 		if (axios.isAxiosError(e)) {

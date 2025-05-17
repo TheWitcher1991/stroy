@@ -1,8 +1,8 @@
+import axios, { type AxiosRequestConfig } from 'axios'
 import { createEffect } from 'effector'
 
-type CreateRequestParams = RequestInit & {
+type CreateRequestParams = AxiosRequestConfig & {
 	url: string
-	baseUrl?: string
 }
 
 type Fn<P> = (params: P) => CreateRequestParams
@@ -28,25 +28,28 @@ const createRequestInstance = <P = CreateRequestParams, R = void>({
 	payload,
 	token,
 }: CreateRequestInstanceParams<P>) =>
-	createEffect<P, R>(params => {
-		const { url, baseUrl, ...fetchOptions } = getConfig(payload, params)
+	createEffect<P, R>(async params => {
+		const { url, ...axiosConfig } = getConfig(payload, params)
 
-		const newHeaders = new Headers(headers)
+		const newHeaders = { ...headers }
 
 		if (token) {
-			newHeaders.append('Authorization', `Bearer ${token}`)
+			newHeaders['Authorization'] = `Bearer ${token}`
 		}
 
-		return fetch(`${baseUrl}/${url}`, {
-			...fetchOptions,
-			headers: newHeaders,
+		const response = await axios.request<R>({
+			url,
 			baseURL,
+			headers: newHeaders,
+			...axiosConfig,
 		})
+
+		return response.data
 	})
 
 export const createRequestFx =
 	(params: CreateRequestFxParams) =>
-	<P = CreateRequestParams, R = void>(payload: Payload<P>) =>
+	<P = CreateRequestParams, R = any>(payload: Payload<P>) =>
 		createRequestInstance<P, R>({
 			...(params as CreateRequestParams),
 			payload,
