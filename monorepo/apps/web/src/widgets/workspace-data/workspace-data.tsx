@@ -1,16 +1,22 @@
 import { Flex, Skeleton } from '@gravity-ui/uikit'
+import { useUnit } from 'effector-react'
 import { memo } from 'react'
 
-import { useDepartmentIndicators } from '@stroy/models'
 import { formatBytes } from '@stroy/toolkit'
 
 import { RenderFetchData } from '~packages/lib'
 import { ValueCard } from '~packages/ui'
 
+import { workSpaceData } from './workspace-data.model'
+
 const WorkspaceDataSkeleton = memo(() => <Skeleton style={{ height: 91 }} />)
 
 export default function WorkspaceData() {
-	const { isLoading, indicators, isError } = useDepartmentIndicators()
+	const [indicators, isLoading, isError] = useUnit([
+		workSpaceData.$indicators,
+		workSpaceData.$loading,
+		workSpaceData.$error,
+	])
 
 	return (
 		<Flex gap={4} justifyContent={'space-between'} alignItems={'center'}>

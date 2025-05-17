@@ -1,10 +1,11 @@
-import {
+import type {
 	ButtonSize,
 	ButtonView,
 	ButtonWidth,
 	DropdownMenuItem,
 } from '@gravity-ui/uikit'
-import React, { JSXElementConstructor } from 'react'
+import type { Store } from 'effector'
+import type React, { JSXElementConstructor } from 'react'
 
 declare module '*.css'
 declare module '*.scss'
@@ -21,6 +22,8 @@ declare global {
 		width?: ButtonWidth
 		onlyIcon?: boolean
 	}
+
+	type EStore<T> = Store<T | null>
 
 	type DropdownItem<T = any> = (DropdownMenuItem<T> | DropdownMenuItem<T>[])[]
 

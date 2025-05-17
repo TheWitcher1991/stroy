@@ -11,6 +11,9 @@ importers:
       '@effector/next':
         specifier: ^0.7.1
         version: 0.7.1(effector-react@23.3.0(effector@23.3.0)(react@19.1.0))(effector@23.3.0)(react@19.1.0)
+      '@farfetched/core':
+        specifier: ^0.13.1
+        version: 0.13.1(effector@23.3.0)
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.0.1(react-hook-form@7.56.2(react@19.1.0))
@@ -53,6 +56,9 @@ importers:
       effector-react:
         specifier: ^23.3.0
         version: 23.3.0(effector@23.3.0)(react@19.1.0)
+      patronum:
+        specifier: ^2.3.0
+        version: 2.3.0(effector@23.3.0)
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -1030,6 +1036,11 @@ packages:
   '@eslint/plugin-kit@0.2.8':
     resolution: {integrity: sha512-ZAoA40rNMPwSm+AeHpCq8STiNAwzWLJuP8Xv4CHIc9wv/PSuExjMrmjfYNj682vW0OOiZ1HKxzvjQr9XZIisQA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@farfetched/core@0.13.1':
+    resolution: {integrity: sha512-b0v3W+Z/uerIG8iz5IKfGxh2bC8L36eYQvozzBEtydCb8NshvyBrZ+exAzB7yL5Qm6PhIhD5K6POvvCq+0Cc9w==}
+    peerDependencies:
+      effector: ^23.0.0
 
   '@floating-ui/core@1.7.0':
     resolution: {integrity: sha512-FRdBLykrPPA6P76GGGqlex/e7fbe0F1ykgxHYNXQsH/iTEtjMj/f9bpY5oQqbjt5VgZvgz/uKXbGuROijh3VLA==}
@@ -2805,6 +2816,11 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
+  patronum@2.3.0:
+    resolution: {integrity: sha512-BfKIOpoymVz6XnkOn8Fi5QZ1a3r/3lXdd8BcdHmYDbIXPTIRnD1EPFBFev/DheWnOge6/ZswEqgNF2ANLGOxLw==}
+    peerDependencies:
+      effector: ^23
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -4300,6 +4316,10 @@ snapshots:
     dependencies:
       '@eslint/core': 0.13.0
       levn: 0.4.1
+
+  '@farfetched/core@0.13.1(effector@23.3.0)':
+    dependencies:
+      effector: 23.3.0
 
   '@floating-ui/core@1.7.0':
     dependencies:
@@ -6159,6 +6179,10 @@ snapshots:
       minipass: 7.1.2
 
   path-type@4.0.0: {}
+
+  patronum@2.3.0(effector@23.3.0):
+    dependencies:
+      effector: 23.3.0
 
   picocolors@1.1.1: {}
 

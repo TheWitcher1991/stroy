@@ -1,15 +1,19 @@
 'use client'
 
+import { useGate } from 'effector-react'
+
 import Documents, {
 	DocumentsFetcher,
 	DocumentsFilter,
 	DocumentsPagination,
 } from '~widgets/documents'
-import WorkspaceData from '~widgets/workspace-data'
+import WorkspaceData, { workSpaceData } from '~widgets/workspace-data'
 
 import { Group, PageTitle } from '~packages/ui'
 
 export default function Workspace() {
+	useGate(workSpaceData.WorkSpaceGate)
+
 	return (
 		<Group>
 			<WorkspaceData />
