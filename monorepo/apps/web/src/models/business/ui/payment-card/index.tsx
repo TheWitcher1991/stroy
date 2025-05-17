@@ -1,4 +1,4 @@
-import { Check, Clock, Hashtag } from '@gravity-ui/icons'
+import { Check, Clock, Receipt } from '@gravity-ui/icons'
 import { Card, Flex, Icon, IconData, Label, Text } from '@gravity-ui/uikit'
 import { useToggle } from 'ahooks'
 
@@ -59,7 +59,7 @@ export function PaymentCard({ payment }: PropsWithPayment) {
 						</span>
 						<Flex direction={'column'} gap={1}>
 							<Flex alignItems={'center'} gap={1}>
-								<Icon data={Hashtag} size={16} />{' '}
+								<Icon data={Receipt} size={16} />{' '}
 								<Text variant={'body-2'}>
 									{payment.id} от{' '}
 									{formatDateTimeInRu(payment.created_at)}

@@ -5,6 +5,7 @@ import { ActionBar } from '@gravity-ui/navigation'
 import { Button, Icon, Select, TextInput } from '@gravity-ui/uikit'
 import { useRouter } from 'next/navigation'
 
+import Notifications from '~features/notifications'
 import ThemeButton from '~features/theme-button'
 
 import { DocumentImportButton } from '~models/document'
@@ -58,6 +59,9 @@ export default function Nav() {
 					</ActionBar.Item>
 					<ActionBar.Item>
 						<ThemeButton />
+					</ActionBar.Item>
+					<ActionBar.Item>
+						<Notifications />
 					</ActionBar.Item>
 					<ActionBar.Item>
 						<Button view={'outlined'} onClick={handleNewDocClick}>

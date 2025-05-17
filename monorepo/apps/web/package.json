@@ -15,6 +15,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@gravity-ui/components": "^4.2.2",
     "@gravity-ui/date-components": "^3.1.0",
     "@gravity-ui/icons": "^2.13.0",
     "@gravity-ui/illustrations": "^2.1.0",

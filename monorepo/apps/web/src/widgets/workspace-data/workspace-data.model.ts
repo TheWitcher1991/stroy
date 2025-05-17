@@ -12,7 +12,7 @@ export const workSpaceData = atom(() => {
 
 	const $indicators: EStore<IDepartmentIndicator> = workSpaceApi.$data
 
-	const $loading = workSpaceApi.$pending
+	const $loading = workSpaceApi.$idle
 
 	const $error = workSpaceApi.$error.map(Boolean)
 

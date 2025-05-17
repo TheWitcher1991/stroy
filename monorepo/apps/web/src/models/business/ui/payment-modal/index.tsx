@@ -1,5 +1,5 @@
 import { Xmark } from '@gravity-ui/icons'
-import { Button, Card, Flex, Icon, Modal, Text } from '@gravity-ui/uikit'
+import { Button, Card, Flex, Icon, Link, Modal, Text } from '@gravity-ui/uikit'
 import { memo, ReactNode } from 'react'
 
 import { PaymentCancelButton, PaymentPayButton } from '~models/business'
@@ -68,7 +68,11 @@ export const PaymentModal = ({
 				/>
 				<Detail
 					title={'Страница оплаты'}
-					caption={payment.payment_url}
+					caption={
+						<Link href={payment.payment_url}>
+							{payment.payment_url}
+						</Link>
+					}
 				/>
 				<Detail title={'Статус счета'} caption={payment.amount} />
 				{!payment.is_paid && (
