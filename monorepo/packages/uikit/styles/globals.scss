@@ -15,6 +15,33 @@ body,
     margin: 0;
 }
 
+.g-segmented-radio-group {
+    border-radius: var(--_--border-radius);
+    background-color: var(--g-color-base-generic);
+}
+
+.g-segmented-radio-group__option_checked:after {
+    background-color: var(--g-color-base-background);
+    border: 0;
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
+}
+
+.g-segmented-radio-group__option {
+    border: 0;
+}
+
+.g-segmented-radio-group__option:after {
+    border-color: transparent;
+}
+
+.g-segmented-radio-group__option_checked .g-segmented-radio-group__option-text {
+    color: var(--g-color-text-primary);
+}
+
 .g-text__expand {
     overflow: hidden;
     text-overflow: ellipsis;

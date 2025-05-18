@@ -122,6 +122,9 @@ importers:
       '@stroy/models':
         specifier: workspace:*
         version: link:../../packages/models
+      '@stroy/query':
+        specifier: workspace:*
+        version: link:../../packages/query
       '@stroy/system':
         specifier: workspace:*
         version: link:../../packages/system
@@ -244,6 +247,18 @@ importers:
       '@stroy/types':
         specifier: workspace:*
         version: link:../types
+      '@stroy/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+
+  packages/query:
+    devDependencies:
+      '@stroy/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@stroy/toolkit':
+        specifier: workspace:*
+        version: link:../toolkit
       '@stroy/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config

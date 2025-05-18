@@ -21,6 +21,7 @@
     "@gravity-ui/illustrations": "^2.1.0",
     "@gravity-ui/navigation": "^3.3.4",
     "@gravity-ui/uikit": "^7.10.0",
+    "@stroy/query": "workspace:*",
     "@stroy/hooks": "workspace:*",
     "@stroy/href": "workspace:*",
     "@stroy/models": "workspace:*",

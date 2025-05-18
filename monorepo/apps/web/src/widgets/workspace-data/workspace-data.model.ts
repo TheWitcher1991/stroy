@@ -11,9 +11,7 @@ export const workSpaceData = atom(() => {
 	const WorkSpaceGate = createGate()
 
 	const $indicators: EStore<IDepartmentIndicator> = workSpaceApi.$data
-
-	const $loading = workSpaceApi.$idle
-
+	const $loading = workSpaceApi.$pending
 	const $error = workSpaceApi.$error.map(Boolean)
 
 	sample({
