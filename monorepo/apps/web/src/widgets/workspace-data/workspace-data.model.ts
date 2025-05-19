@@ -2,8 +2,7 @@ import { sample } from 'effector'
 import { createGate } from 'effector-react'
 
 import { IDepartmentIndicator } from '@stroy/models'
-
-import { atom } from '~packages/factory'
+import { atom } from '@stroy/toolkit'
 
 import { workSpaceApi } from './work-space.api'
 

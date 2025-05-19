@@ -1,6 +1,6 @@
 import { createEvent, createStore } from 'effector'
 
-import { atom } from '~packages/factory'
+import { atom } from '@stroy/toolkit'
 
 export type FinancesTab = '1' | '2' | '3' | '4'
 

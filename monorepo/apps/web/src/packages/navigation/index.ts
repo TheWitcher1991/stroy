@@ -4,7 +4,7 @@ import type { NextRouter } from 'next/router'
 import type { ParsedUrlQuery } from 'node:querystring'
 import { reshape } from 'patronum'
 
-import { atom } from '~packages/factory'
+import { atom } from '@stroy/toolkit'
 
 export const navigation = atom(() => {
 	const RouterGate = createGate<{ router: NextRouter }>()

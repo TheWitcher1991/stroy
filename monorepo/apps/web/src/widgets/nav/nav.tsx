@@ -6,8 +6,6 @@ import { Button, Icon } from '@gravity-ui/uikit'
 import { useMemoizedFn } from 'ahooks'
 import { useRouter } from 'next/navigation'
 
-import { useBreadcrumbs } from '~widgets/nav/nav.hooks'
-
 import DepartmentButton from '~features/department-button'
 import Notifications from '~features/notifications'
 import ThemeButton from '~features/theme-button'
@@ -18,6 +16,7 @@ import { href } from '@stroy/href'
 
 import { Breadcrumbs } from '~packages/ui'
 
+import { useBreadcrumbs } from './nav.hooks'
 import styles from './nav.module.scss'
 
 export default function Nav() {
@@ -30,7 +29,7 @@ export default function Nav() {
 	})
 
 	return (
-		<ActionBar aria-label='Actions bar' className={styles.nav}>
+		<ActionBar aria-label='Навигация' className={styles.nav}>
 			<ActionBar.Section type='secondary'>
 				<ActionBar.Group>
 					<ActionBar.Item>
