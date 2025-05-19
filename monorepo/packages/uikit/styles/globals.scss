@@ -30,12 +30,26 @@ body,
     right: 3px;
 }
 
+.g-segmented-radio-group__option:not(.g-segmented-radio-group__option_checked):not(.g-segmented-radio-group__option_disabled):hover:after {
+    background-color: transparent;
+}
+
 .g-segmented-radio-group__option {
     border: 0;
 }
 
+.g-segmented-radio-group__option:before {
+    background: transparent;
+}
+
 .g-segmented-radio-group__option:after {
     border-color: transparent;
+    --__--border-radius-option: var(--_--border-radius);
+    border-radius: var(--__--border-radius-option);
+    border-start-end-radius: var(--__--border-radius-option);
+    border-end-end-radius: var(--__--border-radius-option);
+    border-start-start-radius: var(--__--border-radius-option);
+    border-end-start-radius: var(--__--border-radius-option);
 }
 
 .g-segmented-radio-group__option_checked .g-segmented-radio-group__option-text {

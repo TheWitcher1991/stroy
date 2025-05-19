@@ -1,4 +1,4 @@
-from django.db.models.signals import post_delete, pre_save
+from django.db.models.signals import post_delete, pre_save, post_save
 from django.dispatch import receiver
 
 from business.models import Invoice
@@ -24,3 +24,9 @@ def invoice_post_delete_signal(sender, instance: Invoice, **kwargs):
         PaymentService.cancel(instance.payment_id)
     except Exception as e:
         pass
+
+
+@receiver(post_save, sender=Invoice)
+@receiver(post_delete, sender=Invoice)
+def invoice_signal(sender, instance: Invoice, **kwargs):
+    InvoiceRepository.delete_global_cache()

@@ -2,10 +2,10 @@ import { createQuery } from '@farfetched/core'
 
 import { departmentServiceKeys, IDepartmentIndicator } from '@stroy/models'
 
-import { createCommonRequestFx } from '~packages/fx'
+import { requestFx } from '~packages/fx'
 
 export const workSpaceApi = createQuery({
-	effect: createCommonRequestFx<void, IDepartmentIndicator>({
+	effect: requestFx<void, IDepartmentIndicator>({
 		url: departmentServiceKeys.indicators,
 	}),
 })

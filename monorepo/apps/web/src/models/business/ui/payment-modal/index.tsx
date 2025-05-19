@@ -74,7 +74,6 @@ export const PaymentModal = ({
 						</Link>
 					}
 				/>
-				<Detail title={'Статус счета'} caption={payment.amount} />
 				{!payment.is_paid && (
 					<Actions>
 						<PaymentPayButton payment={payment} />
