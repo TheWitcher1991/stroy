@@ -1,12 +1,11 @@
 import { CreditCard, FileText, Globe, Receipt } from '@gravity-ui/icons'
 import { Icon, Tab, TabList } from '@gravity-ui/uikit'
-import { useRouter } from 'next/navigation'
-import { useCallback } from 'react'
+import { useMemoizedFn } from 'ahooks'
+import { useUnit } from 'effector-react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
-import {
-	FinancesTab,
-	useFinancesTabStore,
-} from '~features/finances-tabs/index.store'
+import { FinancesTab, financeTab } from '~features/finances-tabs/index.store'
 
 import { href } from '@stroy/href'
 
@@ -17,22 +16,38 @@ const linkMapper: Record<FinancesTab, string> = {
 	4: href.finances.transactions,
 }
 
+const TABS: FinancesTab[] = ['1', '2', '3', '4']
+
+const DEFAULT_TAB: FinancesTab = '1'
+
 export default function FinancesTabs() {
 	const router = useRouter()
+	const searchParams = useSearchParams()
 
-	const index = useFinancesTabStore(state => state.index)
-	const setIndex = useFinancesTabStore(state => state.setIndex)
+	const $tab = useUnit(financeTab.$tab)
 
-	const handleChange = useCallback(
-		(value: FinancesTab) => {
-			setIndex(value)
-			router.push(linkMapper[value])
-		},
-		[setIndex, router],
-	)
+	const handleChange = useMemoizedFn((value: FinancesTab) => {
+		financeTab.setTab(value)
+
+		const newParams = new URLSearchParams()
+		newParams.set('tab', value)
+		financeTab.setTab(value)
+
+		router.push(`${linkMapper[value]}?${newParams.toString()}`)
+	})
+
+	useEffect(() => {
+		const tabFromQuery = searchParams.get('tab') as FinancesTab | null
+
+		if (tabFromQuery && TABS.includes(tabFromQuery)) {
+			financeTab.setTab(tabFromQuery)
+		} else {
+			financeTab.setTab(DEFAULT_TAB)
+		}
+	}, [searchParams])
 
 	return (
-		<TabList value={index} onUpdate={handleChange} size='l'>
+		<TabList value={$tab} onUpdate={handleChange} size='l'>
 			<Tab value='1' icon={<Icon data={CreditCard} size={16} />}>
 				Пополнение
 			</Tab>

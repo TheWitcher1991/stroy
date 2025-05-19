@@ -32,6 +32,7 @@
     "date-fns": "^4.1.0",
     "effector": "^23.3.0",
     "effector-react": "^23.3.0",
+    "effector-storage": "^7.1.0",
     "patronum": "^2.3.0",
     "prettier": "^3.5.3",
     "react": "^19.1.0",
@@ -42,8 +43,7 @@
     "tsup": "^8.3.6",
     "turbo": "^2.5.2",
     "typescript": "5.8.2",
-    "zod": "^3.24.3",
-    "zustand": "^5.0.3"
+    "zod": "^3.24.3"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {

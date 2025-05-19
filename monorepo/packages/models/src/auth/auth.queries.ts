@@ -1,52 +1,31 @@
 'use client'
 
 import { UserRole, useUpdateUser, useUser } from '../user'
+import { useUnit } from 'effector-react'
 import { useEffect, useMemo } from 'react'
-import { useShallow } from 'zustand/react/shallow'
 
 import { href } from '@stroy/href'
-import { usePersistHydrated } from '@stroy/toolkit'
 
-import { useAccountStore } from './auth.store'
-import { IAccount } from './auth.types'
+import { $account, logout } from './auth.store'
 
-export const useCheckAuth = (): boolean => {
-	const token = useAccountStore(
-		useShallow(state => state.account?.access_token),
-	)
+export const useIam = () => useUnit($account)
 
-	return !!token
-}
-
-export const useIam = (): IAccount => {
-	return useAccountStore(state => state.account)
-}
+export const useCheckAuth = (): boolean => Boolean(useIam().access_token)
 
 export const useIsIam = (user: number): boolean => {
-	const id = useAccountStore(useShallow(state => state.account?.user))
-
-	return useMemo(() => id === user, [user])
+	const id = useIam().user
+	return useMemo(() => id === user, [id, user])
 }
 
 export const useIamAdmin = (): boolean => {
-	const role = useAccountStore(useShallow(state => state.account?.role))
-
+	const role = useIam().role
 	return useMemo(() => role === UserRole.ADMIN, [role])
 }
 
 export const useSessionExpired = () => {
-	const hydrated = usePersistHydrated(useAccountStore)
-
-	const session_expires = useAccountStore(
-		state => state.account?.session_expires,
-	)
-	const user = useAccountStore(state => state.account?.user)
-
-	const logout = useAccountStore(state => state.logout)
+	const { session_expires, user } = useIam()
 
 	useEffect(() => {
-		if (!hydrated) return
-
 		if (!user || !session_expires) {
 			logout()
 			window.location.replace(href.login)
@@ -61,17 +40,15 @@ export const useSessionExpired = () => {
 			logout()
 			window.location.replace(href.login)
 		}
-	}, [hydrated, user, session_expires, logout])
+	}, [user, session_expires])
 }
 
 export const useProfile = () => {
 	const account = useIam()
-
 	return useUser(account?.user)
 }
 
 export const useUpdateProfile = () => {
 	const account = useIam()
-
 	return useUpdateUser(account?.user)
 }

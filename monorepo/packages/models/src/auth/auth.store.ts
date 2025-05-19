@@ -1,6 +1,6 @@
 import { UserRole } from '../user'
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { createEvent, createStore } from 'effector'
+import { persist } from 'effector-storage/local'
 
 import { IAccount } from './auth.types'
 
@@ -15,27 +15,15 @@ const ACCOUNT_INITIAL_STATE: IAccount = {
 	department_name: '',
 }
 
-type AccountStore = {
-	account: IAccount
-	login: (account: Partial<IAccount>) => void
-	logout: () => void
-}
+export const login = createEvent<Partial<IAccount>>()
+export const logout = createEvent()
 
-export const useAccountStore = create<AccountStore>()(
-	persist(
-		set => ({
-			account: ACCOUNT_INITIAL_STATE,
-			login: account => set(state => ({ ...state, account })),
-			logout: () => set({ account: ACCOUNT_INITIAL_STATE }),
-		}),
-		{
-			name: 'account-storage',
-		},
-	),
-)
+export const $account = createStore<IAccount>(ACCOUNT_INITIAL_STATE)
 
-export const account = useAccountStore.getState().account
+$account.on(login, (state, payload) => ({ ...state, ...payload }))
+$account.reset(logout)
 
-export const logout = useAccountStore.getState().logout
-
-export const login = useAccountStore.getState().login
+persist({
+	store: $account,
+	key: 'account-storage',
+})

@@ -1,21 +1,18 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { createEvent, createStore } from 'effector'
+
+import { atom } from '~packages/factory'
 
 export type FinancesTab = '1' | '2' | '3' | '4'
 
-type FinancesTabStore = {
-	index: FinancesTab
-	setIndex: (index: FinancesTab) => void
-}
+export const financeTab = atom(() => {
+	const setTab = createEvent<FinancesTab>()
 
-export const useFinancesTabStore = create<FinancesTabStore>()(
-	persist(
-		set => ({
-			index: '1',
-			setIndex: index => set({ index }),
-		}),
-		{
-			name: 'finances-tab-storage',
-		},
-	),
-)
+	const $tab = createStore<FinancesTab>('1')
+
+	$tab.on(setTab, (_, index) => index)
+
+	return {
+		$tab,
+		setTab,
+	}
+})
