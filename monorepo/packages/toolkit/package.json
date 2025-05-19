@@ -18,6 +18,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@stroy/href": "workspace:*",
     "@stroy/system": "workspace:*",
     "@stroy/types": "workspace:*",
     "@stroy/eslint-config": "workspace:*",

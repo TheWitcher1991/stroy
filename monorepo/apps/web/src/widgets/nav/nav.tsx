@@ -2,55 +2,46 @@
 
 import { Person } from '@gravity-ui/icons'
 import { ActionBar } from '@gravity-ui/navigation'
-import { Button, Icon, Select, TextInput } from '@gravity-ui/uikit'
+import { Button, Icon } from '@gravity-ui/uikit'
+import { useMemoizedFn } from 'ahooks'
 import { useRouter } from 'next/navigation'
 
+import { useBreadcrumbs } from '~widgets/nav/nav.hooks'
+
+import DepartmentButton from '~features/department-button'
 import Notifications from '~features/notifications'
 import ThemeButton from '~features/theme-button'
 
 import { DocumentImportButton } from '~models/document'
 
 import { href } from '@stroy/href'
-import { useIam } from '@stroy/models'
 
-import { SearchIcon } from '~packages/ui'
+import { Breadcrumbs } from '~packages/ui'
 
 import styles from './nav.module.scss'
 
 export default function Nav() {
-	const iam = useIam()
+	const items = useBreadcrumbs()
 
 	const router = useRouter()
 
-	const handleNewDocClick = () => {
+	const handleNewDocClick = useMemoizedFn(() => {
 		router.push(href.profile)
-	}
+	})
 
 	return (
 		<ActionBar aria-label='Actions bar' className={styles.nav}>
 			<ActionBar.Section type='secondary'>
 				<ActionBar.Group>
 					<ActionBar.Item>
-						<Select
-							value={[iam.department_name]}
-							options={[
-								{
-									content: iam.department_name,
-									value: iam.department_name,
-								},
-							]}
-							title={'Выберите рабочее пространство'}
-						/>
+						<DepartmentButton />
 					</ActionBar.Item>
 				</ActionBar.Group>
 			</ActionBar.Section>
 			<ActionBar.Section type='primary'>
 				<ActionBar.Group pull='left'>
 					<ActionBar.Item>
-						<TextInput
-							startContent={<SearchIcon />}
-							placeholder={'Поиск...'}
-						/>
+						<Breadcrumbs items={items} />
 					</ActionBar.Item>
 				</ActionBar.Group>
 				<ActionBar.Group pull='right'>

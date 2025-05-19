@@ -8,7 +8,7 @@ import {
 	useState,
 } from 'react'
 
-import { ISubscription, useSubscription } from '@stroy/models'
+import { ISubscription, useCheckAuth, useSubscription } from '@stroy/models'
 import { Nullable } from '@stroy/types'
 
 export interface BusinessContextValue {
@@ -24,7 +24,9 @@ export function BusinessProvider({ children }: PropsWithChildren) {
 	const [business, setBusiness] =
 		useState<Nullable<BusinessContextValue>>(null)
 
-	const { isLoading, isError, subscription } = useSubscription()
+	const isAuth = useCheckAuth()
+
+	const { isLoading, isError, subscription } = useSubscription(isAuth)
 
 	useEffect(() => {
 		setBusiness({
@@ -33,6 +35,8 @@ export function BusinessProvider({ children }: PropsWithChildren) {
 			subscription,
 		})
 	}, [isLoading, isError, subscription])
+
+	if (!business) return null
 
 	return <BusinessContext value={business}>{children}</BusinessContext>
 }

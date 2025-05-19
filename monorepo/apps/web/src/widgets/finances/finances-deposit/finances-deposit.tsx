@@ -5,19 +5,21 @@ import { useForm } from 'react-hook-form'
 import { PaymentMethodSelect } from '~models/business'
 
 import {
-	account,
 	DepositSchema,
 	IDeposit,
 	InvoiceTarget,
 	PayerType,
 	PaymentMethod,
 	useDeposit,
+	useIam,
 } from '@stroy/models'
 import { query } from '@stroy/toolkit'
 
 import { FormCard, FormSection, Spacing } from '~packages/ui'
 
 export default function FinancesDeposit() {
+	const iam = useIam()
+
 	const {
 		register,
 		handleSubmit,
@@ -30,7 +32,7 @@ export default function FinancesDeposit() {
 			payment_method: PaymentMethod.CARD,
 			payer_type: PayerType.INDIVIDUAL,
 			target: InvoiceTarget.WALLET,
-			department: account.department,
+			department: iam.department,
 		},
 		resolver: zodResolver(DepositSchema),
 	})

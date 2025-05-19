@@ -9,6 +9,7 @@ from users.types import UserRole
 
 class User(AbstractUser):
     email = models.EmailField(t("Email"), max_length=255, unique=True)
+    avatar = models.ImageField(t("Аватар"), upload_to="users/", null=True, blank=True)
     role = models.CharField(t("role"), choices=UserRole, default=UserRole.OFFICER, max_length=CHAR_MD_LENGTH)
     guard = models.ForeignKey("guards.Guard", on_delete=models.SET_NULL, null=True, related_name="user")
     department = models.OneToOneField("departments.Department", on_delete=models.CASCADE, related_name="user")

@@ -280,6 +280,9 @@ importers:
       '@stroy/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
+      '@stroy/href':
+        specifier: workspace:*
+        version: link:../href
       '@stroy/system':
         specifier: workspace:*
         version: link:../system

@@ -34,10 +34,11 @@ export const useWallet = () => {
 	}
 }
 
-export const useSubscription = () => {
+export const useSubscription = (enabled?: boolean) => {
 	const { isError, isLoading, data } = useQuery({
 		queryKey: [businessServiceKeys.subscription],
 		queryFn: () => BusinessRepository.subscription(),
+		enabled: !!enabled,
 	})
 
 	return {

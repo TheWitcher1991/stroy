@@ -1,4 +1,5 @@
-import { account, AuthRepository, login, logout } from '../auth'
+import { $account, AuthRepository, login, logout } from '../auth'
+
 import { href } from '@stroy/href/src'
 import { API_URL } from '@stroy/system'
 import { HTTP } from '@stroy/toolkit'
@@ -19,8 +20,8 @@ const config = {
 export const http = new HTTP({
 	config: config,
 	onRequest: (config: any) => {
-		const access_token = account?.access_token || ''
-		const token_type = account?.token_type || 'Bearer'
+		const access_token = $account.getState()?.access_token || ''
+		const token_type = $account.getState()?.token_type || 'Bearer'
 		if (access_token) {
 			config.headers.Authorization = `${token_type} ${access_token}`
 		}
@@ -35,7 +36,6 @@ export const http = new HTTP({
 
 		if (error.response.status === 403) {
 			window.location.replace(href.login)
-			return Promise.reject(error)
 		}
 
 		if (error.response.status === 401 && !originalRequest._retry) {
@@ -46,7 +46,8 @@ export const http = new HTTP({
 				const response = await AuthRepository.refresh()
 
 				if (response.status !== 200) {
-					throw new Error('Не удалось обновить токен авторизации')
+					logout()
+					window.location.replace(href.login)
 				}
 
 				const newAccessToken = response.data.access_token

@@ -1,32 +1,25 @@
 'use client'
 
+import { createEvent, createStore } from 'effector'
+import { useUnit } from 'effector-react'
+import { persist } from 'effector-storage/local'
 import { useCallback } from 'react'
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
 
 export type Theme = 'dark' | 'light'
 
-type ThemeStore = {
-	theme: Theme
-	setTheme: (theme: Theme) => void
-}
+export const setTheme = createEvent<Theme>()
 
-export const useThemeStore = create<ThemeStore>()(
-	persist(
-		set => ({
-			theme: 'dark',
-			setTheme: theme => {
-				set({ theme })
-			},
-		}),
-		{
-			name: 'theme-storage',
-		},
-	),
-)
+export const $theme = createStore<Theme>('dark')
+
+$theme.on(setTheme, (_, payload) => payload)
+
+persist({
+	store: $theme,
+	key: 'theme-storage',
+})
 
 export const useTheme = () => {
-	const { theme, setTheme } = useThemeStore()
+	const theme = useUnit($theme)
 
 	const toggleTheme = useCallback(() => {
 		const newTheme = theme === 'dark' ? 'light' : 'dark'

@@ -19,16 +19,20 @@ export const UserDocumentSchema = z.object({
 
 export const UserSchema = BaseUserSchema.extend({
 	id: zShape.id,
+	avatar: zShape.url.nullable(),
 	documents: UserDocumentSchema.array(),
 	guard: GuardSchema.nullable(),
 	date_joined: zShape.datetime,
+	last_login: zShape.datetime,
 })
 
 export const UpdateUserSchema = BaseUserSchema.extend({
 	guard: zShape.id.optional(),
+	avatar: zShape.image.optional(),
 })
 
 export const CreateUserSchema = BaseUserSchema.extend({
 	guard: zShape.id.optional(),
 	password: zShape.password,
+	avatar: zShape.image.optional(),
 })

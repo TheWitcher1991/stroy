@@ -7,6 +7,13 @@ export type EnumType<T> = T[keyof T]
 
 export type Dictionary<T = unknown> = Record<string, T>
 
+export type ResourceType =
+	| 'tags'
+	| 'documents'
+	| 'projects'
+	| 'users'
+	| 'guards'
+
 export interface SelectProps<
 	VALUE extends string[] = string[],
 	REGISTER = any,

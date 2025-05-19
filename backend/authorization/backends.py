@@ -1,5 +1,5 @@
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.exceptions import AuthenticationFailed, PermissionDenied
 from rest_framework.request import Request
 
 from config.settings import REFRESH_TOKEN_NAME
@@ -82,7 +82,7 @@ class RefreshTokenAuthentication(BaseAPIAuthentication):
         refresh_token = request.COOKIES.get(REFRESH_TOKEN_NAME, None)
 
         if not refresh_token:
-            raise AuthenticationFailed(t("Invalid refresh token"))
+            raise PermissionDenied(t("Invalid refresh token"))
 
         try:
             data = JWTService.authenticate(refresh_token)
@@ -90,8 +90,8 @@ class RefreshTokenAuthentication(BaseAPIAuthentication):
             token = data.get("token", None)
 
             if not user or not token:
-                raise AuthenticationFailed(t("Refresh token not valid"))
+                raise PermissionDenied(t("Refresh token not valid"))
 
             return user, token
         except Exception:
-            raise AuthenticationFailed(t("Invalid refresh token"))
+            raise PermissionDenied(t("Invalid refresh token"))

@@ -5,6 +5,8 @@ import { PropsWithChildren } from 'react'
 
 import Aside from '~widgets/aside'
 
+import { BusinessProvider } from '~models/business'
+
 import { useSessionExpired } from '@stroy/models'
 
 import { Container } from '~packages/ui'
@@ -17,9 +19,11 @@ export default function WorkspaceLayout({
 	useSessionExpired()
 
 	return (
-		<Aside>
-			<Nav />
-			<Container>{children}</Container>
-		</Aside>
+		<BusinessProvider>
+			<Aside>
+				<Nav />
+				<Container>{children}</Container>
+			</Aside>
+		</BusinessProvider>
 	)
 }
