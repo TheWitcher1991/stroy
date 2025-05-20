@@ -1,12 +1,36 @@
 import { Tray } from '@gravity-ui/icons'
-import { Button, Icon } from '@gravity-ui/uikit'
 
-import { PropsWithDocumentId } from '@stroy/models'
+import {
+	DocumentStatus,
+	PropsWithDocumentId,
+	useUpdateDocument,
+} from '@stroy/models'
+import { query } from '@stroy/toolkit'
 
-export const DocumentDraftButton = ({ document }: PropsWithDocumentId) => {
+import { Action } from '~packages/ui'
+
+export const DocumentDraftButton = ({
+	document,
+}: PropsWithAction<PropsWithDocumentId>) => {
+	const req = useUpdateDocument(document)
+
+	const onClick = async () => {
+		await query(() =>
+			req.mutateAsync({
+				status: DocumentStatus.DRAFT,
+			}),
+		)
+	}
+
 	return (
-		<Button view={'outlined-info'} selected={true}>
-			<Icon data={Tray} size={16} /> В черновики
-		</Button>
+		<Action
+			view={'outlined-info'}
+			selected={true}
+			icon={Tray}
+			loading={req.isPending}
+			onClick={onClick}
+		>
+			В черновики
+		</Action>
 	)
 }

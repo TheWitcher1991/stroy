@@ -7,6 +7,7 @@ interface ActionsProps {
 	children?: ReactNode
 	icon: IconData
 	loading?: boolean
+	selected?: boolean
 	disabled?: boolean
 }
 
@@ -18,6 +19,7 @@ export const Action = ({
 	children,
 	icon,
 	loading,
+	selected,
 	disabled,
 	width,
 	iconSize = 16,
@@ -30,6 +32,7 @@ export const Action = ({
 			loading={loading}
 			disabled={disabled}
 			width={width}
+			selected={selected}
 		>
 			<Icon data={icon} size={iconSize} />
 			{!onlyIcon && children}

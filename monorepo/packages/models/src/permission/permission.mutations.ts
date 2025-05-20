@@ -20,7 +20,7 @@ export const useCreatePermission = () => {
 	})
 }
 
-export const useUpdateDocument = (id: number) => {
+export const useUpdatePermission = (id: number) => {
 	return useMutation({
 		mutationFn: (data: Partial<IUpdatePermission>) =>
 			PermissionRepository.update(id, data),
@@ -35,7 +35,7 @@ export const useUpdateDocument = (id: number) => {
 	})
 }
 
-export const useDeleteDocument = () => {
+export const useDeletePermission = () => {
 	return useMutation({
 		mutationFn: (id: number) => PermissionRepository.delete(id),
 		onSettled: async () => {
