@@ -1,6 +1,6 @@
 import { useUnit } from 'effector-react'
 
-import { workSpaceData } from '~widgets/workspace-data/workspace-data.model'
+import { workSpaceData } from './workspace-data.model'
 
 export const useWorkspaceDataStore = () =>
 	useUnit({

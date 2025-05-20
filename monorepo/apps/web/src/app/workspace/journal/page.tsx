@@ -1,14 +1,21 @@
 'use client'
 
+import { useMount } from 'ahooks'
+
 import Journal, {
 	JournalFetcher,
 	JournalFilter,
 	JournalPagination,
 } from '~widgets/journal'
+import { setBreadcrumbs } from '~widgets/nav'
 
 import { Group, PageTitle } from '~packages/ui'
 
 export default function JournalPage() {
+	useMount(() => {
+		setBreadcrumbs([{ text: 'Журнал действий', href: '/' }])
+	})
+
 	return (
 		<Group>
 			<PageTitle

@@ -1,10 +1,13 @@
 'use client'
 
+import { useMount } from 'ahooks'
 import { use } from 'react'
 
 import Document from '~widgets/document'
+import { setBreadcrumbs } from '~widgets/nav'
 
 import { IDocument, useDocument } from '@stroy/models'
+import { generateBreadcrumbs } from '@stroy/toolkit'
 
 import { RenderFetchData } from '~packages/lib'
 
@@ -15,6 +18,15 @@ export default function DocumentPage({
 }) {
 	const { id } = use(params)
 	const { isLoading, isError, data } = useDocument(Number(id))
+
+	useMount(() => {
+		setBreadcrumbs(
+			generateBreadcrumbs({
+				resource: 'documents',
+				variant: 'view',
+			}),
+		)
+	})
 
 	return (
 		<RenderFetchData isLoading={isLoading} hasError={isError}>

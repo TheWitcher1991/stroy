@@ -1,12 +1,26 @@
 'use client'
 
+import { useMount } from 'ahooks'
+
+import { setBreadcrumbs } from '~widgets/nav'
 import Tags, { TagsFetcher, TagsFilter } from '~widgets/tags'
 
 import { TagCreateButton } from '~models/tag'
 
+import { generateBreadcrumbs } from '@stroy/toolkit'
+
 import { Group, PageTitle } from '~packages/ui'
 
 export default function TagsPage() {
+	useMount(() => {
+		setBreadcrumbs(
+			generateBreadcrumbs({
+				resource: 'tags',
+				variant: 'index',
+			}),
+		)
+	})
+
 	return (
 		<Group>
 			<PageTitle

@@ -1,6 +1,8 @@
 import { sample } from 'effector'
 import { createGate } from 'effector-react'
 
+import { setBreadcrumbs } from '~widgets/nav'
+
 import { IDepartmentIndicator } from '@stroy/models'
 import { atom } from '@stroy/toolkit'
 
@@ -17,6 +19,10 @@ export const workSpaceData = atom(() => {
 		clock: WorkSpaceGate.open,
 		target: workSpaceApi.start,
 	})
+
+	WorkSpaceGate.open.watch(() =>
+		setBreadcrumbs([{ text: 'Дашборд', href: '/' }]),
+	)
 
 	return {
 		WorkSpaceGate,

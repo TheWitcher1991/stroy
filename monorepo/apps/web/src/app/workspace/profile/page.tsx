@@ -1,14 +1,19 @@
 'use client'
 
+import { useMount } from 'ahooks'
+
+import { setBreadcrumbs } from '~widgets/nav'
 import Profile from '~widgets/profile'
 
-import { IUser, useProfile } from '@stroy/models'
+import { generateSettingBreadcrumbs, IUser, useProfile } from '@stroy/models'
 
 import { RenderFetchData } from '~packages/lib'
 import { Group, PageTitle } from '~packages/ui'
 
 export default function ProfilePage() {
 	const { data, isLoading, isError } = useProfile()
+
+	useMount(() => setBreadcrumbs(generateSettingBreadcrumbs('account')))
 
 	return (
 		<Group>

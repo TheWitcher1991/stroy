@@ -1,6 +1,8 @@
+import { href } from '@stroy/href'
+import { BreadcrumbsItem } from '@stroy/toolkit'
 import { EnumType, SelectOption } from '@stroy/types'
 
-import { IPayment, PropsWithPayment } from './business.types'
+import { IPayment } from './business.types'
 
 export const PaymentMethod = {
 	CARD: 'bank_card',
@@ -50,4 +52,35 @@ export const paymentStatusText = ({ is_paid, payer_type }: IPayment) => {
 	} else {
 		return 'Не оплачен'
 	}
+}
+
+export const generatePaymentBreakdown = (
+	variant: 'deposit' | 'transactions' | 'closure' | 'manage',
+) => {
+	const breadcrumbs: BreadcrumbsItem[] = [
+		{ text: 'Биллинг', href: href.finances.index },
+	]
+
+	switch (variant) {
+		case 'deposit':
+			breadcrumbs.push({
+				text: 'Пополнение',
+				href: href.finances.deposit,
+			})
+			break
+		case 'transactions':
+			breadcrumbs.push({
+				text: 'Транзакции',
+				href: href.finances.transactions,
+			})
+			break
+		case 'closure':
+			breadcrumbs.push({ text: 'Документы', href: href.finances.closure })
+			break
+		case 'manage':
+			breadcrumbs.push({ text: 'Управление', href: href.finances.index })
+			break
+	}
+
+	return breadcrumbs
 }

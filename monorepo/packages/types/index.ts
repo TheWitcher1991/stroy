@@ -8,8 +8,8 @@ export type EnumType<T> = T[keyof T]
 export type Dictionary<T = unknown> = Record<string, T>
 
 export type ResourceType =
-	| 'tags'
 	| 'documents'
+	| 'tags'
 	| 'projects'
 	| 'users'
 	| 'guards'

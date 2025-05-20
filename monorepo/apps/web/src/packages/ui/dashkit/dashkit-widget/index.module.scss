@@ -1,0 +1,14 @@
+.dashkitWidget {
+    padding: var(--g-spacing-3) var(--g-spacing-4);
+    width: 100%;
+}
+
+.dashkitWidgetContent {
+    flex-grow: 1;
+    overflow: auto;
+    min-height: 246px;
+}
+
+.dashkitWidgetHeader {
+    margin-bottom: 12px;
+}
