@@ -2,6 +2,7 @@ import { EnumType } from '@stroy/types'
 
 export const DocumentStatus = {
 	DRAFT: 'DRAFT',
+	ARCHIVE: 'ARCHIVE',
 	HARMONIZATION: 'HARMONIZATION',
 	APPROVED: 'APPROVED',
 } as const
@@ -10,6 +11,7 @@ export type DocumentStatus = EnumType<typeof DocumentStatus>
 
 export const DocumentStatusMapper: Record<DocumentStatus, string> = {
 	DRAFT: 'Черновик',
+	ARCHIVE: 'Архив',
 	HARMONIZATION: 'На утверждении',
 	APPROVED: 'Утвержден',
 }

@@ -1,9 +1,3 @@
-import { Skeleton } from '@gravity-ui/uikit'
+import { Skeleton } from '~packages/ui'
 
-export const InputSkeleton = () => (
-	<Skeleton
-		style={{
-			height: 36,
-		}}
-	/>
-)
+export const InputSkeleton = () => <Skeleton height={36} />

@@ -22,11 +22,9 @@ export const DashkitWidget = ({
 				className={styles.dashkitWidgetHeader}
 			>
 				<Text variant={'subheader-2'}>{title}</Text>
-				{href && (
-					<Button href={href} view={'flat'}>
-						<Icon data={ArrowUpRightFromSquare} size={16} />
-					</Button>
-				)}
+				<Button href={href} view={'flat'} disabled={!href}>
+					<Icon data={ArrowUpRightFromSquare} size={16} />
+				</Button>
 			</Flex>
 			<Card className={styles.dashkitWidgetContent} view={'filled'}>
 				{children}

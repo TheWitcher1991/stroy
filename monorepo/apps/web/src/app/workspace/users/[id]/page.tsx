@@ -11,6 +11,8 @@ import { generateBreadcrumbs } from '@stroy/toolkit'
 
 import { RenderFetchData } from '~packages/lib'
 
+import UserLoading from './loading'
+
 export default function UserPage({
 	params,
 }: {
@@ -29,7 +31,11 @@ export default function UserPage({
 	})
 
 	return (
-		<RenderFetchData isLoading={isLoading} hasError={isError}>
+		<RenderFetchData
+			isLoading={isLoading}
+			hasError={isError}
+			loadingFallback={<UserLoading />}
+		>
 			<User user={data?.data as IUser} />
 		</RenderFetchData>
 	)

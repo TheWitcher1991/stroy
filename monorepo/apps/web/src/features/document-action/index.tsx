@@ -1,6 +1,11 @@
 import { match } from 'ts-pattern'
 
-import { DocumentApproveButton, DocumentDraftButton } from '~models/document'
+import {
+	DocumentApproveButton,
+	DocumentArchiveButton,
+	DocumentPublishButton,
+	DocumentUnarchiveButton,
+} from '~models/document'
 
 import {
 	DocumentStatus,
@@ -10,12 +15,30 @@ import {
 } from '@stroy/models'
 
 export const DocumentAction = ({ document }: PropsWithDocument) => {
-	if (!hasPermission(document.permissions, GuardOperation.APPROVE))
-		return null
-
-	return match(document.status)
-		.with(DocumentStatus.APPROVED, () => (
-			<DocumentDraftButton document={document.id} />
-		))
-		.otherwise(() => <DocumentApproveButton document={document.id} />)
+	return match(document)
+		.with(
+			{ status: DocumentStatus.HARMONIZATION },
+			{
+				when: doc =>
+					hasPermission(doc.permissions, GuardOperation.APPROVE),
+			},
+			doc => <DocumentApproveButton document={doc.id} />,
+		)
+		.with(
+			{ status: DocumentStatus.APPROVED },
+			{
+				when: doc =>
+					hasPermission(doc.permissions, GuardOperation.ARCHIVE),
+			},
+			doc => <DocumentArchiveButton document={doc.id} />,
+		)
+		.with(
+			{ status: DocumentStatus.ARCHIVE },
+			{
+				when: doc =>
+					hasPermission(doc.permissions, GuardOperation.RESTORE),
+			},
+			doc => <DocumentUnarchiveButton document={doc.id} />,
+		)
+		.otherwise(() => <DocumentPublishButton document={document.id} />)
 }

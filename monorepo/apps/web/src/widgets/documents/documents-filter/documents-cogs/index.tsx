@@ -1,4 +1,11 @@
-import { Clock, CopyCheck, FileText, Sliders, Tray } from '@gravity-ui/icons'
+import {
+	Archive,
+	Clock,
+	CopyCheck,
+	FileText,
+	Sliders,
+	Tray,
+} from '@gravity-ui/icons'
 import { Button, DropdownMenu, Icon } from '@gravity-ui/uikit'
 import { useMemo } from 'react'
 
@@ -50,6 +57,16 @@ export function DocumentsCogs() {
 				},
 				text: DocumentStatusMapper[DocumentStatus.DRAFT],
 				selected: filter.status === DocumentStatus.DRAFT,
+			},
+			{
+				iconStart: <Icon size={16} data={Archive} />,
+				action: () => {
+					setFilter({
+						status: DocumentStatus.ARCHIVE,
+					})
+				},
+				text: DocumentStatusMapper[DocumentStatus.ARCHIVE],
+				selected: filter.status === DocumentStatus.ARCHIVE,
 			},
 		],
 		[filter.status],

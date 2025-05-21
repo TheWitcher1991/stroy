@@ -1,14 +1,14 @@
-import { Flex, Skeleton } from '@gravity-ui/uikit'
+import { Flex } from '@gravity-ui/uikit'
 import { memo } from 'react'
 
 import { formatBytes } from '@stroy/toolkit'
 
 import { RenderFetchData } from '~packages/lib'
-import { ValueCard } from '~packages/ui'
+import { Skeleton, ValueCard } from '~packages/ui'
 
 import { useWorkspaceDataStore } from './workspace-data.hooks'
 
-const WorkspaceDataSkeleton = memo(() => <Skeleton style={{ height: 91 }} />)
+const WorkspaceDataSkeleton = memo(() => <Skeleton height={91} />)
 
 export default function WorkspaceData() {
 	const { indicators, isLoading, isError } = useWorkspaceDataStore()

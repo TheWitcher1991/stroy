@@ -7,7 +7,7 @@ import { DashkitWidget } from '~packages/ui'
 
 export default function LatestTasks() {
 	return (
-		<DashkitWidget title={'Задачи'} href={href.documents.index}>
+		<DashkitWidget title={'Задачи'}>
 			<PlaceholderContainer
 				title='Нет открытых задач'
 				size='m'

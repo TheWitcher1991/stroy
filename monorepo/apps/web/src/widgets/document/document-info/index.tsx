@@ -10,7 +10,7 @@ import {
 	Tag,
 	TextAlignLeft,
 } from '@gravity-ui/icons'
-import { Alert, Flex, Label, Text } from '@gravity-ui/uikit'
+import { Alert, Label } from '@gravity-ui/uikit'
 
 import GuardOperationList from '~features/guard-operation-list'
 
@@ -34,15 +34,7 @@ export default function DocumentInfo({ document }: PropsWithDocument) {
 					message='У вас нет прав доступа к документу'
 				/>
 			)}
-			{document.permissions.length > 0 && (
-				<Alert
-					theme='success'
-					title='Ваши права доступа'
-					message={
-						<GuardOperationList operations={document.permissions} />
-					}
-				/>
-			)}
+			<GuardOperationList operations={document.permissions} />
 			<MetaList width={420}>
 				<MetaListItem icon={FileText} title={'ID'}>
 					{document.doc_number}

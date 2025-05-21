@@ -12,6 +12,7 @@ export const GuardOperation = {
 	DELETE: 'DELETE',
 	RESTORE: 'RESTORE',
 	APPROVE: 'APPROVE',
+	ARCHIVE: 'ARCHIVE',
 } as const
 
 export type GuardOperation = EnumType<typeof GuardOperation>
@@ -23,6 +24,7 @@ export const GuardOperationMapper: Record<GuardOperation, string> = {
 	[GuardOperation.DELETE]: 'Удаление',
 	[GuardOperation.RESTORE]: 'Восстановление',
 	[GuardOperation.APPROVE]: 'Утверждение',
+	[GuardOperation.ARCHIVE]: 'Архивация',
 }
 
 export const GuardSelectOptions: SelectOption<GuardOperation>[] =

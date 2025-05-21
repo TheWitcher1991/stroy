@@ -1,4 +1,6 @@
-import { Flex, Skeleton } from '@gravity-ui/uikit'
+import { Flex } from '@gravity-ui/uikit'
+
+import { Skeleton } from '~packages/ui'
 
 interface TableSkeletonProps {
 	count?: number
@@ -13,20 +15,9 @@ export default function TableSkeleton({
 }: TableSkeletonProps) {
 	return (
 		<Flex direction={'column'} gap={2}>
-			<Skeleton
-				style={{
-					width: '100%',
-					height: columnHeight,
-				}}
-			/>
+			<Skeleton width={'100%'} height={columnHeight} />
 			{[...Array(count).keys()].map(key => (
-				<Skeleton
-					key={key}
-					style={{
-						width: '100%',
-						height: rowHeight,
-					}}
-				/>
+				<Skeleton key={key} width={'100%'} height={rowHeight} />
 			))}
 		</Flex>
 	)
