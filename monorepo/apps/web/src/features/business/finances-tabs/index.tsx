@@ -5,7 +5,10 @@ import { useUnit } from 'effector-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
-import { FinancesTab, financeTab } from '~features/finances-tabs/index.store'
+import {
+	FinancesTab,
+	financeTab,
+} from '~features/business/finances-tabs/index.store'
 
 import { href } from '@stroy/href'
 

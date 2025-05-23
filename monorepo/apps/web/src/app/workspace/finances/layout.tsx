@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react'
 
 import Wallet from '~widgets/wallet'
 
-import FinancesTabs from '~features/finances-tabs'
+import { FinancesTabs } from '~features/business'
 
 import { Group } from '~packages/ui'
 

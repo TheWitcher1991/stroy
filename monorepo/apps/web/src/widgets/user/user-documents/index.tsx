@@ -1,5 +1,5 @@
-import ModelTable from '~features/model-table'
-import useDocumentTableData from '~features/use-document-table-data'
+import { useDocumentTableData } from '~features/document'
+import { ModelTable } from '~features/shared'
 
 import { documentTableColumns } from '~models/document'
 

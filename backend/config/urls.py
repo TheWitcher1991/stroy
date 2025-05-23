@@ -4,7 +4,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
-from config.settings import ADMIN_URL, MEDIA_URL, MEDIA_ROOT
+from config.settings import ADMIN_URL, MEDIA_ROOT, MEDIA_URL
 from packages.utils import t
 
 app_name = "config"

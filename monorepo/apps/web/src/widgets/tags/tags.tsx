@@ -1,8 +1,7 @@
 import { useTagsStore } from '~widgets/tags/tags.hooks'
 
-import ModelTable from '~features/model-table'
-import TableSkeleton from '~features/table-skeleton'
-import useTagTableData from '~features/use-tag-table-data'
+import { ModelTable, TableSkeleton } from '~features/shared'
+import { useTagTableData } from '~features/tag'
 
 import { tagTableColumns } from '~models/tag'
 

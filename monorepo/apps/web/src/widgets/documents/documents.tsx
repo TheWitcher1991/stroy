@@ -1,9 +1,7 @@
 import { useDocumentsStore } from '~widgets/documents/documents.hooks'
 
-import DocumentList from '~features/document-list'
-import ModelTable from '~features/model-table'
-import TableSkeleton from '~features/table-skeleton'
-import useDocumentTableData from '~features/use-document-table-data'
+import { DocumentList, useDocumentTableData } from '~features/document'
+import { ModelTable, TableSkeleton } from '~features/shared'
 
 import { documentTableColumns } from '~models/document'
 

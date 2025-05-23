@@ -1,8 +1,7 @@
 import { useUsersStore } from '~widgets/users/users.hooks'
 
-import ModelTable from '~features/model-table'
-import TableSkeleton from '~features/table-skeleton'
-import useUserTableData from '~features/use-user-table-data'
+import { ModelTable, TableSkeleton } from '~features/shared'
+import { useUserTableData } from '~features/user'
 
 import { userTableColumns } from '~models/user'
 

@@ -14,7 +14,7 @@ import {
 	PropsWithDocument,
 } from '@stroy/models'
 
-export const DocumentAction = ({ document }: PropsWithDocument) => {
+export default function DocumentAction({ document }: PropsWithDocument) {
 	return match(document)
 		.with(
 			{ status: DocumentStatus.HARMONIZATION },

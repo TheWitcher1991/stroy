@@ -1,4 +1,4 @@
-import { DocumentAction } from '~features/document-action'
+import { DocumentAction } from '~features/document'
 
 import {
 	DocumentDeleteButton,

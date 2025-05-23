@@ -1,8 +1,7 @@
 import { useJournalStore } from '~widgets/journal/journal.hooks'
 
-import ModelTable from '~features/model-table'
-import TableSkeleton from '~features/table-skeleton'
-import useJournalTableData from '~features/use-journal-table-data'
+import { useJournalTableData } from '~features/journal'
+import { ModelTable, TableSkeleton } from '~features/shared'
 
 import { journalTableColumns } from '~models/journal'
 

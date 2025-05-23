@@ -2,7 +2,7 @@
 
 import { Flex, Text } from '@gravity-ui/uikit'
 
-import { TariffCard } from '~features/stroy-plus/tariff-card'
+import { TariffCard } from '~features/business/stroy-plus/tariff-card'
 
 import { Spacing } from '~packages/ui'
 

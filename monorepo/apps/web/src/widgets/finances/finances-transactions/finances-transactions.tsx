@@ -1,7 +1,7 @@
 import { usePaymentsStore } from '~widgets/finances/finances-transactions/finances-transactions.hooks'
 
-import PaymentList from '~features/payment-list'
-import TableSkeleton from '~features/table-skeleton'
+import { PaymentList } from '~features/business'
+import { TableSkeleton } from '~features/shared'
 
 import { RenderFetchData } from '~packages/lib'
 

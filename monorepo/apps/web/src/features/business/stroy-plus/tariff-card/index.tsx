@@ -9,7 +9,7 @@ import {
 } from '@gravity-ui/icons'
 import { Button, Card, Flex, Text } from '@gravity-ui/uikit'
 
-import TariffTag from '~features/stroy-plus/tariff-card/tariff-tag'
+import TariffTag from '~features/business/stroy-plus/tariff-card/tariff-tag'
 
 import { STROY_PLUS } from '@stroy/system'
 

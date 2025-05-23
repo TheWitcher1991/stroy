@@ -1,12 +1,15 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
-from business.models import Invoice, DepartmentWallet
+from business.models import DepartmentWallet, Invoice
 
 
 @admin.register(DepartmentWallet)
 class DepartmentWalletAdmin(ModelAdmin):
-    list_display = ("department", "balance", )
+    list_display = (
+        "department",
+        "balance",
+    )
     date_hierarchy = "created_at"
 
 
@@ -19,6 +22,11 @@ class InvoiceAdmin(ModelAdmin):
         "payer_type",
         "payment_method",
     )
-    raw_id_fields = ("department", )
-    readonly_fields = ("description", "created_at", "updated_at", "payment_url",)
+    raw_id_fields = ("department",)
+    readonly_fields = (
+        "description",
+        "created_at",
+        "updated_at",
+        "payment_url",
+    )
     date_hierarchy = "created_at"

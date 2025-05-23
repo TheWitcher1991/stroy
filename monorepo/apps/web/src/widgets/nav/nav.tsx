@@ -6,9 +6,9 @@ import { Button, Icon } from '@gravity-ui/uikit'
 import { useMemoizedFn } from 'ahooks'
 import { useRouter } from 'next/navigation'
 
-import DepartmentButton from '~features/department-button'
+import { DepartmentButton } from '~features/department'
 import Notifications from '~features/notifications'
-import ThemeButton from '~features/theme-button'
+import { ThemeButton } from '~features/shared'
 
 import { DocumentImportButton } from '~models/document'
 

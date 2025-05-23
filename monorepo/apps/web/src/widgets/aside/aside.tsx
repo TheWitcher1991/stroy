@@ -29,7 +29,7 @@ export default function Aside({ children }: PropsWithChildren) {
 			compact={compact}
 			onChangeCompact={setCompact}
 			headerDecoration={true}
-			renderContent={() => <>{children}</>}
+			renderContent={() => children}
 			multipleTooltip={true}
 			editMenuProps={{ enableSorting: true }}
 			menuItems={menuItems}

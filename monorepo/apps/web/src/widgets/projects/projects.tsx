@@ -1,8 +1,7 @@
 import { useProjectsStore } from '~widgets/projects/projects.hooks'
 
-import ModelTable from '~features/model-table'
-import TableSkeleton from '~features/table-skeleton'
-import useProjectTableData from '~features/use-project-table-data'
+import { useProjectTableData } from '~features/project'
+import { ModelTable, TableSkeleton } from '~features/shared'
 
 import { projectTableColumns } from '~models/project'
 

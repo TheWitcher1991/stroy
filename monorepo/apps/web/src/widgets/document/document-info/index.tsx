@@ -12,7 +12,7 @@ import {
 } from '@gravity-ui/icons'
 import { Alert, Label } from '@gravity-ui/uikit'
 
-import GuardOperationList from '~features/guard-operation-list'
+import { GuardOperationList } from '~features/guard'
 
 import { TagLabel } from '~models/tag'
 

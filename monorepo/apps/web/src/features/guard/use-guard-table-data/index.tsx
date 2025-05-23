@@ -1,7 +1,7 @@
 import { Text } from '@gravity-ui/uikit'
 import { memo, useMemo } from 'react'
 
-import GuardOperationList from '~features/guard-operation-list'
+import { GuardOperationList } from '~features/guard'
 
 import { GuardViewButton } from '~models/guard'
 import { GuardDeleteButton } from '~models/guard/ui/guard-delete-button'

@@ -1,8 +1,7 @@
 import { useGuardsStore } from '~widgets/guards/guards.hooks'
 
-import ModelTable from '~features/model-table'
-import TableSkeleton from '~features/table-skeleton'
-import useGuardTableData from '~features/use-guard-table-data'
+import { useGuardTableData } from '~features/guard'
+import { ModelTable, TableSkeleton } from '~features/shared'
 
 import { guardTableColumns } from '~models/guard'
 
