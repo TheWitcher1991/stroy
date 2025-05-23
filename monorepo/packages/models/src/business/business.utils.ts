@@ -2,7 +2,16 @@ import { href } from '@stroy/href'
 import { BreadcrumbsItem } from '@stroy/toolkit'
 import { EnumType, SelectOption } from '@stroy/types'
 
-import { IPayment } from './business.types'
+import { IPayment, PaymentID, SubscriptionID, WalletID } from './business.types'
+
+export const toPaymentID = (id: number | string): PaymentID =>
+	Number(id) as PaymentID
+
+export const toWalletID = (id: number | string): WalletID =>
+	Number(id) as WalletID
+
+export const toSubscriptionID = (id: number | string): SubscriptionID =>
+	Number(id) as SubscriptionID
 
 export const PaymentMethod = {
 	CARD: 'bank_card',

@@ -1,5 +1,7 @@
 import { EnumType, SelectOption } from '@stroy/types'
 
+import { GuardID } from './guard.types'
+
 export const hasPermission = (
 	permissions: GuardOperation[],
 	permission: GuardOperation,
@@ -26,6 +28,8 @@ export const GuardOperationMapper: Record<GuardOperation, string> = {
 	[GuardOperation.APPROVE]: 'Утверждение',
 	[GuardOperation.ARCHIVE]: 'Архивация',
 }
+
+export const toGuardID = (id: number | string): GuardID => Number(id) as GuardID
 
 export const GuardSelectOptions: SelectOption<GuardOperation>[] =
 	Object.entries(GuardOperationMapper).map(([value, label]) => ({

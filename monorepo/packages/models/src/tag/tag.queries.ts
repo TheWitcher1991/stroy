@@ -1,10 +1,11 @@
-import { SelectOption } from '@stroy/types'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 
+import { SelectOption } from '@stroy/types'
+
 import { tagServiceKeys } from './tag.config'
 import { TagRepository } from './tag.repository'
-import { UseTags } from './tag.types'
+import { TagID, UseTags } from './tag.types'
 
 export const useTags = (params?: Partial<UseTags>) => {
 	return useQuery({
@@ -14,7 +15,7 @@ export const useTags = (params?: Partial<UseTags>) => {
 	})
 }
 
-export const useTag = (id: number) => {
+export const useTag = (id: TagID) => {
 	return useQuery({
 		queryKey: [tagServiceKeys.tag, id],
 		queryFn: () => TagRepository.getById(id),

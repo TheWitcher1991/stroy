@@ -1,6 +1,10 @@
 import type { ReactNode } from 'react'
 import type { UseFormRegister } from 'react-hook-form'
 
+declare const __brand: unique symbol
+
+export type Branded<T, UniqueKey> = T & { [__brand]: UniqueKey }
+
 export type Nullable<T> = T | null
 
 export type EnumType<T> = T[keyof T]

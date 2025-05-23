@@ -1,8 +1,10 @@
 import { z } from 'zod'
 
-import { zShape } from '@stroy/toolkit'
+import { zBrand, zShape } from '@stroy/toolkit'
 
 import { ProjectStatus } from './project.utils'
+
+export const zProjectId = zBrand(zShape.id, 'ProjectID')
 
 const BaseProjectSchema = z.object({
 	title: zShape.title,
@@ -14,7 +16,7 @@ const BaseProjectSchema = z.object({
 })
 
 export const ProjectSchema = BaseProjectSchema.extend({
-	id: zShape.id,
+	id: zProjectId,
 	documents: zShape.indicator,
 	created_at: zShape.datetime,
 	updated_at: zShape.datetime,

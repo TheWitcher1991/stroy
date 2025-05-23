@@ -1,15 +1,17 @@
 import { z } from 'zod'
 
-import { zShape } from '@stroy/toolkit'
+import { zBrand, zShape } from '@stroy/toolkit'
 
 import { GuardOperation } from './guard.utils'
+
+export const zGuardId = zBrand(zShape.id, 'GuardID')
 
 const BaseGuardSchema = z.object({
 	title: zShape.title,
 })
 
 export const GuardSchema = BaseGuardSchema.extend({
-	id: zShape.id,
+	id: zGuardId,
 	permissions: z.nativeEnum(GuardOperation).array(),
 	created_at: zShape.datetime,
 	updated_at: zShape.datetime,

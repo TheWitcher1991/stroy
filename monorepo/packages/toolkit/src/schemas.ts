@@ -1,6 +1,7 @@
-import { z } from 'zod'
+import { z, ZodTypeAny } from 'zod'
 
 import { DOCUMENT_FILE_TYPES, IMAGE_FILE_TYPES } from '@stroy/system'
+import { Branded } from '@stroy/types'
 
 import { formatFileSize } from './format'
 import { regexPatterns } from './regex'
@@ -19,6 +20,13 @@ export const buildFileShape = (
 		.refine(file => file.size <= video_upload_size_md * 1024 * 1024, {
 			message: `Размер файла не должен превышать ${formatFileSize(video_upload_size_md)} МБ`,
 		})
+}
+
+export function zBrand<T extends ZodTypeAny, B extends string>(
+	schema: T,
+	brand: B,
+): z.ZodEffects<T, Branded<z.infer<T>, B>> {
+	return schema.transform(val => val as Branded<z.infer<T>, B>)
 }
 
 export const zShape = {

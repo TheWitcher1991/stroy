@@ -1,12 +1,14 @@
 import { z } from 'zod'
 
-import { UseModelOptions } from '@stroy/types'
+import { Branded, UseModelOptions } from '@stroy/types'
 
 import {
 	CreatePermissionSchema,
 	PermissionSchema,
 	UpdatePermissionSchema,
 } from './permission.schema'
+
+export type PermissionID = Branded<number, 'PermissionID'>
 
 export type IPermission = z.infer<typeof PermissionSchema>
 
@@ -19,7 +21,7 @@ export interface PropsWithPermission {
 }
 
 export interface PropsWithPermissionId {
-	document: number
+	document: PermissionID
 }
 
 export interface UsePermissions extends UseModelOptions {}

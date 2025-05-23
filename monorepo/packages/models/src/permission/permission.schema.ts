@@ -1,21 +1,25 @@
-import { GuardSchema } from '../guard'
-import { UserSchema } from '../user'
+import { zDocumentId } from '../document'
+import { GuardSchema, zGuardId } from '../guard'
+import { UserSchema, zUserId } from '../user'
 import { z } from 'zod'
 
-import { zShape } from '@stroy/toolkit'
+import { zBrand, zShape } from '@stroy/toolkit'
+
+export const zPermissionId = zBrand(zShape.id, 'PermissionID')
 
 export const PermissionSchema = z.object({
-	document: zShape.id,
+	id: zPermissionId,
+	document: zDocumentId,
 	guard: GuardSchema,
 	user: UserSchema,
 })
 
 export const UpdatePermissionSchema = z.object({
-	guard: zShape.id,
+	guard: zGuardId,
 })
 
 export const CreatePermissionSchema = z.object({
-	document: zShape.id,
-	guard: zShape.id,
-	user: zShape.id,
+	document: zDocumentId,
+	guard: zGuardId,
+	user: zUserId,
 })

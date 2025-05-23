@@ -1,12 +1,14 @@
 import { z } from 'zod'
 
-import { UseModelOptions } from '@stroy/types'
+import { Branded, UseModelOptions } from '@stroy/types'
 
 import {
 	CreateProjectSchema,
 	ProjectSchema,
 	UpdateProjectSchema,
 } from './project.schema'
+
+export type ProjectID = Branded<number, 'ProjectID'>
 
 export type IProject = z.infer<typeof ProjectSchema>
 
@@ -21,5 +23,5 @@ export interface PropsWithProject {
 }
 
 export interface PropsWithProjectId {
-	project: number
+	project: ProjectID
 }

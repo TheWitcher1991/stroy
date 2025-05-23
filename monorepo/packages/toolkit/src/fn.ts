@@ -1,3 +1,5 @@
+import { Branded } from '@stroy/types'
+
 export const prepareRequestParams = <T extends Record<string, any>>(
 	params?: T,
 ): Record<string, any> | undefined => {
@@ -28,7 +30,7 @@ export const spaced = (val?: number | string): string => {
 	return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
 }
 
-export const splitId = (id?: number): string[] => {
+export const splitId = (id?: number | Branded<any, any>): string[] => {
 	if (!id) return []
 
 	return id.toString().split('')

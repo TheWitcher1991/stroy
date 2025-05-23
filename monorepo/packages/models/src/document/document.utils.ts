@@ -1,5 +1,7 @@
 import { EnumType } from '@stroy/types'
 
+import { DocumentID } from './document.types'
+
 export const DocumentStatus = {
 	DRAFT: 'DRAFT',
 	ARCHIVE: 'ARCHIVE',
@@ -29,3 +31,6 @@ export const DocumentType = {
 }
 
 export type DocumentType = keyof typeof DocumentType
+
+export const toDocumentID = (id: number | string): DocumentID =>
+	Number(id) as DocumentID

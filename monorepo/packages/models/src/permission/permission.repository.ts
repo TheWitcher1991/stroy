@@ -11,14 +11,10 @@ import {
 	UsePermissions,
 } from './permission.types'
 
-const PermissionRepositoryBuilder = () => {
-	return new CrudRepository<
-		ListResponse<IPermission>,
-		IPermission,
-		ICreatePermission,
-		IUpdatePermission,
-		UsePermissions
-	>(http.instance, permissionServiceKeys.permissions)
-}
-
-export const PermissionRepository = PermissionRepositoryBuilder()
+export const PermissionRepository = new CrudRepository<
+	ListResponse<IPermission>,
+	IPermission,
+	ICreatePermission,
+	IUpdatePermission,
+	UsePermissions
+>(http.instance, permissionServiceKeys.permissions)

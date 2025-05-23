@@ -5,7 +5,11 @@ import { optimisticInvalidateQueries } from '@stroy/toolkit'
 
 import { permissionServiceKeys } from './permission.config'
 import { PermissionRepository } from './permission.repository'
-import { ICreatePermission, IUpdatePermission } from './permission.types'
+import {
+	ICreatePermission,
+	IUpdatePermission,
+	PermissionID,
+} from './permission.types'
 
 export const useCreatePermission = () => {
 	return useMutation({
@@ -20,7 +24,7 @@ export const useCreatePermission = () => {
 	})
 }
 
-export const useUpdatePermission = (id: number) => {
+export const useUpdatePermission = (id: PermissionID) => {
 	return useMutation({
 		mutationFn: (data: Partial<IUpdatePermission>) =>
 			PermissionRepository.update(id, data),

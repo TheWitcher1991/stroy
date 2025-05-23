@@ -1,8 +1,10 @@
 import { z } from 'zod'
 
-import { UseModelOptions } from '@stroy/types'
+import { Branded, UseModelOptions } from '@stroy/types'
 
 import { CreateTagSchema, TagSchema, UpdateTagSchema } from './tag.schema'
+
+export type TagID = Branded<number, 'TagID'>
 
 export type ITag = z.infer<typeof TagSchema>
 
@@ -17,5 +19,5 @@ export interface PropsWithTag {
 }
 
 export interface PropsWithTagId {
-	tag: number
+	tag: TagID
 }

@@ -1,9 +1,10 @@
-import { optimisticInvalidateQueries } from '@stroy/toolkit'
 import { useMutation } from '@tanstack/react-query'
+
+import { optimisticInvalidateQueries } from '@stroy/toolkit'
 
 import { tagServiceKeys } from './tag.config'
 import { TagRepository } from './tag.repository'
-import { ICreateTag, IUpdateTag } from './tag.types'
+import { ICreateTag, IUpdateTag, TagID } from './tag.types'
 
 export const useCreateTag = () => {
 	return useMutation({
@@ -14,7 +15,7 @@ export const useCreateTag = () => {
 	})
 }
 
-export const useUpdateTag = (id: number) => {
+export const useUpdateTag = (id: TagID) => {
 	return useMutation({
 		mutationFn: (data: Partial<IUpdateTag>) =>
 			TagRepository.update(id, data),

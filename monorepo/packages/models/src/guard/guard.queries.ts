@@ -1,10 +1,11 @@
-import { SelectOption } from '@stroy/types'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 
+import { SelectOption } from '@stroy/types'
+
 import { guardServiceKeys } from './guard.config'
 import { GuardRepository } from './guard.repository'
-import { UseGuards } from './guard.types'
+import { GuardID, UseGuards } from './guard.types'
 
 export const useGuards = (params?: Partial<UseGuards>) => {
 	return useQuery({
@@ -14,7 +15,7 @@ export const useGuards = (params?: Partial<UseGuards>) => {
 	})
 }
 
-export const useGuard = (id: number) => {
+export const useGuard = (id: GuardID) => {
 	return useQuery({
 		queryKey: [guardServiceKeys.guard, id],
 		queryFn: () => GuardRepository.getById(id),

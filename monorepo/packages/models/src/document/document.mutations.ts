@@ -5,7 +5,7 @@ import { OnUploadProgress } from '@stroy/types'
 
 import { documentServiceKeys } from './document.config'
 import { DocumentRepository } from './document.repository'
-import { ICreateDocument, IUpdateDocument } from './document.types'
+import { DocumentID, ICreateDocument, IUpdateDocument } from './document.types'
 
 export const useCreateDocument = () => {
 	return useMutation({
@@ -31,7 +31,7 @@ export const useCreateDocumentFormData = () => {
 	})
 }
 
-export const useUpdateDocument = (id: number) => {
+export const useUpdateDocument = (id: DocumentID) => {
 	return useMutation({
 		mutationFn: (data: Partial<IUpdateDocument>) =>
 			DocumentRepository.update(id, data),
@@ -44,7 +44,7 @@ export const useUpdateDocument = (id: number) => {
 	})
 }
 
-export const useUpdateDocumentFormData = (id: number) => {
+export const useUpdateDocumentFormData = (id: DocumentID) => {
 	return useMutation({
 		mutationFn: ({
 			data,

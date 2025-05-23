@@ -1,13 +1,15 @@
 import { z } from 'zod'
 
-import { zShape } from '@stroy/toolkit'
+import { zBrand, zShape } from '@stroy/toolkit'
+
+export const zDepartmentId = zBrand(zShape.id, 'DepartmentID')
 
 const BaseDepartmentSchema = z.object({
 	title: zShape.title,
 })
 
 export const DepartmentSchema = BaseDepartmentSchema.extend({
-	id: zShape.id,
+	id: zDepartmentId,
 	created_at: zShape.datetime,
 	updated_at: zShape.datetime,
 })

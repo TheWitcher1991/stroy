@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { UseModelOptions } from '@stroy/types'
+import { Branded, UseModelOptions } from '@stroy/types'
 
 import {
 	CreateDocumentSchema,
@@ -9,6 +9,10 @@ import {
 	UpdateDocumentSchema,
 } from './document.schema'
 import { DocumentStatus } from './document.utils'
+
+export type DocumentID = Branded<number, 'DocumentID'>
+
+export type DocumentVersionID = Branded<number, 'DocumentVersionID'>
 
 export type IDocument = z.infer<typeof DocumentSchema>
 
@@ -27,7 +31,11 @@ export interface PropsWithDocumentVersion {
 }
 
 export interface PropsWithDocumentId {
-	document: number
+	document: DocumentID
+}
+
+export interface PropsWithDocumentVersionId {
+	version: DocumentVersionID
 }
 
 export interface UseDocuments extends UseModelOptions {

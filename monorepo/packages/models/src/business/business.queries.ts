@@ -2,7 +2,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
 import { businessServiceKeys } from './business.config'
 import { BusinessRepository } from './business.repository'
-import { UsePayments } from './business.types'
+import { PaymentID, UsePayments } from './business.types'
 
 export const usePayments = (params?: Partial<UsePayments>) => {
 	return useQuery({
@@ -12,7 +12,7 @@ export const usePayments = (params?: Partial<UsePayments>) => {
 	})
 }
 
-export const usePayment = (id: number) => {
+export const usePayment = (id: PaymentID) => {
 	return useQuery({
 		queryKey: [businessServiceKeys.payment, id],
 		queryFn: () => BusinessRepository.payment(id),

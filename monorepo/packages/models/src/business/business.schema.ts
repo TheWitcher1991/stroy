@@ -1,11 +1,18 @@
+import { zDepartmentId } from '../department'
 import { z } from 'zod'
 
-import { zShape } from '@stroy/toolkit'
+import { zBrand, zShape } from '@stroy/toolkit'
 
 import { InvoiceTarget, PayerType, PaymentMethod } from './business.utils'
 
+export const zWalletId = zBrand(zShape.id, 'WalletID')
+
+export const zSubscriptionId = zBrand(zShape.id, 'SubscriptionID')
+
+export const zPaymentId = zBrand(zShape.id, 'PaymentID')
+
 export const DepositSchema = z.object({
-	department: zShape.id,
+	department: zDepartmentId,
 	payment_method: z.nativeEnum(PaymentMethod),
 	payer_type: z.nativeEnum(PayerType),
 	target: z.nativeEnum(InvoiceTarget),
@@ -13,12 +20,12 @@ export const DepositSchema = z.object({
 })
 
 export const WalletSchema = z.object({
-	id: zShape.id,
+	id: zWalletId,
 	balance: zShape.decimal,
 })
 
 export const SubscriptionSchema = z.object({
-	id: zShape.id,
+	id: zSubscriptionId,
 	start_date: zShape.date,
 	end_date: zShape.date,
 	is_active: z.boolean(),
@@ -26,7 +33,7 @@ export const SubscriptionSchema = z.object({
 })
 
 export const PaymentSchema = z.object({
-	id: zShape.id,
+	id: zPaymentId,
 	payment_id: z.string(),
 	payment_url: z.string(),
 	payment_method: z.nativeEnum(PaymentMethod),

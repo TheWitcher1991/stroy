@@ -1,6 +1,8 @@
 import { z } from 'zod'
 
-import { zShape } from '@stroy/toolkit'
+import { zBrand, zShape } from '@stroy/toolkit'
+
+export const zTagId = zBrand(zShape.id, 'TagID')
 
 const BaseTagSchema = z.object({
 	title: zShape.title,
@@ -9,7 +11,7 @@ const BaseTagSchema = z.object({
 })
 
 export const TagSchema = BaseTagSchema.extend({
-	id: zShape.id,
+	id: zTagId,
 	documents: zShape.indicator,
 	created_at: zShape.datetime,
 	updated_at: zShape.datetime,

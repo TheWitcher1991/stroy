@@ -1,14 +1,14 @@
 import { EnumType, SelectOption } from '@stroy/types'
 
-import { IUser } from './user.types'
+import { IUser, UserID } from './user.types'
 
-export const userFullName = (user: IUser) => {
-	return `${user.first_name} ${user.last_name}`
-}
+export const toUserID = (id: number | string): UserID => Number(id) as UserID
 
-export const useInitial = (user: IUser) => {
-	return `${user.first_name[0]}${user.last_name[0]}`
-}
+export const userFullName = (user: IUser) =>
+	`${user.first_name} ${user.last_name}`
+
+export const useInitial = (user: IUser) =>
+	`${user.first_name[0]}${user.last_name[0]}`
 
 export const UserRole = {
 	ADMIN: 'ADMIN',

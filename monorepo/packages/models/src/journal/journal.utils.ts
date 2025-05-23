@@ -1,5 +1,7 @@
 import { EnumType } from '@stroy/types'
 
+import { JournalID } from './journal.types'
+
 export const JournalAction = {
 	CREATE: 'CREATE',
 	UPDATE: 'UPDATE',
@@ -17,3 +19,6 @@ export const JournalActionMapper: Record<JournalAction, string> = {
 	RESTORE: 'Восстановлен',
 	APPROVE: 'Подтвержден',
 }
+
+export const toJournalID = (id: number | string): JournalID =>
+	Number(id) as JournalID

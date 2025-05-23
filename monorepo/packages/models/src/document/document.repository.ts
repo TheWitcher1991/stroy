@@ -1,4 +1,5 @@
 import { http } from '../request'
+
 import { CrudRepository } from '@stroy/toolkit'
 import { ListResponse } from '@stroy/types'
 
@@ -10,14 +11,10 @@ import {
 	UseDocuments,
 } from './document.types'
 
-const DocumentRepositoryBuilder = () => {
-	return new CrudRepository<
-		ListResponse<IDocument>,
-		IDocument,
-		ICreateDocument,
-		IUpdateDocument,
-		UseDocuments
-	>(http.instance, documentServiceKeys.documents)
-}
-
-export const DocumentRepository = DocumentRepositoryBuilder()
+export const DocumentRepository = new CrudRepository<
+	ListResponse<IDocument>,
+	IDocument,
+	ICreateDocument,
+	IUpdateDocument,
+	UseDocuments
+>(http.instance, documentServiceKeys.documents)

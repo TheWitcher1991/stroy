@@ -5,7 +5,7 @@ import { SelectOption } from '@stroy/types'
 
 import { userServiceKeys } from './user.config'
 import { UserRepository } from './user.repository'
-import { UseUsers } from './user.types'
+import { UserID, UseUsers } from './user.types'
 import { userFullName } from './user.utils'
 
 export const useUsers = (params?: Partial<UseUsers>) => {
@@ -16,7 +16,7 @@ export const useUsers = (params?: Partial<UseUsers>) => {
 	})
 }
 
-export const useUser = (id: number) => {
+export const useUser = (id: UserID) => {
 	return useQuery({
 		queryKey: [userServiceKeys.user, id],
 		queryFn: () => UserRepository.getById(id),

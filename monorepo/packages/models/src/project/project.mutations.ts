@@ -1,9 +1,10 @@
-import { optimisticInvalidateQueries } from '@stroy/toolkit'
 import { useMutation } from '@tanstack/react-query'
+
+import { optimisticInvalidateQueries } from '@stroy/toolkit'
 
 import { projectServiceKeys } from './project.config'
 import { ProjectRepository } from './project.repository'
-import { ICreateProject, IUpdateProject } from './project.types'
+import { ICreateProject, IUpdateProject, ProjectID } from './project.types'
 
 export const useCreateProject = () => {
 	return useMutation({
@@ -14,7 +15,7 @@ export const useCreateProject = () => {
 	})
 }
 
-export const useUpdateProject = (id: number) => {
+export const useUpdateProject = (id: ProjectID) => {
 	return useMutation({
 		mutationFn: (data: Partial<IUpdateProject>) =>
 			ProjectRepository.update(id, data),

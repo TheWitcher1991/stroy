@@ -1,12 +1,14 @@
 import { z } from 'zod'
 
-import { UseModelOptions } from '@stroy/types'
+import { Branded, UseModelOptions } from '@stroy/types'
 
 import {
 	CreateGuardSchema,
 	GuardSchema,
 	UpdateGuardSchema,
 } from './guard.schema'
+
+export type GuardID = Branded<number, 'GuardID'>
 
 export type IGuard = z.infer<typeof GuardSchema>
 
@@ -21,5 +23,5 @@ export interface PropsWithGuard {
 }
 
 export interface PropsWithGuardId {
-	guard: number
+	guard: GuardID
 }

@@ -4,7 +4,7 @@ import { optimisticInvalidateQueries } from '@stroy/toolkit'
 
 import { userServiceKeys } from './user.config'
 import { UserRepository } from './user.repository'
-import { ICreateUser, IUpdateUser } from './user.types'
+import { ICreateUser, IUpdateUser, UserID } from './user.types'
 
 export const useCreateUser = () => {
 	return useMutation({
@@ -15,7 +15,7 @@ export const useCreateUser = () => {
 	})
 }
 
-export const useUpdateUser = (id: number) => {
+export const useUpdateUser = (id: UserID) => {
 	return useMutation({
 		mutationFn: (data: Partial<IUpdateUser>) =>
 			UserRepository.update(id, data),

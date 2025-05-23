@@ -1,6 +1,6 @@
 'use client'
 
-import { UserRole, useUpdateUser, useUser } from '../user'
+import { UserID, UserRole, useUpdateUser, useUser } from '../user'
 import { useUnit } from 'effector-react'
 import { useEffect, useMemo } from 'react'
 
@@ -12,7 +12,7 @@ export const useIam = () => useUnit($account)
 
 export const useCheckAuth = (): boolean => Boolean(useIam().access_token)
 
-export const useIsIam = (user: number): boolean => {
+export const useIsIam = (user: UserID): boolean => {
 	const id = useIam().user
 	return useMemo(() => id === user, [id, user])
 }

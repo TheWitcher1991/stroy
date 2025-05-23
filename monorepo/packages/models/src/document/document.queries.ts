@@ -2,7 +2,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
 import { documentServiceKeys } from './document.config'
 import { DocumentRepository } from './document.repository'
-import { UseDocuments } from './document.types'
+import { DocumentID, UseDocuments } from './document.types'
 
 export const useDocuments = (params?: Partial<UseDocuments>) => {
 	return useQuery({
@@ -12,7 +12,7 @@ export const useDocuments = (params?: Partial<UseDocuments>) => {
 	})
 }
 
-export const useDocument = (id: number) => {
+export const useDocument = (id: DocumentID) => {
 	return useQuery({
 		queryKey: [documentServiceKeys.document, id],
 		queryFn: () => DocumentRepository.getById(id),

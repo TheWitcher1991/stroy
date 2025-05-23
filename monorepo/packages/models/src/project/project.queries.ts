@@ -5,7 +5,7 @@ import { SelectOption } from '@stroy/types'
 
 import { projectServiceKeys } from './project.config'
 import { ProjectRepository } from './project.repository'
-import { UseProjects } from './project.types'
+import { ProjectID, UseProjects } from './project.types'
 
 export const useProjects = (params?: Partial<UseProjects>) => {
 	return useQuery({
@@ -15,7 +15,7 @@ export const useProjects = (params?: Partial<UseProjects>) => {
 	})
 }
 
-export const useProject = (id: number) => {
+export const useProject = (id: ProjectID) => {
 	return useQuery({
 		queryKey: [projectServiceKeys.project, id],
 		queryFn: () => ProjectRepository.getById(id),

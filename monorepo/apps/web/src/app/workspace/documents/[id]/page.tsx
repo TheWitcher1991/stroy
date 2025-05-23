@@ -6,7 +6,7 @@ import { use } from 'react'
 import Document from '~widgets/document'
 import { setBreadcrumbs } from '~widgets/nav'
 
-import { IDocument, useDocument } from '@stroy/models'
+import { IDocument, toDocumentID, useDocument } from '@stroy/models'
 import { generateBreadcrumbs } from '@stroy/toolkit'
 
 import { RenderFetchData } from '~packages/lib'
@@ -17,7 +17,7 @@ export default function DocumentPage({
 	params: Promise<{ id: string }>
 }) {
 	const { id } = use(params)
-	const { isLoading, isError, data } = useDocument(Number(id))
+	const { isLoading, isError, data } = useDocument(toDocumentID(id))
 
 	useMount(() => {
 		setBreadcrumbs(

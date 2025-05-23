@@ -1,9 +1,10 @@
-import { optimisticInvalidateQueries } from '@stroy/toolkit'
 import { useMutation } from '@tanstack/react-query'
+
+import { optimisticInvalidateQueries } from '@stroy/toolkit'
 
 import { guardServiceKeys } from './guard.config'
 import { GuardRepository } from './guard.repository'
-import { ICreateGuard, IUpdateGuard } from './guard.types'
+import { GuardID, ICreateGuard, IUpdateGuard } from './guard.types'
 
 export const useCreateGuard = () => {
 	return useMutation({
@@ -14,7 +15,7 @@ export const useCreateGuard = () => {
 	})
 }
 
-export const useUpdateGuard = (id: number) => {
+export const useUpdateGuard = (id: GuardID) => {
 	return useMutation({
 		mutationFn: (data: Partial<IUpdateGuard>) =>
 			GuardRepository.update(id, data),

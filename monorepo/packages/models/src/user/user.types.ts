@@ -1,8 +1,10 @@
 import { z } from 'zod'
 
-import { UseModelOptions } from '@stroy/types'
+import { Branded, UseModelOptions } from '@stroy/types'
 
 import { CreateUserSchema, UpdateUserSchema, UserSchema } from './user.schema'
+
+export type UserID = Branded<number, 'UserID'>
 
 export type IUser = z.infer<typeof UserSchema>
 
@@ -17,5 +19,5 @@ export interface PropsWithUser {
 }
 
 export interface PropsWithUserId {
-	user: number
+	user: UserID
 }

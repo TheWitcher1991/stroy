@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { UseModelOptions } from '@stroy/types'
+import { Branded, UseModelOptions } from '@stroy/types'
 
 import {
 	DepositSchema,
@@ -8,6 +8,12 @@ import {
 	SubscriptionSchema,
 	WalletSchema,
 } from './business.schema'
+
+export type PaymentID = Branded<number, 'PaymentID'>
+
+export type WalletID = Branded<number, 'WalletID'>
+
+export type SubscriptionID = Branded<number, 'SubscriptionID'>
 
 export type IPayment = z.infer<typeof PaymentSchema>
 
@@ -32,5 +38,5 @@ export interface PropsWithPayment {
 }
 
 export interface PropsWithPaymentId {
-	payment: number
+	payment: PaymentID
 }

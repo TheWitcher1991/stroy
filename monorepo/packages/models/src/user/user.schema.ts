@@ -1,9 +1,11 @@
-import { GuardSchema } from '../guard'
+import { GuardSchema, zGuardId } from '../guard'
 import { z } from 'zod'
 
-import { zShape } from '@stroy/toolkit'
+import { zBrand, zShape } from '@stroy/toolkit'
 
 import { UserRole } from './user.utils'
+
+export const zUserId = zBrand(zShape.id, 'UserID')
 
 const BaseUserSchema = z.object({
 	first_name: zShape.name,
@@ -18,7 +20,7 @@ export const UserDocumentSchema = z.object({
 })
 
 export const UserSchema = BaseUserSchema.extend({
-	id: zShape.id,
+	id: zUserId,
 	avatar: zShape.url.nullable(),
 	documents: UserDocumentSchema.array(),
 	guard: GuardSchema.nullable(),
@@ -27,12 +29,12 @@ export const UserSchema = BaseUserSchema.extend({
 })
 
 export const UpdateUserSchema = BaseUserSchema.extend({
-	guard: zShape.id.optional(),
+	guard: zGuardId.optional(),
 	avatar: zShape.image.optional(),
 })
 
 export const CreateUserSchema = BaseUserSchema.extend({
-	guard: zShape.id.optional(),
+	guard: zGuardId.optional(),
 	password: zShape.password,
 	avatar: zShape.image.optional(),
 })

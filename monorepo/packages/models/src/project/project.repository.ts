@@ -1,4 +1,5 @@
 import { http } from '../request'
+
 import { CrudRepository } from '@stroy/toolkit'
 import { ListResponse } from '@stroy/types'
 
@@ -10,14 +11,10 @@ import {
 	UseProjects,
 } from './project.types'
 
-const ProjectRepositoryBuilder = () => {
-	return new CrudRepository<
-		ListResponse<IProject>,
-		IProject,
-		ICreateProject,
-		IUpdateProject,
-		UseProjects
-	>(http.instance, projectServiceKeys.projects)
-}
-
-export const ProjectRepository = ProjectRepositoryBuilder()
+export const ProjectRepository = new CrudRepository<
+	ListResponse<IProject>,
+	IProject,
+	ICreateProject,
+	IUpdateProject,
+	UseProjects
+>(http.instance, projectServiceKeys.projects)
