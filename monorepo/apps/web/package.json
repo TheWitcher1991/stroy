@@ -28,7 +28,7 @@
     "@stroy/system": "workspace:*",
     "@stroy/toolkit": "workspace:*",
     "@stroy/uikit": "workspace:*",
-    "next": "^15.3.0",
+    "next": "^15.3.3",
     "next-nprogress-bar": "^2.4.7"
   },
   "devDependencies": {
